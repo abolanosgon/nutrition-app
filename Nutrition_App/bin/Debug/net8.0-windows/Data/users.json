@@ -1,0 +1,35 @@
+[
+  {
+    "Id": 1,
+    "Name": "alex",
+    "Age": 25,
+    "Weight": 70,
+    "Height": 170,
+    "Gender": "Male",
+    "Goal": "Maintain",
+    "ActivityLevel": "Moderate",
+    "DietType": "Standard"
+  },
+  {
+    "Id": 2,
+    "Name": "kevin",
+    "Age": 25,
+    "Weight": 70,
+    "Height": 170,
+    "Gender": "Male",
+    "Goal": "Maintain",
+    "ActivityLevel": "Moderate",
+    "DietType": "Standard"
+  },
+  {
+    "Id": 3,
+    "Name": "angie",
+    "Age": 25,
+    "Weight": 70,
+    "Height": 170,
+    "Gender": "Male",
+    "Goal": "Maintain",
+    "ActivityLevel": "Moderate",
+    "DietType": "Standard"
+  }
+]
