@@ -1,4 +1,5 @@
-﻿using Nutrition_App.Models;
+﻿using System.Collections.Generic;
+using Nutrition_App.Models;
 using Nutrition_App.Repositories;
 using Nutrition_App.Services;
 
@@ -19,6 +20,11 @@ namespace Nutrition_App.Controllers
         public void RegisterUser(User user)
         {
             userService.AddUser(user);
+        }
+
+        public List<User> GetUsers()
+        {
+            return userService.GetUsers();
         }
     }
 }
