@@ -46,12 +46,17 @@
             cmbActivityLevel = new ComboBox();
             label7 = new Label();
             cmbDietType = new ComboBox();
+            dgvUsers = new DataGridView();
+            label8 = new Label();
+            txtPassword = new TextBox();
+            lblSelectedUser = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(392, 129);
+            label1.Location = new Point(35, 40);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 0;
@@ -59,14 +64,15 @@
             // 
             // txtName
             // 
-            txtName.Location = new Point(460, 129);
+            txtName.Location = new Point(161, 40);
             txtName.Name = "txtName";
             txtName.Size = new Size(100, 23);
             txtName.TabIndex = 1;
+            txtName.TextChanged += txtName_TextChanged;
             // 
             // btnSaveUser
             // 
-            btnSaveUser.Location = new Point(621, 238);
+            btnSaveUser.Location = new Point(93, 358);
             btnSaveUser.Name = "btnSaveUser";
             btnSaveUser.Size = new Size(138, 23);
             btnSaveUser.TabIndex = 2;
@@ -77,7 +83,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(392, 161);
+            label2.Location = new Point(35, 72);
             label2.Name = "label2";
             label2.Size = new Size(33, 15);
             label2.TabIndex = 3;
@@ -85,15 +91,16 @@
             // 
             // txtAge
             // 
-            txtAge.Location = new Point(460, 158);
+            txtAge.Location = new Point(161, 69);
             txtAge.Name = "txtAge";
             txtAge.Size = new Size(100, 23);
             txtAge.TabIndex = 4;
+            txtAge.TextChanged += txtAge_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(392, 194);
+            label3.Location = new Point(35, 105);
             label3.Name = "label3";
             label3.Size = new Size(32, 15);
             label3.TabIndex = 5;
@@ -102,7 +109,7 @@
             // 
             // txtWeight
             // 
-            txtWeight.Location = new Point(460, 194);
+            txtWeight.Location = new Point(161, 105);
             txtWeight.Name = "txtWeight";
             txtWeight.Size = new Size(100, 23);
             txtWeight.TabIndex = 6;
@@ -110,7 +117,7 @@
             // lablel
             // 
             lablel.AutoSize = true;
-            lablel.Location = new Point(392, 226);
+            lablel.Location = new Point(35, 137);
             lablel.Name = "lablel";
             lablel.Size = new Size(39, 15);
             lablel.TabIndex = 7;
@@ -118,7 +125,7 @@
             // 
             // txtHeight
             // 
-            txtHeight.Location = new Point(460, 226);
+            txtHeight.Location = new Point(161, 137);
             txtHeight.Name = "txtHeight";
             txtHeight.Size = new Size(100, 23);
             txtHeight.TabIndex = 8;
@@ -126,7 +133,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(392, 260);
+            label4.Location = new Point(35, 171);
             label4.Name = "label4";
             label4.Size = new Size(45, 15);
             label4.TabIndex = 9;
@@ -137,7 +144,7 @@
             cmbGender.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGender.FormattingEnabled = true;
             cmbGender.Items.AddRange(new object[] { "Hombre", "Mujer" });
-            cmbGender.Location = new Point(460, 257);
+            cmbGender.Location = new Point(161, 168);
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(121, 23);
             cmbGender.TabIndex = 10;
@@ -145,7 +152,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(392, 289);
+            label5.Location = new Point(35, 200);
             label5.Name = "label5";
             label5.Size = new Size(52, 15);
             label5.TabIndex = 11;
@@ -157,7 +164,7 @@
             cmbGoal.FlatStyle = FlatStyle.System;
             cmbGoal.FormattingEnabled = true;
             cmbGoal.Items.AddRange(new object[] { "Mantener peso", "Perder grasa", "Ganar masa muscular" });
-            cmbGoal.Location = new Point(460, 286);
+            cmbGoal.Location = new Point(161, 197);
             cmbGoal.Name = "cmbGoal";
             cmbGoal.Size = new Size(121, 23);
             cmbGoal.TabIndex = 12;
@@ -165,7 +172,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(392, 318);
+            label6.Location = new Point(35, 229);
             label6.Name = "label6";
             label6.Size = new Size(101, 15);
             label6.TabIndex = 13;
@@ -177,7 +184,7 @@
             cmbActivityLevel.FlatStyle = FlatStyle.System;
             cmbActivityLevel.FormattingEnabled = true;
             cmbActivityLevel.Items.AddRange(new object[] { "Sedentario", "Ligero", "Moderado", "Activo" });
-            cmbActivityLevel.Location = new Point(499, 315);
+            cmbActivityLevel.Location = new Point(161, 229);
             cmbActivityLevel.Name = "cmbActivityLevel";
             cmbActivityLevel.Size = new Size(121, 23);
             cmbActivityLevel.TabIndex = 14;
@@ -185,7 +192,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(392, 354);
+            label7.Location = new Point(35, 265);
             label7.Name = "label7";
             label7.Size = new Size(76, 15);
             label7.TabIndex = 15;
@@ -197,16 +204,54 @@
             cmbDietType.FlatStyle = FlatStyle.System;
             cmbDietType.FormattingEnabled = true;
             cmbDietType.Items.AddRange(new object[] { "Estándar", "Keto", "Vegetariana" });
-            cmbDietType.Location = new Point(474, 346);
+            cmbDietType.Location = new Point(161, 258);
             cmbDietType.Name = "cmbDietType";
             cmbDietType.Size = new Size(121, 23);
             cmbDietType.TabIndex = 16;
+            // 
+            // dgvUsers
+            // 
+            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsers.Location = new Point(336, 40);
+            dgvUsers.Name = "dgvUsers";
+            dgvUsers.Size = new Size(335, 288);
+            dgvUsers.TabIndex = 17;
+            dgvUsers.CellClick += dgvUsers_CellClick;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(35, 296);
+            label8.Name = "label8";
+            label8.Size = new Size(67, 15);
+            label8.TabIndex = 18;
+            label8.Text = "Contraseña";
+            // 
+            // txtPassword
+            // 
+            txtPassword.Location = new Point(161, 288);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(100, 23);
+            txtPassword.TabIndex = 19;
+            // 
+            // lblSelectedUser
+            // 
+            lblSelectedUser.AutoSize = true;
+            lblSelectedUser.Location = new Point(35, 325);
+            lblSelectedUser.Name = "lblSelectedUser";
+            lblSelectedUser.Size = new Size(121, 15);
+            lblSelectedUser.TabIndex = 20;
+            lblSelectedUser.Text = "Usuario generado: ---";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1008, 604);
+            ClientSize = new Size(763, 443);
+            Controls.Add(lblSelectedUser);
+            Controls.Add(txtPassword);
+            Controls.Add(label8);
+            Controls.Add(dgvUsers);
             Controls.Add(cmbDietType);
             Controls.Add(label7);
             Controls.Add(cmbActivityLevel);
@@ -227,6 +272,7 @@
             Name = "MainForm";
             Text = "Form1";
             Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -250,5 +296,9 @@
         private ComboBox cmbActivityLevel;
         private Label label7;
         private ComboBox cmbDietType;
+        private DataGridView dgvUsers;
+        private Label label8;
+        private TextBox txtPassword;
+        private Label lblSelectedUser;
     }
 }

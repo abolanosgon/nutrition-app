@@ -9,6 +9,18 @@
 *.userosscache
 *.sln.docstates
 
+
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.db
+Nutrition_App/bin/
+Nutrition_App/obj/
+Nutrition_App/.vs/
+Nutrition_App/bin/Debug/net8.0-windows/Data/users.json
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

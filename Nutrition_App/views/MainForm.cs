@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Windows.Forms;
 using Nutrition_App.Controllers;
 using Nutrition_App.Models;
@@ -7,8 +7,10 @@ namespace Nutrition_App.Views
 {
     public partial class MainForm : Form
     {
-        // Controlador que manejar· la lÛgica relacionada con usuarios
+        // Controlador que manejar√° la l√≥gica relacionada con usuarios
         private UserController userController = new UserController();
+
+        private int selectedUserId = -1;
 
         public MainForm()
         {
@@ -17,6 +19,7 @@ namespace Nutrition_App.Views
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            LoadUsers();
         }
 
         private void btnSaveUser_Click(object sender, EventArgs e)
@@ -38,7 +41,7 @@ namespace Nutrition_App.Views
 
             if (string.IsNullOrEmpty(goal))
             {
-                MessageBox.Show("El objetivo seleccionado no es v·lido.");
+                MessageBox.Show("El objetivo seleccionado no es v√°lido.");
                 return;
             }
 
@@ -54,7 +57,7 @@ namespace Nutrition_App.Views
 
             if (string.IsNullOrEmpty(dietType))
             {
-                MessageBox.Show("El tipo de dieta seleccionado no es v·lido.");
+                MessageBox.Show("El tipo de dieta seleccionado no es v√°lido.");
                 return;
             }
 
@@ -63,6 +66,7 @@ namespace Nutrition_App.Views
             User user = BuildUser(age, weight, height, gender, goal, activityLevel, dietType);
 
             userController.RegisterUser(user);
+            LoadUsers();
 
             MessageBox.Show("Usuario registrado correctamente.");
 
@@ -83,6 +87,8 @@ namespace Nutrition_App.Views
             return new User
             {
                 Name = txtName.Text,
+                Username = GenerateUsername(txtName.Text, age),
+                Password = txtPassword.Text,
                 Age = age,
                 Weight = weight,
                 Height = height,
@@ -100,6 +106,7 @@ namespace Nutrition_App.Views
             txtAge.Clear();
             txtWeight.Clear();
             txtHeight.Clear();
+            txtPassword.Clear();
             cmbGender.SelectedIndex = -1;
             cmbGoal.SelectedIndex = -1;
             cmbActivityLevel.SelectedIndex = -1;
@@ -121,25 +128,25 @@ namespace Nutrition_App.Views
 
             if (!int.TryParse(txtAge.Text, out age) || age <= 0)
             {
-                MessageBox.Show("Debe ingresar una edad v·lida.");
+                MessageBox.Show("Debe ingresar una edad v√°lida.");
                 return false;
             }
 
             if (!double.TryParse(txtWeight.Text, out weight) || weight <= 0)
             {
-                MessageBox.Show("Debe ingresar un peso v·lido.");
+                MessageBox.Show("Debe ingresar un peso v√°lido.");
                 return false;
             }
 
             if (!double.TryParse(txtHeight.Text, out height) || height <= 0)
             {
-                MessageBox.Show("Debe ingresar una altura v·lida.");
+                MessageBox.Show("Debe ingresar una altura v√°lida.");
                 return false;
             }
 
             if (cmbGender.SelectedItem == null)
             {
-                MessageBox.Show("Debe seleccionar un gÈnero.");
+                MessageBox.Show("Debe seleccionar un g√©nero.");
                 return false;
             }
 
@@ -158,6 +165,12 @@ namespace Nutrition_App.Views
             if (cmbDietType.SelectedItem == null)
             {
                 MessageBox.Show("Debe seleccionar un tipo de dieta.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("Debe ingresar una contrase√±a.");
                 return false;
             }
 
@@ -230,7 +243,7 @@ namespace Nutrition_App.Views
 
             switch (selectedDiet)
             {
-                case "Est·ndar":
+                case "Est√°ndar":
                     return "Standard";
 
                 case "Keto":
@@ -244,6 +257,149 @@ namespace Nutrition_App.Views
             }
         }
 
+        private void LoadUsers()
+        {
+            dgvUsers.DataSource = null;
+            dgvUsers.DataSource = userController.GetUsers();
+
+            dgvUsers.Columns["Id"].Visible = false;
+            dgvUsers.Columns["Password"].Visible = false;
+
+            dgvUsers.Columns["Name"].HeaderText = "Nombre";
+            dgvUsers.Columns["Username"].HeaderText = "Usuario";
+            dgvUsers.Columns["Age"].HeaderText = "Edad";
+            dgvUsers.Columns["Weight"].HeaderText = "Peso";
+            dgvUsers.Columns["Height"].HeaderText = "Altura";
+            dgvUsers.Columns["Gender"].HeaderText = "G√©nero";
+            dgvUsers.Columns["Goal"].HeaderText = "Objetivo";
+            dgvUsers.Columns["ActivityLevel"].HeaderText = "Nivel de actividad";
+            dgvUsers.Columns["DietType"].HeaderText = "Tipo de dieta";
+
+            TranslateUserGrid();
+        }
+
+
+
+        private void TranslateUserGrid()
+        {
+            foreach (DataGridViewRow row in dgvUsers.Rows)
+            {
+                if (row.Cells["Gender"].Value != null)
+                {
+                    string gender = row.Cells["Gender"].Value.ToString();
+
+                    if (gender == "Male")
+                    {
+                        row.Cells["Gender"].Value = "Hombre";
+                    }
+                    else if (gender == "Female")
+                    {
+                        row.Cells["Gender"].Value = "Mujer";
+                    }
+                }
+
+                if (row.Cells["Goal"].Value != null)
+                {
+                    string goal = row.Cells["Goal"].Value.ToString();
+
+                    if (goal == "Maintain")
+                    {
+                        row.Cells["Goal"].Value = "Mantener peso";
+                    }
+                    else if (goal == "LoseFat")
+                    {
+                        row.Cells["Goal"].Value = "Perder grasa";
+                    }
+                    else if (goal == "GainMuscle")
+                    {
+                        row.Cells["Goal"].Value = "Ganar masa muscular";
+                    }
+                }
+
+                if (row.Cells["ActivityLevel"].Value != null)
+                {
+                    string activityLevel = row.Cells["ActivityLevel"].Value.ToString();
+
+                    if (activityLevel == "Sedentary")
+                    {
+                        row.Cells["ActivityLevel"].Value = "Sedentario";
+                    }
+                    else if (activityLevel == "Light")
+                    {
+                        row.Cells["ActivityLevel"].Value = "Ligero";
+                    }
+                    else if (activityLevel == "Moderate")
+                    {
+                        row.Cells["ActivityLevel"].Value = "Moderado";
+                    }
+                    else if (activityLevel == "Active")
+                    {
+                        row.Cells["ActivityLevel"].Value = "Activo";
+                    }
+                }
+
+                if (row.Cells["DietType"].Value != null)
+                {
+                    string dietType = row.Cells["DietType"].Value.ToString();
+
+                    if (dietType == "Standard")
+                    {
+                        row.Cells["DietType"].Value = "Est√°ndar";
+                    }
+                    else if (dietType == "Keto")
+                    {
+                        row.Cells["DietType"].Value = "Keto";
+                    }
+                    else if (dietType == "Vegetarian")
+                    {
+                        row.Cells["DietType"].Value = "Vegetariana";
+                    }
+                }
+            }
+        }
+
+        private string GenerateUsername(string name, int age)
+        {
+            string username = name.Trim().Replace(" ", "").ToLower();
+            return username + age;
+        }
+
+        private void UpdateUsernamePreview()
+        {
+            if (!string.IsNullOrWhiteSpace(txtName.Text) && int.TryParse(txtAge.Text, out int age))
+            {
+                string username = GenerateUsername(txtName.Text, age);
+                lblSelectedUser.Text = "Usuario generado: " + username;
+            }
+            else
+            {
+                lblSelectedUser.Text = "Usuario generado: ---";
+            }
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            UpdateUsernamePreview();
+        }
+
+        private void txtAge_TextChanged(object sender, EventArgs e)
+        {
+            UpdateUsernamePreview();
+        }
+
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var row = dgvUsers.Rows[e.RowIndex];
+
+                selectedUserId = Convert.ToInt32(row.Cells["Id"].Value);
+
+                string name = row.Cells["Name"].Value?.ToString();
+
+                lblSelectedUser.Text = "Usuario seleccionado: " + name;
+            }
+        }
 
         private void label3_Click(object sender, EventArgs e)
         {
