@@ -16,6 +16,9 @@ obj/
 *.user
 *.suo
 *.db
+*.exe
+*.dll
+*.pdb
 Nutrition_App/bin/
 Nutrition_App/obj/
 Nutrition_App/.vs/
