@@ -2,6 +2,8 @@
   {
     "Id": 1,
     "Name": "alex",
+    "Username": null,
+    "Password": null,
     "Age": 25,
     "Weight": 70,
     "Height": 170,
@@ -13,6 +15,8 @@
   {
     "Id": 2,
     "Name": "kevin",
+    "Username": null,
+    "Password": null,
     "Age": 25,
     "Weight": 70,
     "Height": 170,
@@ -24,6 +28,8 @@
   {
     "Id": 3,
     "Name": "angie",
+    "Username": null,
+    "Password": null,
     "Age": 25,
     "Weight": 70,
     "Height": 170,
@@ -35,6 +41,8 @@
   {
     "Id": 4,
     "Name": "geovany",
+    "Username": null,
+    "Password": null,
     "Age": 25,
     "Weight": 70,
     "Height": 170,
@@ -46,6 +54,8 @@
   {
     "Id": 5,
     "Name": "Fernan",
+    "Username": null,
+    "Password": null,
     "Age": 38,
     "Weight": 70,
     "Height": 170,
@@ -57,6 +67,8 @@
   {
     "Id": 6,
     "Name": "Luis",
+    "Username": null,
+    "Password": null,
     "Age": 98,
     "Weight": 70,
     "Height": 170,
@@ -68,6 +80,8 @@
   {
     "Id": 7,
     "Name": "mar",
+    "Username": null,
+    "Password": null,
     "Age": 54,
     "Weight": 100,
     "Height": 170,
@@ -79,6 +93,8 @@
   {
     "Id": 8,
     "Name": "Per",
+    "Username": null,
+    "Password": null,
     "Age": 47,
     "Weight": 55,
     "Height": 174,
@@ -90,6 +106,8 @@
   {
     "Id": 9,
     "Name": "Susan",
+    "Username": null,
+    "Password": null,
     "Age": 20,
     "Weight": 40,
     "Height": 120,
@@ -101,6 +119,8 @@
   {
     "Id": 10,
     "Name": "dfsdsf",
+    "Username": null,
+    "Password": null,
     "Age": 453,
     "Weight": 345,
     "Height": 534,
@@ -112,6 +132,8 @@
   {
     "Id": 11,
     "Name": "fgh",
+    "Username": null,
+    "Password": null,
     "Age": 99,
     "Weight": 99,
     "Height": 99,
@@ -123,6 +145,8 @@
   {
     "Id": 12,
     "Name": "hh",
+    "Username": null,
+    "Password": null,
     "Age": 66,
     "Weight": 66,
     "Height": 66,
@@ -134,6 +158,8 @@
   {
     "Id": 13,
     "Name": "chgfh",
+    "Username": null,
+    "Password": null,
     "Age": 45,
     "Weight": 45,
     "Height": 45,
@@ -145,6 +171,8 @@
   {
     "Id": 14,
     "Name": "fg",
+    "Username": null,
+    "Password": null,
     "Age": 6,
     "Weight": 6,
     "Height": 6,
@@ -156,6 +184,8 @@
   {
     "Id": 15,
     "Name": "fgdgf",
+    "Username": null,
+    "Password": null,
     "Age": 45,
     "Weight": 145,
     "Height": 189,
@@ -167,6 +197,8 @@
   {
     "Id": 16,
     "Name": "Alexander",
+    "Username": null,
+    "Password": null,
     "Age": 65,
     "Weight": 90,
     "Height": 180,
@@ -178,6 +210,8 @@
   {
     "Id": 17,
     "Name": "Chago",
+    "Username": null,
+    "Password": null,
     "Age": 70,
     "Weight": 82,
     "Height": 199,
@@ -185,5 +219,44 @@
     "Goal": "LoseFat",
     "ActivityLevel": "Moderate",
     "DietType": "Vegetarian"
+  },
+  {
+    "Id": 18,
+    "Name": "Jefry",
+    "Username": null,
+    "Password": null,
+    "Age": 98,
+    "Weight": 156,
+    "Height": 185,
+    "Gender": "Male",
+    "Goal": "Maintain",
+    "ActivityLevel": "Sedentary",
+    "DietType": "Keto"
+  },
+  {
+    "Id": 19,
+    "Name": "alex bolanos",
+    "Username": "alexbolanos19",
+    "Password": "Ftw987",
+    "Age": 19,
+    "Weight": 115,
+    "Height": 180,
+    "Gender": "Male",
+    "Goal": "LoseFat",
+    "ActivityLevel": "Light",
+    "DietType": "Standard"
+  },
+  {
+    "Id": 20,
+    "Name": "maria luisa",
+    "Username": "marialuisa28",
+    "Password": "maria123",
+    "Age": 28,
+    "Weight": 70,
+    "Height": 150,
+    "Gender": "Female",
+    "Goal": "LoseFat",
+    "ActivityLevel": "Moderate",
+    "DietType": "Standard"
   }
 ]

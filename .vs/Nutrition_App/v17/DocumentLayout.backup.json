@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\nutrition-app\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|c:\\users\\user\\desktop\\nutrition-app\\nutrition_app\\views\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|solutionrelative:nutrition_app\\views\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|c:\\users\\user\\desktop\\nutrition-app\\nutrition_app\\views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|solutionrelative:nutrition_app\\views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,8 +15,12 @@
       "RelativeMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|solutionrelative:nutrition_app\\views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|c:\\users\\user\\desktop\\nutrition-app\\nutrition_app\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|solutionrelative:nutrition_app\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|c:\\users\\user\\desktop\\nutrition-app\\nutrition_app\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|solutionrelative:nutrition_app\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|c:\\users\\user\\desktop\\nutrition-app\\nutrition_app\\views\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1F21BD30-195E-44D3-BB65-5F67AD1587D0}|Nutrition_App\\Nutrition_App.csproj|solutionrelative:nutrition_app\\views\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,21 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainForm.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\views\\MainForm.cs",
-              "RelativeDocumentMoniker": "Nutrition_App\\views\\MainForm.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\views\\MainForm.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Nutrition_App\\views\\MainForm.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T15:48:32.664Z",
-              "IsPinned": true,
-              "EditorCaption": " [Dise\u00F1o]"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -44,28 +39,65 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "RegisterForm.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\views\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "Nutrition_App\\views\\RegisterForm.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\views\\RegisterForm.cs",
+              "RelativeToolTip": "Nutrition_App\\views\\RegisterForm.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T02:15:44.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegisterForm.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\views\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "Nutrition_App\\views\\RegisterForm.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\views\\RegisterForm.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Nutrition_App\\views\\RegisterForm.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T02:15:41.79Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Nutrition_App\\controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\controllers\\UserController.cs",
+              "RelativeToolTip": "Nutrition_App\\controllers\\UserController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T02:03:29.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\views\\MainForm.cs",
               "RelativeDocumentMoniker": "Nutrition_App\\views\\MainForm.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\views\\MainForm.cs",
               "RelativeToolTip": "Nutrition_App\\views\\MainForm.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAAAEUAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAkwEEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T16:02:58.886Z",
+              "WhenOpened": "2026-03-19T01:32:56.068Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\models\\User.cs",
-              "RelativeDocumentMoniker": "Nutrition_App\\models\\User.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\models\\User.cs",
-              "RelativeToolTip": "Nutrition_App\\models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Title": "MainForm.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\views\\MainForm.cs",
+              "RelativeDocumentMoniker": "Nutrition_App\\views\\MainForm.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\nutrition-app\\Nutrition_App\\views\\MainForm.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Nutrition_App\\views\\MainForm.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T03:38:35.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-19T01:15:17.411Z",
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }

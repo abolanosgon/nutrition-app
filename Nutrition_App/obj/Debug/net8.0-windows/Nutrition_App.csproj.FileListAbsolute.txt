@@ -31,3 +31,4 @@ C:\Users\User\Desktop\nutrition-app\Nutrition_App\obj\Debug\net8.0-windows\refin
 C:\Users\User\Desktop\nutrition-app\Nutrition_App\obj\Debug\net8.0-windows\Nutrition_App.pdb
 C:\Users\User\Desktop\nutrition-app\Nutrition_App\obj\Debug\net8.0-windows\Nutrition_App.genruntimeconfig.cache
 C:\Users\User\Desktop\nutrition-app\Nutrition_App\obj\Debug\net8.0-windows\ref\Nutrition_App.dll
+C:\Users\User\Desktop\nutrition-app\Nutrition_App\obj\Debug\net8.0-windows\Nutrition_App.Views.RegisterForm.resources
