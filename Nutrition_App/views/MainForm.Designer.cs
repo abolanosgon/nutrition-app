@@ -50,13 +50,19 @@
             label8 = new Label();
             txtPassword = new TextBox();
             lblSelectedUser = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            txtLoginUsername = new TextBox();
+            txtLoginPassword = new TextBox();
+            btnLogin = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(35, 40);
+            label1.Location = new Point(29, 18);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 0;
@@ -64,7 +70,7 @@
             // 
             // txtName
             // 
-            txtName.Location = new Point(161, 40);
+            txtName.Location = new Point(155, 18);
             txtName.Name = "txtName";
             txtName.Size = new Size(100, 23);
             txtName.TabIndex = 1;
@@ -72,7 +78,7 @@
             // 
             // btnSaveUser
             // 
-            btnSaveUser.Location = new Point(93, 358);
+            btnSaveUser.Location = new Point(87, 336);
             btnSaveUser.Name = "btnSaveUser";
             btnSaveUser.Size = new Size(138, 23);
             btnSaveUser.TabIndex = 2;
@@ -83,7 +89,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(35, 72);
+            label2.Location = new Point(29, 50);
             label2.Name = "label2";
             label2.Size = new Size(33, 15);
             label2.TabIndex = 3;
@@ -91,7 +97,7 @@
             // 
             // txtAge
             // 
-            txtAge.Location = new Point(161, 69);
+            txtAge.Location = new Point(155, 47);
             txtAge.Name = "txtAge";
             txtAge.Size = new Size(100, 23);
             txtAge.TabIndex = 4;
@@ -100,7 +106,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(35, 105);
+            label3.Location = new Point(29, 83);
             label3.Name = "label3";
             label3.Size = new Size(32, 15);
             label3.TabIndex = 5;
@@ -109,7 +115,7 @@
             // 
             // txtWeight
             // 
-            txtWeight.Location = new Point(161, 105);
+            txtWeight.Location = new Point(155, 83);
             txtWeight.Name = "txtWeight";
             txtWeight.Size = new Size(100, 23);
             txtWeight.TabIndex = 6;
@@ -117,7 +123,7 @@
             // lablel
             // 
             lablel.AutoSize = true;
-            lablel.Location = new Point(35, 137);
+            lablel.Location = new Point(29, 115);
             lablel.Name = "lablel";
             lablel.Size = new Size(39, 15);
             lablel.TabIndex = 7;
@@ -125,7 +131,7 @@
             // 
             // txtHeight
             // 
-            txtHeight.Location = new Point(161, 137);
+            txtHeight.Location = new Point(155, 115);
             txtHeight.Name = "txtHeight";
             txtHeight.Size = new Size(100, 23);
             txtHeight.TabIndex = 8;
@@ -133,7 +139,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(35, 171);
+            label4.Location = new Point(29, 149);
             label4.Name = "label4";
             label4.Size = new Size(45, 15);
             label4.TabIndex = 9;
@@ -144,7 +150,7 @@
             cmbGender.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGender.FormattingEnabled = true;
             cmbGender.Items.AddRange(new object[] { "Hombre", "Mujer" });
-            cmbGender.Location = new Point(161, 168);
+            cmbGender.Location = new Point(155, 146);
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(121, 23);
             cmbGender.TabIndex = 10;
@@ -152,7 +158,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(35, 200);
+            label5.Location = new Point(29, 178);
             label5.Name = "label5";
             label5.Size = new Size(52, 15);
             label5.TabIndex = 11;
@@ -164,7 +170,7 @@
             cmbGoal.FlatStyle = FlatStyle.System;
             cmbGoal.FormattingEnabled = true;
             cmbGoal.Items.AddRange(new object[] { "Mantener peso", "Perder grasa", "Ganar masa muscular" });
-            cmbGoal.Location = new Point(161, 197);
+            cmbGoal.Location = new Point(155, 175);
             cmbGoal.Name = "cmbGoal";
             cmbGoal.Size = new Size(121, 23);
             cmbGoal.TabIndex = 12;
@@ -172,7 +178,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(35, 229);
+            label6.Location = new Point(29, 207);
             label6.Name = "label6";
             label6.Size = new Size(101, 15);
             label6.TabIndex = 13;
@@ -184,7 +190,7 @@
             cmbActivityLevel.FlatStyle = FlatStyle.System;
             cmbActivityLevel.FormattingEnabled = true;
             cmbActivityLevel.Items.AddRange(new object[] { "Sedentario", "Ligero", "Moderado", "Activo" });
-            cmbActivityLevel.Location = new Point(161, 229);
+            cmbActivityLevel.Location = new Point(155, 207);
             cmbActivityLevel.Name = "cmbActivityLevel";
             cmbActivityLevel.Size = new Size(121, 23);
             cmbActivityLevel.TabIndex = 14;
@@ -192,7 +198,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(35, 265);
+            label7.Location = new Point(29, 243);
             label7.Name = "label7";
             label7.Size = new Size(76, 15);
             label7.TabIndex = 15;
@@ -204,7 +210,7 @@
             cmbDietType.FlatStyle = FlatStyle.System;
             cmbDietType.FormattingEnabled = true;
             cmbDietType.Items.AddRange(new object[] { "Estándar", "Keto", "Vegetariana" });
-            cmbDietType.Location = new Point(161, 258);
+            cmbDietType.Location = new Point(155, 236);
             cmbDietType.Name = "cmbDietType";
             cmbDietType.Size = new Size(121, 23);
             cmbDietType.TabIndex = 16;
@@ -212,16 +218,16 @@
             // dgvUsers
             // 
             dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsers.Location = new Point(336, 40);
+            dgvUsers.Location = new Point(338, 12);
             dgvUsers.Name = "dgvUsers";
-            dgvUsers.Size = new Size(335, 288);
+            dgvUsers.Size = new Size(394, 175);
             dgvUsers.TabIndex = 17;
             dgvUsers.CellClick += dgvUsers_CellClick;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(35, 296);
+            label8.Location = new Point(29, 274);
             label8.Name = "label8";
             label8.Size = new Size(67, 15);
             label8.TabIndex = 18;
@@ -229,7 +235,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(161, 288);
+            txtPassword.Location = new Point(155, 266);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(100, 23);
             txtPassword.TabIndex = 19;
@@ -237,17 +243,75 @@
             // lblSelectedUser
             // 
             lblSelectedUser.AutoSize = true;
-            lblSelectedUser.Location = new Point(35, 325);
+            lblSelectedUser.Location = new Point(29, 303);
             lblSelectedUser.Name = "lblSelectedUser";
             lblSelectedUser.Size = new Size(121, 15);
             lblSelectedUser.TabIndex = 20;
             lblSelectedUser.Text = "Usuario generado: ---";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(483, 215);
+            label9.Name = "label9";
+            label9.Size = new Size(40, 15);
+            label9.TabIndex = 21;
+            label9.Text = "Log In";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(407, 244);
+            label10.Name = "label10";
+            label10.Size = new Size(47, 15);
+            label10.TabIndex = 22;
+            label10.Text = "Usuario";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(407, 284);
+            label11.Name = "label11";
+            label11.Size = new Size(67, 15);
+            label11.TabIndex = 23;
+            label11.Text = "Contraseña";
+            // 
+            // txtLoginUsername
+            // 
+            txtLoginUsername.Location = new Point(550, 241);
+            txtLoginUsername.Name = "txtLoginUsername";
+            txtLoginUsername.Size = new Size(100, 23);
+            txtLoginUsername.TabIndex = 24;
+            // 
+            // txtLoginPassword
+            // 
+            txtLoginPassword.Location = new Point(550, 281);
+            txtLoginPassword.Name = "txtLoginPassword";
+            txtLoginPassword.Size = new Size(100, 23);
+            txtLoginPassword.TabIndex = 25;
+            txtLoginPassword.UseSystemPasswordChar = true;
+            // 
+            // btnLogin
+            // 
+            btnLogin.Location = new Point(453, 336);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(129, 23);
+            btnLogin.TabIndex = 26;
+            btnLogin.Text = "Iniciar sesión";
+            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(763, 443);
+            Controls.Add(btnLogin);
+            Controls.Add(txtLoginPassword);
+            Controls.Add(txtLoginUsername);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(label9);
             Controls.Add(lblSelectedUser);
             Controls.Add(txtPassword);
             Controls.Add(label8);
@@ -300,5 +364,11 @@
         private Label label8;
         private TextBox txtPassword;
         private Label lblSelectedUser;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private TextBox txtLoginUsername;
+        private TextBox txtLoginPassword;
+        private Button btnLogin;
     }
 }

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using Nutrition_App.Controllers;
+﻿using Nutrition_App.Controllers;
 using Nutrition_App.Models;
+using System;
+using System.Windows.Forms;
 
 namespace Nutrition_App.Views
 {
@@ -20,6 +20,7 @@ namespace Nutrition_App.Views
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadUsers();
+            userController.EnsureAdminUser();
         }
 
         private void btnSaveUser_Click(object sender, EventArgs e)
@@ -95,7 +96,8 @@ namespace Nutrition_App.Views
                 Gender = gender,
                 Goal = goal,
                 ActivityLevel = activityLevel,
-                DietType = dietType
+                DietType = dietType,
+                Role = "User"
             };
         }
 
@@ -404,6 +406,42 @@ namespace Nutrition_App.Views
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtLoginUsername.Text))
+            {
+                MessageBox.Show("Debe ingresar un usuario.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtLoginPassword.Text))
+            {
+                MessageBox.Show("Debe ingresar una contraseña.");
+                return;
+            }
+
+            User authenticatedUser = userController.AuthenticateUser(txtLoginUsername.Text, txtLoginPassword.Text);
+
+            if (authenticatedUser == null)
+            {
+                MessageBox.Show("Usuario o contraseña incorrectos.");
+                return;
+            }
+
+            if (authenticatedUser.Role == "Admin")
+            {
+                AdminForm adminForm = new AdminForm(authenticatedUser);
+                adminForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                UserForm userForm = new UserForm(authenticatedUser);
+                userForm.Show();
+                this.Hide();
+            }
         }
     }
 }
