@@ -3,7 +3,6 @@ using System.Linq;
 using Nutrition_App.Models;
 using Nutrition_App.Repositories;
 
-
 namespace Nutrition_App.Services
 {
     // Maneja la lógica relacionada con los usuarios
@@ -31,6 +30,34 @@ namespace Nutrition_App.Services
         public List<User> GetUsers()
         {
             return userRepository.GetAll();
+        }
+
+        public void EnsureAdminUser()
+        {
+            List<User> users = userRepository.GetAll();
+
+            bool adminExists = users.Any(u => u.Role == "Admin");
+
+            if (!adminExists)
+            {
+                User adminUser = new User
+                {
+                    Id = users.Count == 0 ? 1 : users.Max(u => u.Id) + 1,
+                    Name = "Administrador",
+                    Username = "admin",
+                    Password = "admin123",
+                    Age = 30,
+                    Weight = 70,
+                    Height = 170,
+                    Gender = "Male",
+                    Goal = "Maintain",
+                    ActivityLevel = "Moderate",
+                    DietType = "Standard",
+                    Role = "Admin"
+                };
+
+                userRepository.Add(adminUser);
+            }
         }
     }
 }
