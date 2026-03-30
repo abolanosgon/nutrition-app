@@ -47,5 +47,24 @@ namespace Nutrition_App.Repositories
 
             return JsonSerializer.Deserialize<List<User>>(json);
         }
+
+        public void Delete(int userId)
+        {
+            List<User> users = GetAll();
+
+            User userToRemove = users.FirstOrDefault(u => u.Id == userId);
+
+            if (userToRemove != null)
+            {
+                users.Remove(userToRemove);
+
+                string json = JsonSerializer.Serialize(users, new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+
+                File.WriteAllText(filePath, json);
+            }
+        }
     }
 }

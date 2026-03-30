@@ -14,5 +14,6 @@
         public string Goal { get; set; }          // Objetivo nutricional
         public string ActivityLevel { get; set; } // Nivel de actividad
         public string DietType { get; set; }      // Tipo de dieta
+        public string Role { get; set; }          // Rol del usuario: Admin o User
     }
 }

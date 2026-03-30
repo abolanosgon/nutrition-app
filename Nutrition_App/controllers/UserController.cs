@@ -26,5 +26,22 @@ namespace Nutrition_App.Controllers
         {
             return userService.GetUsers();
         }
+
+        public void DeleteUser(int userId)
+        {
+            userService.DeleteUser(userId);
+        }
+
+        public User AuthenticateUser(string username, string password)
+        {
+            List<User> users = userService.GetUsers();
+
+            return users.FirstOrDefault(u => u.Username == username && u.Password == password);
+        }
+
+        public void EnsureAdminUser()
+        {
+            userService.EnsureAdminUser();
+        }
     }
 }
