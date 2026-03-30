@@ -47,6 +47,7 @@
             btnDeleteUser.TabIndex = 1;
             btnDeleteUser.Text = "Eliminar Usuario";
             btnDeleteUser.UseVisualStyleBackColor = true;
+            btnDeleteUser.Click += btnDeleteUser_Click;
             // 
             // AdminForm
             // 

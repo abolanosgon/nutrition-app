@@ -13,5 +13,6 @@ namespace Nutrition_App.Repositories
     {
         void Add(User user);
         List<User> GetAll();
+        void Delete(int userId); // 👈 ESTA LÍNEA ES CLAVE
     }
 }

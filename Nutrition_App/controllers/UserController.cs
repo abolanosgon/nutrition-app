@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Nutrition_App.Models;
 using Nutrition_App.Repositories;
 using Nutrition_App.Services;
@@ -16,7 +17,6 @@ namespace Nutrition_App.Controllers
             userService = new UserService(userRepository);
         }
 
-        // Envía el usuario al servicio para registrarlo
         public void RegisterUser(User user)
         {
             userService.AddUser(user);
@@ -27,10 +27,14 @@ namespace Nutrition_App.Controllers
             return userService.GetUsers();
         }
 
+        public void DeleteUser(int userId)
+        {
+            userService.DeleteUser(userId);
+        }
+
         public User AuthenticateUser(string username, string password)
         {
             List<User> users = userService.GetUsers();
-
             return users.FirstOrDefault(u => u.Username == username && u.Password == password);
         }
 

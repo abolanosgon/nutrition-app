@@ -38,5 +38,34 @@ namespace Nutrition_App.Views
                 selectedUserId = Convert.ToInt32(row.Cells["Id"].Value);
             }
         }
+
+        private void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+            if (selectedUserId == -1)
+            {
+                MessageBox.Show("Debe seleccionar un usuario.");
+                return;
+            }
+
+            if (loggedUser != null && selectedUserId == loggedUser.Id)
+            {
+                MessageBox.Show("No puede eliminar su propio usuario administrador.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "¿Está seguro de eliminar este usuario?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                userController.DeleteUser(selectedUserId);
+                LoadUsers();
+                selectedUserId = -1;
+                MessageBox.Show("Usuario eliminado correctamente.");
+            }
+        }
     }
 }
