@@ -1,42 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Nutrition_App.Models;
 using System.IO;
 using System.Text.Json;
-
+using Nutrition_App.Models;
 
 namespace Nutrition_App.Repositories
 {
-    // Repositorio que guarda y recupera usuarios desde un archivo JSON
     public class UserJsonRepository : IUserRepository
     {
-        private readonly string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "users.json");
+        private readonly string filePath = Path.Combine(
+            Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
+            "data",
+            "users.json"
+        );
 
         public void Add(User user)
         {
             List<User> users = GetAll();
 
+            user.Id = users.Count == 0 ? 1 : users.Max(u => u.Id) + 1;
             users.Add(user);
 
-            string json = JsonSerializer.Serialize(users, new JsonSerializerOptions
-            {
-                WriteIndented = true
-            });
-
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-
-            File.WriteAllText(filePath, json);
+            SaveAll(users);
         }
 
         public List<User> GetAll()
         {
-            if (!File.Exists(filePath))
-            {
-                return new List<User>();
-            }
+            EnsureFileExists();
 
             string json = File.ReadAllText(filePath);
 
@@ -45,7 +36,7 @@ namespace Nutrition_App.Repositories
                 return new List<User>();
             }
 
-            return JsonSerializer.Deserialize<List<User>>(json);
+            return JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
         }
 
         public void Delete(int userId)
@@ -57,13 +48,7 @@ namespace Nutrition_App.Repositories
             if (userToRemove != null)
             {
                 users.Remove(userToRemove);
-
-                string json = JsonSerializer.Serialize(users, new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
-
-                File.WriteAllText(filePath, json);
+                SaveAll(users);
             }
         }
 
@@ -87,12 +72,30 @@ namespace Nutrition_App.Repositories
                 existingUser.DietType = user.DietType;
                 existingUser.Role = user.Role;
 
-                string json = JsonSerializer.Serialize(users, new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
+                SaveAll(users);
+            }
+        }
 
-                File.WriteAllText(filePath, json);
+        private void SaveAll(List<User> users)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath)!);
+
+            string json = JsonSerializer.Serialize(users, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+
+            File.WriteAllText(filePath, json);
+        }
+
+        private void EnsureFileExists()
+        {
+            string directory = Path.GetDirectoryName(filePath)!;
+            Directory.CreateDirectory(directory);
+
+            if (!File.Exists(filePath))
+            {
+                File.WriteAllText(filePath, "[]");
             }
         }
     }

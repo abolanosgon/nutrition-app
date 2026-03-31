@@ -7,10 +7,13 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Repositories
 {
-    // Repositorio que guarda y recupera alimentos desde un archivo JSON
     public class FoodJsonRepository : IFoodRepository
     {
-        private readonly string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "foods.json");
+        private readonly string filePath = Path.Combine(
+            Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
+            "data",
+            "foods.json"
+        );
 
         public FoodJsonRepository()
         {

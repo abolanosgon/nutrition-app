@@ -7,10 +7,13 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Repositories
 {
-    // Repositorio que guarda y recupera registros de consumo desde un archivo JSON
     public class MealRecordJsonRepository : IMealRecordRepository
     {
-        private readonly string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "mealRecords.json");
+        private readonly string filePath = Path.Combine(
+            Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
+            "data",
+            "mealRecords.json"
+        );
 
         public MealRecordJsonRepository()
         {
