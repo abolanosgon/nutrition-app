@@ -37,6 +37,11 @@ namespace Nutrition_App.Services
             userRepository.Delete(userId);
         }
 
+        public void UpdateUser(User user)
+        {
+            userRepository.Update(user);
+        }
+
         public void EnsureAdminUser()
         {
             List<User> users = userRepository.GetAll();

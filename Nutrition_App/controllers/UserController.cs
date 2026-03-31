@@ -32,6 +32,11 @@ namespace Nutrition_App.Controllers
             userService.DeleteUser(userId);
         }
 
+        public void UpdateUser(User user)
+        {
+            userService.UpdateUser(user);
+        }
+
         public User AuthenticateUser(string username, string password)
         {
             List<User> users = userService.GetUsers();
@@ -41,6 +46,12 @@ namespace Nutrition_App.Controllers
         public void EnsureAdminUser()
         {
             userService.EnsureAdminUser();
+        }
+
+        public User GetUserById(int userId)
+        {
+            List<User> users = userService.GetUsers();
+            return users.FirstOrDefault(u => u.Id == userId);
         }
     }
 }

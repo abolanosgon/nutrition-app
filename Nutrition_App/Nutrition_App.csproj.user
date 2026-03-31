@@ -4,10 +4,13 @@
     <Compile Update="views\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="views\UserForm.cs">
+    <Compile Update="views\EditUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="views\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

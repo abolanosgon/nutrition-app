@@ -67,5 +67,27 @@ namespace Nutrition_App.Views
                 MessageBox.Show("Usuario eliminado correctamente.");
             }
         }
+
+        private void btnEditUser_Click(object sender, EventArgs e)
+        {
+            if (selectedUserId == -1)
+            {
+                MessageBox.Show("Debe seleccionar un usuario.");
+                return;
+            }
+
+            User selectedUser = userController.GetUserById(selectedUserId);
+
+            if (selectedUser == null)
+            {
+                MessageBox.Show("No se encontró el usuario.");
+                return;
+            }
+
+            EditUserForm editForm = new EditUserForm(selectedUser);
+            editForm.ShowDialog();
+
+            LoadUsers();
+        }
     }
 }

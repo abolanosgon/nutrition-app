@@ -27,6 +27,7 @@
         {
             dgvUsers = new DataGridView();
             btnDeleteUser = new Button();
+            btnEditUser = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             // 
             // btnDeleteUser
             // 
-            btnDeleteUser.Location = new Point(663, 77);
+            btnDeleteUser.Location = new Point(536, 57);
             btnDeleteUser.Name = "btnDeleteUser";
             btnDeleteUser.Size = new Size(163, 33);
             btnDeleteUser.TabIndex = 1;
@@ -49,11 +50,22 @@
             btnDeleteUser.UseVisualStyleBackColor = true;
             btnDeleteUser.Click += btnDeleteUser_Click;
             // 
+            // btnEditUser
+            // 
+            btnEditUser.Location = new Point(536, 105);
+            btnEditUser.Name = "btnEditUser";
+            btnEditUser.Size = new Size(163, 33);
+            btnEditUser.TabIndex = 2;
+            btnEditUser.Text = "Editar Usuario";
+            btnEditUser.UseVisualStyleBackColor = true;
+            btnEditUser.Click += btnEditUser_Click;
+            // 
             // AdminForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1028, 607);
+            ClientSize = new Size(750, 607);
+            Controls.Add(btnEditUser);
             Controls.Add(btnDeleteUser);
             Controls.Add(dgvUsers);
             Name = "AdminForm";
@@ -66,5 +78,6 @@
 
         private DataGridView dgvUsers;
         private Button btnDeleteUser;
+        private Button btnEditUser;
     }
 }

@@ -66,5 +66,34 @@ namespace Nutrition_App.Repositories
                 File.WriteAllText(filePath, json);
             }
         }
+
+        public void Update(User user)
+        {
+            List<User> users = GetAll();
+
+            User existingUser = users.FirstOrDefault(u => u.Id == user.Id);
+
+            if (existingUser != null)
+            {
+                existingUser.Name = user.Name;
+                existingUser.Username = user.Username;
+                existingUser.Password = user.Password;
+                existingUser.Age = user.Age;
+                existingUser.Weight = user.Weight;
+                existingUser.Height = user.Height;
+                existingUser.Gender = user.Gender;
+                existingUser.Goal = user.Goal;
+                existingUser.ActivityLevel = user.ActivityLevel;
+                existingUser.DietType = user.DietType;
+                existingUser.Role = user.Role;
+
+                string json = JsonSerializer.Serialize(users, new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+
+                File.WriteAllText(filePath, json);
+            }
+        }
     }
 }

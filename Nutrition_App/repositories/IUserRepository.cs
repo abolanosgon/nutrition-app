@@ -11,8 +11,9 @@ namespace Nutrition_App.Repositories
     // Define las operaciones básicas para almacenar y recuperar usuarios
     public interface IUserRepository
     {
-        void Add(User user);
         List<User> GetAll();
-        void Delete(int userId); // 👈 ESTA LÍNEA ES CLAVE
+        void Add(User user);
+        void Delete(int userId);
+        void Update(User user);
     }
 }
