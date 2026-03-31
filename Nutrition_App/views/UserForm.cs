@@ -203,5 +203,11 @@ namespace Nutrition_App.Views
 
             this.Close();
         }
+
+        private void btnOpenFoods_Click(object sender, EventArgs e)
+        {
+            FoodForm foodForm = new FoodForm();
+            foodForm.ShowDialog();
+        }
     }
 }

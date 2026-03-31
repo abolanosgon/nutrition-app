@@ -28,6 +28,7 @@
             dgvUsers = new DataGridView();
             btnDeleteUser = new Button();
             btnEditUser = new Button();
+            btnOpenFoods = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
             // 
@@ -60,11 +61,22 @@
             btnEditUser.UseVisualStyleBackColor = true;
             btnEditUser.Click += btnEditUser_Click;
             // 
+            // btnOpenFoods
+            // 
+            btnOpenFoods.Location = new Point(536, 144);
+            btnOpenFoods.Name = "btnOpenFoods";
+            btnOpenFoods.Size = new Size(163, 33);
+            btnOpenFoods.TabIndex = 3;
+            btnOpenFoods.Text = "Gestion de Alimentos";
+            btnOpenFoods.UseVisualStyleBackColor = true;
+            btnOpenFoods.Click += btnOpenFoods_Click;
+            // 
             // AdminForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(750, 607);
+            Controls.Add(btnOpenFoods);
             Controls.Add(btnEditUser);
             Controls.Add(btnDeleteUser);
             Controls.Add(dgvUsers);
@@ -79,5 +91,6 @@
         private DataGridView dgvUsers;
         private Button btnDeleteUser;
         private Button btnEditUser;
+        private Button btnOpenFoods;
     }
 }

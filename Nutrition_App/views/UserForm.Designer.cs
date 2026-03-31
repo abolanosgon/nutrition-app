@@ -21,6 +21,7 @@
             btnDeleteAccount = new Button();
             dgvUserData = new DataGridView();
             btnlogout = new Button();
+            btnOpenFoods = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUserData).BeginInit();
             SuspendLayout();
             // 
@@ -80,11 +81,22 @@
             btnlogout.UseVisualStyleBackColor = true;
             btnlogout.Click += btnLogout_Click;
             // 
+            // btnOpenFoods
+            // 
+            btnOpenFoods.Location = new Point(215, 261);
+            btnOpenFoods.Name = "btnOpenFoods";
+            btnOpenFoods.Size = new Size(135, 27);
+            btnOpenFoods.TabIndex = 6;
+            btnOpenFoods.Text = "Ver Alimentos";
+            btnOpenFoods.UseVisualStyleBackColor = true;
+            btnOpenFoods.Click += btnOpenFoods_Click;
+            // 
             // UserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(562, 388);
+            Controls.Add(btnOpenFoods);
             Controls.Add(btnlogout);
             Controls.Add(dgvUserData);
             Controls.Add(btnDeleteAccount);
@@ -103,5 +115,6 @@
         private Button btnDeleteAccount;
         private DataGridView dgvUserData;
         private Button btnlogout;
+        private Button btnOpenFoods;
     }
 }

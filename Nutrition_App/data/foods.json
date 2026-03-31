@@ -1,0 +1,660 @@
+[
+  {
+    "Id": 1,
+    "Name": "Pechuga de pollo",
+    "Category": "Proteína",
+    "Calories": 165,
+    "Protein": 31,
+    "Carbohydrates": 0,
+    "Fat": 3.6,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 2,
+    "Name": "Carne de res magra",
+    "Category": "Proteína",
+    "Calories": 217,
+    "Protein": 26,
+    "Carbohydrates": 0,
+    "Fat": 12,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 3,
+    "Name": "Atún en agua",
+    "Category": "Proteína",
+    "Calories": 116,
+    "Protein": 26,
+    "Carbohydrates": 0,
+    "Fat": 1,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 4,
+    "Name": "Salmón",
+    "Category": "Proteína",
+    "Calories": 208,
+    "Protein": 20,
+    "Carbohydrates": 0,
+    "Fat": 13,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 5,
+    "Name": "Tilapia",
+    "Category": "Proteína",
+    "Calories": 129,
+    "Protein": 26,
+    "Carbohydrates": 0,
+    "Fat": 2.7,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 6,
+    "Name": "Huevos",
+    "Category": "Proteína",
+    "Calories": 155,
+    "Protein": 13,
+    "Carbohydrates": 1.1,
+    "Fat": 11,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 7,
+    "Name": "Claras de huevo",
+    "Category": "Proteína",
+    "Calories": 52,
+    "Protein": 11,
+    "Carbohydrates": 0.7,
+    "Fat": 0.2,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 8,
+    "Name": "Pavo",
+    "Category": "Proteína",
+    "Calories": 135,
+    "Protein": 29,
+    "Carbohydrates": 0,
+    "Fat": 1,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 9,
+    "Name": "Lomo de cerdo",
+    "Category": "Proteína",
+    "Calories": 143,
+    "Protein": 26,
+    "Carbohydrates": 0,
+    "Fat": 3.5,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 10,
+    "Name": "Tofu",
+    "Category": "Proteína",
+    "Calories": 76,
+    "Protein": 8,
+    "Carbohydrates": 1.9,
+    "Fat": 4.8,
+    "PortionSize": "100 g"
+  },
+
+  {
+    "Id": 11,
+    "Name": "Arroz blanco cocido",
+    "Category": "Carbohidrato",
+    "Calories": 130,
+    "Protein": 2.4,
+    "Carbohydrates": 28,
+    "Fat": 0.3,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 12,
+    "Name": "Arroz integral cocido",
+    "Category": "Carbohidrato",
+    "Calories": 111,
+    "Protein": 2.6,
+    "Carbohydrates": 23,
+    "Fat": 0.9,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 13,
+    "Name": "Pasta cocida",
+    "Category": "Carbohidrato",
+    "Calories": 131,
+    "Protein": 5,
+    "Carbohydrates": 25,
+    "Fat": 1.1,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 14,
+    "Name": "Avena",
+    "Category": "Carbohidrato",
+    "Calories": 389,
+    "Protein": 16.9,
+    "Carbohydrates": 66,
+    "Fat": 6.9,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 15,
+    "Name": "Pan integral",
+    "Category": "Carbohidrato",
+    "Calories": 247,
+    "Protein": 13,
+    "Carbohydrates": 41,
+    "Fat": 4.2,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 16,
+    "Name": "Papa cocida",
+    "Category": "Carbohidrato",
+    "Calories": 87,
+    "Protein": 1.9,
+    "Carbohydrates": 20,
+    "Fat": 0.1,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 17,
+    "Name": "Camote",
+    "Category": "Carbohidrato",
+    "Calories": 86,
+    "Protein": 1.6,
+    "Carbohydrates": 20,
+    "Fat": 0.1,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 18,
+    "Name": "Yuca cocida",
+    "Category": "Carbohidrato",
+    "Calories": 112,
+    "Protein": 1.4,
+    "Carbohydrates": 27,
+    "Fat": 0.3,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 19,
+    "Name": "Tortilla de maíz",
+    "Category": "Carbohidrato",
+    "Calories": 218,
+    "Protein": 5.7,
+    "Carbohydrates": 45,
+    "Fat": 2.9,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 20,
+    "Name": "Quinoa cocida",
+    "Category": "Carbohidrato",
+    "Calories": 120,
+    "Protein": 4.4,
+    "Carbohydrates": 21.3,
+    "Fat": 1.9,
+    "PortionSize": "100 g"
+  },
+
+  {
+    "Id": 21,
+    "Name": "Frijoles negros",
+    "Category": "Legumbre",
+    "Calories": 132,
+    "Protein": 8.9,
+    "Carbohydrates": 23.7,
+    "Fat": 0.5,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 22,
+    "Name": "Lentejas cocidas",
+    "Category": "Legumbre",
+    "Calories": 116,
+    "Protein": 9,
+    "Carbohydrates": 20,
+    "Fat": 0.4,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 23,
+    "Name": "Garbanzos cocidos",
+    "Category": "Legumbre",
+    "Calories": 164,
+    "Protein": 8.9,
+    "Carbohydrates": 27.4,
+    "Fat": 2.6,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 24,
+    "Name": "Frijoles rojos",
+    "Category": "Legumbre",
+    "Calories": 127,
+    "Protein": 8.7,
+    "Carbohydrates": 22.8,
+    "Fat": 0.5,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 25,
+    "Name": "Edamame",
+    "Category": "Legumbre",
+    "Calories": 121,
+    "Protein": 11.9,
+    "Carbohydrates": 8.9,
+    "Fat": 5.2,
+    "PortionSize": "100 g"
+  },
+
+  {
+    "Id": 26,
+    "Name": "Leche descremada",
+    "Category": "Lácteo",
+    "Calories": 34,
+    "Protein": 3.4,
+    "Carbohydrates": 5,
+    "Fat": 0.1,
+    "PortionSize": "100 ml"
+  },
+  {
+    "Id": 27,
+    "Name": "Leche entera",
+    "Category": "Lácteo",
+    "Calories": 61,
+    "Protein": 3.2,
+    "Carbohydrates": 4.8,
+    "Fat": 3.3,
+    "PortionSize": "100 ml"
+  },
+  {
+    "Id": 28,
+    "Name": "Yogur griego natural",
+    "Category": "Lácteo",
+    "Calories": 59,
+    "Protein": 10,
+    "Carbohydrates": 3.6,
+    "Fat": 0.4,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 29,
+    "Name": "Queso cottage",
+    "Category": "Lácteo",
+    "Calories": 98,
+    "Protein": 11.1,
+    "Carbohydrates": 3.4,
+    "Fat": 4.3,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 30,
+    "Name": "Queso mozzarella",
+    "Category": "Lácteo",
+    "Calories": 280,
+    "Protein": 28,
+    "Carbohydrates": 3.1,
+    "Fat": 17,
+    "PortionSize": "100 g"
+  },
+
+  {
+    "Id": 31,
+    "Name": "Aguacate",
+    "Category": "Grasa saludable",
+    "Calories": 160,
+    "Protein": 2,
+    "Carbohydrates": 8.5,
+    "Fat": 14.7,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 32,
+    "Name": "Aceite de oliva",
+    "Category": "Grasa saludable",
+    "Calories": 884,
+    "Protein": 0,
+    "Carbohydrates": 0,
+    "Fat": 100,
+    "PortionSize": "100 ml"
+  },
+  {
+    "Id": 33,
+    "Name": "Mantequilla de maní",
+    "Category": "Grasa saludable",
+    "Calories": 588,
+    "Protein": 25,
+    "Carbohydrates": 20,
+    "Fat": 50,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 34,
+    "Name": "Almendras",
+    "Category": "Grasa saludable",
+    "Calories": 579,
+    "Protein": 21.2,
+    "Carbohydrates": 21.6,
+    "Fat": 49.9,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 35,
+    "Name": "Nueces",
+    "Category": "Grasa saludable",
+    "Calories": 654,
+    "Protein": 15.2,
+    "Carbohydrates": 13.7,
+    "Fat": 65.2,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 36,
+    "Name": "Semillas de chía",
+    "Category": "Grasa saludable",
+    "Calories": 486,
+    "Protein": 16.5,
+    "Carbohydrates": 42.1,
+    "Fat": 30.7,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 37,
+    "Name": "Semillas de linaza",
+    "Category": "Grasa saludable",
+    "Calories": 534,
+    "Protein": 18.3,
+    "Carbohydrates": 28.9,
+    "Fat": 42.2,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 38,
+    "Name": "Marañón",
+    "Category": "Grasa saludable",
+    "Calories": 553,
+    "Protein": 18.2,
+    "Carbohydrates": 30.2,
+    "Fat": 43.8,
+    "PortionSize": "100 g"
+  },
+
+  {
+    "Id": 39,
+    "Name": "Banano",
+    "Category": "Fruta",
+    "Calories": 89,
+    "Protein": 1.1,
+    "Carbohydrates": 22.8,
+    "Fat": 0.3,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 40,
+    "Name": "Manzana",
+    "Category": "Fruta",
+    "Calories": 52,
+    "Protein": 0.3,
+    "Carbohydrates": 13.8,
+    "Fat": 0.2,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 41,
+    "Name": "Naranja",
+    "Category": "Fruta",
+    "Calories": 47,
+    "Protein": 0.9,
+    "Carbohydrates": 11.8,
+    "Fat": 0.1,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 42,
+    "Name": "Piña",
+    "Category": "Fruta",
+    "Calories": 50,
+    "Protein": 0.5,
+    "Carbohydrates": 13.1,
+    "Fat": 0.1,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 43,
+    "Name": "Papaya",
+    "Category": "Fruta",
+    "Calories": 43,
+    "Protein": 0.5,
+    "Carbohydrates": 10.8,
+    "Fat": 0.3,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 44,
+    "Name": "Sandía",
+    "Category": "Fruta",
+    "Calories": 30,
+    "Protein": 0.6,
+    "Carbohydrates": 7.6,
+    "Fat": 0.2,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 45,
+    "Name": "Fresas",
+    "Category": "Fruta",
+    "Calories": 32,
+    "Protein": 0.7,
+    "Carbohydrates": 7.7,
+    "Fat": 0.3,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 46,
+    "Name": "Uvas",
+    "Category": "Fruta",
+    "Calories": 69,
+    "Protein": 0.7,
+    "Carbohydrates": 18.1,
+    "Fat": 0.2,
+    "PortionSize": "100 g"
+  },
+
+  {
+    "Id": 47,
+    "Name": "Brócoli",
+    "Category": "Vegetal",
+    "Calories": 34,
+    "Protein": 2.8,
+    "Carbohydrates": 6.6,
+    "Fat": 0.4,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 48,
+    "Name": "Espinaca",
+    "Category": "Vegetal",
+    "Calories": 23,
+    "Protein": 2.9,
+    "Carbohydrates": 3.6,
+    "Fat": 0.4,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 49,
+    "Name": "Lechuga",
+    "Category": "Vegetal",
+    "Calories": 15,
+    "Protein": 1.4,
+    "Carbohydrates": 2.9,
+    "Fat": 0.2,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 50,
+    "Name": "Tomate",
+    "Category": "Vegetal",
+    "Calories": 18,
+    "Protein": 0.9,
+    "Carbohydrates": 3.9,
+    "Fat": 0.2,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 51,
+    "Name": "Pepino",
+    "Category": "Vegetal",
+    "Calories": 15,
+    "Protein": 0.7,
+    "Carbohydrates": 3.6,
+    "Fat": 0.1,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 52,
+    "Name": "Zanahoria",
+    "Category": "Vegetal",
+    "Calories": 41,
+    "Protein": 0.9,
+    "Carbohydrates": 9.6,
+    "Fat": 0.2,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 53,
+    "Name": "Coliflor",
+    "Category": "Vegetal",
+    "Calories": 25,
+    "Protein": 1.9,
+    "Carbohydrates": 5,
+    "Fat": 0.3,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 54,
+    "Name": "Chayote",
+    "Category": "Vegetal",
+    "Calories": 19,
+    "Protein": 0.8,
+    "Carbohydrates": 4.5,
+    "Fat": 0.1,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 55,
+    "Name": "Ayote",
+    "Category": "Vegetal",
+    "Calories": 26,
+    "Protein": 1,
+    "Carbohydrates": 6.5,
+    "Fat": 0.1,
+    "PortionSize": "100 g"
+  },
+
+  {
+    "Id": 56,
+    "Name": "Galletas de arroz",
+    "Category": "Snack",
+    "Calories": 387,
+    "Protein": 8,
+    "Carbohydrates": 81,
+    "Fat": 3,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 57,
+    "Name": "Granola",
+    "Category": "Snack",
+    "Calories": 471,
+    "Protein": 10,
+    "Carbohydrates": 64,
+    "Fat": 20,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 58,
+    "Name": "Barra de proteína",
+    "Category": "Snack",
+    "Calories": 350,
+    "Protein": 25,
+    "Carbohydrates": 35,
+    "Fat": 10,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 59,
+    "Name": "Palomitas sin mantequilla",
+    "Category": "Snack",
+    "Calories": 387,
+    "Protein": 13,
+    "Carbohydrates": 78,
+    "Fat": 4.5,
+    "PortionSize": "100 g"
+  },
+  {
+    "Id": 60,
+    "Name": "Yogur bebible light",
+    "Category": "Snack",
+    "Calories": 60,
+    "Protein": 4,
+    "Carbohydrates": 8,
+    "Fat": 1.5,
+    "PortionSize": "100 ml"
+  },
+
+  {
+    "Id": 61,
+    "Name": "Batido de proteína",
+    "Category": "Suplemento",
+    "Calories": 120,
+    "Protein": 24,
+    "Carbohydrates": 3,
+    "Fat": 1.5,
+    "PortionSize": "1 scoop"
+  },
+  {
+    "Id": 62,
+    "Name": "Leche de almendra sin azúcar",
+    "Category": "Bebida",
+    "Calories": 17,
+    "Protein": 0.6,
+    "Carbohydrates": 0.6,
+    "Fat": 1.2,
+    "PortionSize": "100 ml"
+  },
+  {
+    "Id": 63,
+    "Name": "Café negro",
+    "Category": "Bebida",
+    "Calories": 2,
+    "Protein": 0.1,
+    "Carbohydrates": 0,
+    "Fat": 0,
+    "PortionSize": "100 ml"
+  },
+  {
+    "Id": 64,
+    "Name": "Té verde",
+    "Category": "Bebida",
+    "Calories": 1,
+    "Protein": 0,
+    "Carbohydrates": 0.2,
+    "Fat": 0,
+    "PortionSize": "100 ml"
+  },
+  {
+    "Id": 65,
+    "Name": "Jugo de naranja natural",
+    "Category": "Bebida",
+    "Calories": 45,
+    "Protein": 0.7,
+    "Carbohydrates": 10.4,
+    "Fat": 0.2,
+    "PortionSize": "100 ml"
+  }
+]
