@@ -92,7 +92,13 @@ namespace Nutrition_App.Views
 
         private void btnOpenFoods_Click(object sender, EventArgs e)
         {
-            FoodForm foodForm = new FoodForm();
+            if (loggedUser == null)
+            {
+                MessageBox.Show("No se encontró el usuario.");
+                return;
+            }
+
+            FoodForm foodForm = new FoodForm(loggedUser);
             foodForm.ShowDialog();
         }
     }

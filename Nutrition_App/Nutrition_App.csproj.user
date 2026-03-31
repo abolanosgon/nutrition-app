@@ -13,6 +13,12 @@
     <Compile Update="views\EditFoodForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="views\UserInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\UserMealForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

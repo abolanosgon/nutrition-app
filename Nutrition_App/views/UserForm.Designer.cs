@@ -22,6 +22,7 @@
             dgvUserData = new DataGridView();
             btnlogout = new Button();
             btnOpenFoods = new Button();
+            btnViewNutritionInfo = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUserData).BeginInit();
             SuspendLayout();
             // 
@@ -91,11 +92,22 @@
             btnOpenFoods.UseVisualStyleBackColor = true;
             btnOpenFoods.Click += btnOpenFoods_Click;
             // 
+            // btnViewNutritionInfo
+            // 
+            btnViewNutritionInfo.Location = new Point(190, 294);
+            btnViewNutritionInfo.Name = "btnViewNutritionInfo";
+            btnViewNutritionInfo.Size = new Size(172, 32);
+            btnViewNutritionInfo.TabIndex = 7;
+            btnViewNutritionInfo.Text = "Informacion Nutricional";
+            btnViewNutritionInfo.UseVisualStyleBackColor = true;
+            btnViewNutritionInfo.Click += btnViewNutritionInfo_Click;
+            // 
             // UserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(562, 388);
+            Controls.Add(btnViewNutritionInfo);
             Controls.Add(btnOpenFoods);
             Controls.Add(btnlogout);
             Controls.Add(dgvUserData);
@@ -105,6 +117,7 @@
             Controls.Add(lbl);
             Name = "UserForm";
             Text = "UserForm";
+            Load += UserForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUserData).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -116,5 +129,6 @@
         private DataGridView dgvUserData;
         private Button btnlogout;
         private Button btnOpenFoods;
+        private Button btnViewNutritionInfo;
     }
 }

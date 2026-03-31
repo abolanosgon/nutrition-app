@@ -370,5 +370,6 @@
         private TextBox txtLoginUsername;
         private TextBox txtLoginPassword;
         private Button btnLogin;
+        private Button btnSeedData;
     }
 }

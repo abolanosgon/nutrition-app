@@ -206,8 +206,36 @@ namespace Nutrition_App.Views
 
         private void btnOpenFoods_Click(object sender, EventArgs e)
         {
-            FoodForm foodForm = new FoodForm();
-            foodForm.ShowDialog();
+            if (loggedUser == null)
+            {
+                MessageBox.Show("No se encontró el usuario.");
+                return;
+            }
+
+            UserMealForm userMealForm = new UserMealForm(loggedUser);
+            userMealForm.ShowDialog();
+
+            LoadUserGrid();
         }
+
+        private void UserForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btnViewNutritionInfo_Click(object sender, EventArgs e)
+        {
+            if (loggedUser == null)
+            {
+                MessageBox.Show("No hay usuario cargado.");
+                return;
+            }
+
+            UserInfoForm form = new UserInfoForm(loggedUser);
+            form.ShowDialog();
+        }
+
+       
     }
 }

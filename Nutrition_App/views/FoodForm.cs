@@ -9,10 +9,12 @@ namespace Nutrition_App.Views
     {
         private FoodController foodController = new FoodController();
         private int selectedFoodId = -1;
+        private User loggedUser;
 
-        public FoodForm()
+        public FoodForm(User user)
         {
             InitializeComponent();
+            loggedUser = user;
             LoadFoods();
         }
 

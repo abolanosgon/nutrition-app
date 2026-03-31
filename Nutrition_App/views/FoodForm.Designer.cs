@@ -43,7 +43,6 @@
             txtCarbohydrates = new TextBox();
             txtFat = new TextBox();
             txtPortionSize = new TextBox();
-            button1 = new Button();
             btnAddFood = new Button();
             btnDeleteFood = new Button();
             btnEditFood = new Button();
@@ -62,7 +61,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(501, 66);
+            label1.Location = new Point(495, 24);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 1;
@@ -71,7 +70,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(501, 95);
+            label2.Location = new Point(495, 53);
             label2.Name = "label2";
             label2.Size = new Size(58, 15);
             label2.TabIndex = 2;
@@ -80,7 +79,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(501, 124);
+            label3.Location = new Point(495, 82);
             label3.Name = "label3";
             label3.Size = new Size(49, 15);
             label3.TabIndex = 3;
@@ -89,7 +88,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(501, 153);
+            label4.Location = new Point(495, 111);
             label4.Name = "label4";
             label4.Size = new Size(51, 15);
             label4.TabIndex = 4;
@@ -98,7 +97,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(501, 182);
+            label5.Location = new Point(495, 140);
             label5.Name = "label5";
             label5.Size = new Size(82, 15);
             label5.TabIndex = 5;
@@ -107,7 +106,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(501, 211);
+            label6.Location = new Point(495, 169);
             label6.Name = "label6";
             label6.Size = new Size(36, 15);
             label6.TabIndex = 6;
@@ -116,7 +115,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(501, 240);
+            label7.Location = new Point(495, 198);
             label7.Name = "label7";
             label7.Size = new Size(48, 15);
             label7.TabIndex = 7;
@@ -124,61 +123,52 @@
             // 
             // txtFoodName
             // 
-            txtFoodName.Location = new Point(600, 63);
+            txtFoodName.Location = new Point(594, 21);
             txtFoodName.Name = "txtFoodName";
             txtFoodName.Size = new Size(100, 23);
             txtFoodName.TabIndex = 8;
             // 
             // txtCategory
             // 
-            txtCategory.Location = new Point(600, 92);
+            txtCategory.Location = new Point(594, 50);
             txtCategory.Name = "txtCategory";
             txtCategory.Size = new Size(100, 23);
             txtCategory.TabIndex = 9;
             // 
             // txtCalories
             // 
-            txtCalories.Location = new Point(600, 121);
+            txtCalories.Location = new Point(594, 79);
             txtCalories.Name = "txtCalories";
             txtCalories.Size = new Size(100, 23);
             txtCalories.TabIndex = 10;
             // 
             // txtProtein
             // 
-            txtProtein.Location = new Point(600, 150);
+            txtProtein.Location = new Point(594, 108);
             txtProtein.Name = "txtProtein";
             txtProtein.Size = new Size(100, 23);
             txtProtein.TabIndex = 11;
             // 
             // txtCarbohydrates
             // 
-            txtCarbohydrates.Location = new Point(600, 179);
+            txtCarbohydrates.Location = new Point(594, 137);
             txtCarbohydrates.Name = "txtCarbohydrates";
             txtCarbohydrates.Size = new Size(100, 23);
             txtCarbohydrates.TabIndex = 12;
             // 
             // txtFat
             // 
-            txtFat.Location = new Point(600, 208);
+            txtFat.Location = new Point(594, 166);
             txtFat.Name = "txtFat";
             txtFat.Size = new Size(100, 23);
             txtFat.TabIndex = 13;
             // 
             // txtPortionSize
             // 
-            txtPortionSize.Location = new Point(600, 237);
+            txtPortionSize.Location = new Point(594, 195);
             txtPortionSize.Name = "txtPortionSize";
             txtPortionSize.Size = new Size(100, 23);
             txtPortionSize.TabIndex = 14;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(0, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 15;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
             // 
             // btnAddFood
             // 
@@ -218,7 +208,6 @@
             Controls.Add(btnEditFood);
             Controls.Add(btnDeleteFood);
             Controls.Add(btnAddFood);
-            Controls.Add(button1);
             Controls.Add(txtPortionSize);
             Controls.Add(txtFat);
             Controls.Add(txtCarbohydrates);
@@ -258,7 +247,6 @@
         private TextBox txtCarbohydrates;
         private TextBox txtFat;
         private TextBox txtPortionSize;
-        private Button button1;
         private Button btnAddFood;
         private Button btnDeleteFood;
         private Button btnEditFood;

@@ -2,12 +2,12 @@
 using Nutrition_App.Models;
 using System;
 using System.Windows.Forms;
+using Nutrition_App.Services;
 
 namespace Nutrition_App.Views
 {
     public partial class MainForm : Form
     {
-        // Controlador que manejará la lógica relacionada con usuarios
         private UserController userController = new UserController();
 
         private int selectedUserId = -1;
@@ -19,24 +19,18 @@ namespace Nutrition_App.Views
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LoadUsers();
             userController.EnsureAdminUser();
+            LoadUsers();
         }
 
         private void btnSaveUser_Click(object sender, EventArgs e)
         {
-            ////////////////////////////////
-
             if (!ValidateInputs(out int age, out double weight, out double height))
             {
                 return;
             }
 
-            ////////////////////////////////
-
             string gender = GetSelectedGender();
-
-            ////////////////////////////////
 
             string goal = GetSelectedGoal();
 
@@ -46,13 +40,7 @@ namespace Nutrition_App.Views
                 return;
             }
 
-            ////////////////////////////////
-
             string activityLevel = GetSelectedActivityLevel();
-
-
-            ////////////////////////////////
-            ///
 
             string dietType = GetSelectedDietType();
 
@@ -62,8 +50,6 @@ namespace Nutrition_App.Views
                 return;
             }
 
-            ////////////////////////////////
-
             User user = BuildUser(age, weight, height, gender, goal, activityLevel, dietType);
 
             userController.RegisterUser(user);
@@ -71,17 +57,8 @@ namespace Nutrition_App.Views
 
             MessageBox.Show("Usuario registrado correctamente.");
 
-
-            ////////////////////////////////
-
             ClearForm();
-
-            ////////////////////////////////
-
-
         }
-
-
 
         private User BuildUser(int age, double weight, double height, string gender, string goal, string activityLevel, string dietType)
         {
@@ -100,7 +77,6 @@ namespace Nutrition_App.Views
                 Role = "User"
             };
         }
-
 
         private void ClearForm()
         {
@@ -179,7 +155,6 @@ namespace Nutrition_App.Views
             return true;
         }
 
-
         private string GetSelectedGender()
         {
             if (cmbGender.SelectedItem.ToString() == "Hombre")
@@ -203,18 +178,14 @@ namespace Nutrition_App.Views
             {
                 case "Mantener peso":
                     return "Maintain";
-
                 case "Perder grasa":
                     return "LoseFat";
-
                 case "Ganar masa muscular":
                     return "GainMuscle";
-
                 default:
                     return "";
             }
         }
-
 
         private string GetSelectedActivityLevel()
         {
@@ -224,16 +195,12 @@ namespace Nutrition_App.Views
             {
                 case "Sedentario":
                     return "Sedentary";
-
                 case "Ligero":
                     return "Light";
-
                 case "Moderado":
                     return "Moderate";
-
                 case "Activo":
                     return "Active";
-
                 default:
                     return "";
             }
@@ -247,13 +214,10 @@ namespace Nutrition_App.Views
             {
                 case "Estándar":
                     return "Standard";
-
                 case "Keto":
                     return "Keto";
-
                 case "Vegetariana":
                     return "Vegetarian";
-
                 default:
                     return "";
             }
@@ -279,8 +243,6 @@ namespace Nutrition_App.Views
 
             TranslateUserGrid();
         }
-
-
 
         private void TranslateUserGrid()
         {
@@ -441,6 +403,35 @@ namespace Nutrition_App.Views
                 UserForm userForm = new UserForm(authenticatedUser);
                 userForm.Show();
                 this.Hide();
+            }
+        }
+
+        private void btnSeedData_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Esto reemplazará los usuarios y registros de comida actuales. ¿Desea continuar?",
+                "Confirmar carga de datos",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                DataSeeder seeder = new DataSeeder();
+                seeder.SeedAllData();
+
+                LoadUsers();
+
+                MessageBox.Show("Datos base cargados correctamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los datos: " + ex.Message);
             }
         }
     }
