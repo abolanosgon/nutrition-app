@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using Nutrition_App.Controllers;
 using Nutrition_App.Models;
+using System;
+using System.Windows.Forms;
 
 namespace Nutrition_App.Views
 {
@@ -100,6 +102,24 @@ namespace Nutrition_App.Views
 
             FoodForm foodForm = new FoodForm(loggedUser);
             foodForm.ShowDialog();
+        }
+
+        private void btnTestStats_Click(object sender, EventArgs e)
+        {
+            StatisticsController controller = new StatisticsController();
+            NutritionStatsSummary summary = controller.GetSummary();
+
+            MessageBox.Show(
+                "Total registros: " + summary.TotalMealRecords +
+                "\nUsuarios con registros: " + summary.TotalUsersWithRecords +
+                "\nCalorías totales: " + summary.TotalCalories +
+                "\nPromedio por registro: " + summary.AverageCaloriesPerRecord +
+                "\nPromedio por usuario: " + summary.AverageCaloriesPerUser +
+                "\nProteína total: " + summary.TotalProtein +
+                "\nCarbohidratos totales: " + summary.TotalCarbs +
+                "\nGrasa total: " + summary.TotalFat,
+                "Resumen de estadísticas"
+            );
         }
     }
 }

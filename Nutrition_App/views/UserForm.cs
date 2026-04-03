@@ -1,5 +1,6 @@
 ﻿using Nutrition_App.Controllers;
 using Nutrition_App.Models;
+using Nutrition_App.Views;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -236,6 +237,16 @@ namespace Nutrition_App.Views
             form.ShowDialog();
         }
 
-       
+        private void btnViewMyStats_Click(object sender, EventArgs e)
+        {
+            if (loggedUser == null)
+            {
+                MessageBox.Show("No se encontró el usuario.");
+                return;
+            }
+
+            StatisticsForm statisticsForm = new StatisticsForm(loggedUser.Id);
+            statisticsForm.ShowDialog();
+        }
     }
 }

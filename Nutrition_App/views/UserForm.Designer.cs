@@ -23,6 +23,7 @@
             btnlogout = new Button();
             btnOpenFoods = new Button();
             btnViewNutritionInfo = new Button();
+            btnViewMyStats = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUserData).BeginInit();
             SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             // 
             // btnEditProfile
             // 
-            btnEditProfile.Location = new Point(223, 201);
+            btnEditProfile.Location = new Point(209, 185);
             btnEditProfile.Name = "btnEditProfile";
             btnEditProfile.Size = new Size(117, 23);
             btnEditProfile.TabIndex = 2;
@@ -56,7 +57,7 @@
             // 
             // btnDeleteAccount
             // 
-            btnDeleteAccount.Location = new Point(213, 230);
+            btnDeleteAccount.Location = new Point(70, 353);
             btnDeleteAccount.Name = "btnDeleteAccount";
             btnDeleteAccount.Size = new Size(137, 23);
             btnDeleteAccount.TabIndex = 3;
@@ -74,7 +75,7 @@
             // 
             // btnlogout
             // 
-            btnlogout.Location = new Point(213, 332);
+            btnlogout.Location = new Point(312, 353);
             btnlogout.Name = "btnlogout";
             btnlogout.Size = new Size(137, 23);
             btnlogout.TabIndex = 5;
@@ -84,29 +85,40 @@
             // 
             // btnOpenFoods
             // 
-            btnOpenFoods.Location = new Point(215, 261);
+            btnOpenFoods.Location = new Point(312, 279);
             btnOpenFoods.Name = "btnOpenFoods";
             btnOpenFoods.Size = new Size(135, 27);
             btnOpenFoods.TabIndex = 6;
-            btnOpenFoods.Text = "Ver Alimentos";
+            btnOpenFoods.Text = "Ingresar Alimentos";
             btnOpenFoods.UseVisualStyleBackColor = true;
             btnOpenFoods.Click += btnOpenFoods_Click;
             // 
             // btnViewNutritionInfo
             // 
-            btnViewNutritionInfo.Location = new Point(190, 294);
+            btnViewNutritionInfo.Location = new Point(70, 274);
             btnViewNutritionInfo.Name = "btnViewNutritionInfo";
-            btnViewNutritionInfo.Size = new Size(172, 32);
+            btnViewNutritionInfo.Size = new Size(147, 32);
             btnViewNutritionInfo.TabIndex = 7;
             btnViewNutritionInfo.Text = "Informacion Nutricional";
             btnViewNutritionInfo.UseVisualStyleBackColor = true;
             btnViewNutritionInfo.Click += btnViewNutritionInfo_Click;
+            // 
+            // btnViewMyStats
+            // 
+            btnViewMyStats.Location = new Point(200, 235);
+            btnViewMyStats.Name = "btnViewMyStats";
+            btnViewMyStats.Size = new Size(141, 23);
+            btnViewMyStats.TabIndex = 8;
+            btnViewMyStats.Text = "Ver mis estadísticas";
+            btnViewMyStats.UseVisualStyleBackColor = true;
+            btnViewMyStats.Click += btnViewMyStats_Click;
             // 
             // UserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(562, 388);
+            Controls.Add(btnViewMyStats);
             Controls.Add(btnViewNutritionInfo);
             Controls.Add(btnOpenFoods);
             Controls.Add(btnlogout);
@@ -130,5 +142,6 @@
         private Button btnlogout;
         private Button btnOpenFoods;
         private Button btnViewNutritionInfo;
+        private Button btnViewMyStats;
     }
 }
