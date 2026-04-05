@@ -24,6 +24,7 @@
             btnOpenFoods = new Button();
             btnViewNutritionInfo = new Button();
             btnViewMyStats = new Button();
+            btnViewMenu = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUserData).BeginInit();
             SuspendLayout();
             // 
@@ -113,11 +114,22 @@
             btnViewMyStats.UseVisualStyleBackColor = true;
             btnViewMyStats.Click += btnViewMyStats_Click;
             // 
+            // btnViewMenu
+            // 
+            btnViewMenu.Location = new Point(374, 219);
+            btnViewMenu.Name = "btnViewMenu";
+            btnViewMenu.Size = new Size(120, 23);
+            btnViewMenu.TabIndex = 9;
+            btnViewMenu.Text = "Menu Asignado";
+            btnViewMenu.UseVisualStyleBackColor = true;
+            btnViewMenu.Click += btnViewMenu_Click;
+            // 
             // UserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(562, 388);
+            Controls.Add(btnViewMenu);
             Controls.Add(btnViewMyStats);
             Controls.Add(btnViewNutritionInfo);
             Controls.Add(btnOpenFoods);
@@ -143,5 +155,6 @@
         private Button btnOpenFoods;
         private Button btnViewNutritionInfo;
         private Button btnViewMyStats;
+        private Button btnViewMenu;
     }
 }

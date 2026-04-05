@@ -1,0 +1,770 @@
+[
+  {
+    "Id": 1,
+    "Name": "Estandar - Mantener",
+    "Goal": "Mantener",
+    "DietType": "Estandar",
+    "Items": [
+      {
+        "Id": 1,
+        "FoodId": 6,
+        "MealType": "Desayuno",
+        "Quantity": 2
+      },
+      {
+        "Id": 2,
+        "FoodId": 15,
+        "MealType": "Desayuno",
+        "Quantity": 2
+      },
+      {
+        "Id": 3,
+        "FoodId": 39,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 4,
+        "FoodId": 28,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+      {
+        "Id": 5,
+        "FoodId": 34,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 6,
+        "FoodId": 1,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 7,
+        "FoodId": 11,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 8,
+        "FoodId": 47,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 9,
+        "FoodId": 40,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+      {
+        "Id": 10,
+        "FoodId": 29,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 11,
+        "FoodId": 5,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 12,
+        "FoodId": 16,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 13,
+        "FoodId": 48,
+        "MealType": "Cena",
+        "Quantity": 1
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": "Estandar - Perder grasa",
+    "Goal": "Perder grasa",
+    "DietType": "Estandar",
+    "Items": [
+      {
+        "Id": 1,
+        "FoodId": 7,
+        "MealType": "Desayuno",
+        "Quantity": 2
+      },
+      {
+        "Id": 2,
+        "FoodId": 14,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+      {
+        "Id": 3,
+        "FoodId": 45,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 4,
+        "FoodId": 28,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 5,
+        "FoodId": 1,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 6,
+        "FoodId": 12,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+      {
+        "Id": 7,
+        "FoodId": 49,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+      {
+        "Id": 8,
+        "FoodId": 50,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 9,
+        "FoodId": 61,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 10,
+        "FoodId": 3,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 11,
+        "FoodId": 47,
+        "MealType": "Cena",
+        "Quantity": 1
+      },
+      {
+        "Id": 12,
+        "FoodId": 51,
+        "MealType": "Cena",
+        "Quantity": 1
+      },
+      {
+        "Id": 13,
+        "FoodId": 31,
+        "MealType": "Cena",
+        "Quantity": 1
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "Estandar - Ganar masa",
+    "Goal": "Ganar masa",
+    "DietType": "Estandar",
+    "Items": [
+      {
+        "Id": 1,
+        "FoodId": 6,
+        "MealType": "Desayuno",
+        "Quantity": 3
+      },
+      {
+        "Id": 2,
+        "FoodId": 14,
+        "MealType": "Desayuno",
+        "Quantity": 2
+      },
+      {
+        "Id": 3,
+        "FoodId": 33,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+      {
+        "Id": 4,
+        "FoodId": 39,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 5,
+        "FoodId": 57,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+      {
+        "Id": 6,
+        "FoodId": 28,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 7,
+        "FoodId": 2,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 8,
+        "FoodId": 13,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 9,
+        "FoodId": 47,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 10,
+        "FoodId": 61,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+      {
+        "Id": 11,
+        "FoodId": 40,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 12,
+        "FoodId": 1,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 13,
+        "FoodId": 11,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 14,
+        "FoodId": 31,
+        "MealType": "Cena",
+        "Quantity": 1
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "Name": "Keto - Mantener",
+    "Goal": "Mantener",
+    "DietType": "Keto",
+    "Items": [
+      {
+        "Id": 1,
+        "FoodId": 6,
+        "MealType": "Desayuno",
+        "Quantity": 2
+      },
+      {
+        "Id": 2,
+        "FoodId": 31,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+      {
+        "Id": 3,
+        "FoodId": 63,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 4,
+        "FoodId": 34,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 5,
+        "FoodId": 4,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 6,
+        "FoodId": 48,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+      {
+        "Id": 7,
+        "FoodId": 32,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 8,
+        "FoodId": 35,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 9,
+        "FoodId": 5,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 10,
+        "FoodId": 47,
+        "MealType": "Cena",
+        "Quantity": 1
+      },
+      {
+        "Id": 11,
+        "FoodId": 31,
+        "MealType": "Cena",
+        "Quantity": 1
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "Name": "Keto - Perder grasa",
+    "Goal": "Perder grasa",
+    "DietType": "Keto",
+    "Items": [
+      {
+        "Id": 1,
+        "FoodId": 7,
+        "MealType": "Desayuno",
+        "Quantity": 2
+      },
+      {
+        "Id": 2,
+        "FoodId": 31,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 3,
+        "FoodId": 28,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 4,
+        "FoodId": 1,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 5,
+        "FoodId": 49,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+      {
+        "Id": 6,
+        "FoodId": 32,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 7,
+        "FoodId": 61,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 8,
+        "FoodId": 3,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 9,
+        "FoodId": 48,
+        "MealType": "Cena",
+        "Quantity": 1
+      },
+      {
+        "Id": 10,
+        "FoodId": 34,
+        "MealType": "Cena",
+        "Quantity": 1
+      }
+    ]
+  },
+  {
+    "Id": 6,
+    "Name": "Keto - Ganar masa",
+    "Goal": "Ganar masa",
+    "DietType": "Keto",
+    "Items": [
+      {
+        "Id": 1,
+        "FoodId": 6,
+        "MealType": "Desayuno",
+        "Quantity": 3
+      },
+      {
+        "Id": 2,
+        "FoodId": 30,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+      {
+        "Id": 3,
+        "FoodId": 31,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 4,
+        "FoodId": 33,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+      {
+        "Id": 5,
+        "FoodId": 61,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 6,
+        "FoodId": 2,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 7,
+        "FoodId": 47,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+      {
+        "Id": 8,
+        "FoodId": 32,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 9,
+        "FoodId": 34,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 10,
+        "FoodId": 4,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 11,
+        "FoodId": 48,
+        "MealType": "Cena",
+        "Quantity": 1
+      },
+      {
+        "Id": 12,
+        "FoodId": 31,
+        "MealType": "Cena",
+        "Quantity": 1
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "Name": "Vegetariano - Mantener",
+    "Goal": "Mantener",
+    "DietType": "Vegetariano",
+    "Items": [
+      {
+        "Id": 1,
+        "FoodId": 14,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+      {
+        "Id": 2,
+        "FoodId": 26,
+        "MealType": "Desayuno",
+        "Quantity": 2
+      },
+      {
+        "Id": 3,
+        "FoodId": 39,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 4,
+        "FoodId": 28,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+      {
+        "Id": 5,
+        "FoodId": 45,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 6,
+        "FoodId": 10,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 7,
+        "FoodId": 20,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 8,
+        "FoodId": 47,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 9,
+        "FoodId": 25,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 10,
+        "FoodId": 22,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 11,
+        "FoodId": 12,
+        "MealType": "Cena",
+        "Quantity": 1
+      },
+      {
+        "Id": 12,
+        "FoodId": 48,
+        "MealType": "Cena",
+        "Quantity": 1
+      }
+    ]
+  },
+  {
+    "Id": 8,
+    "Name": "Vegetariano - Perder grasa",
+    "Goal": "Perder grasa",
+    "DietType": "Vegetariano",
+    "Items": [
+      {
+        "Id": 1,
+        "FoodId": 28,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+      {
+        "Id": 2,
+        "FoodId": 45,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+      {
+        "Id": 3,
+        "FoodId": 36,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 4,
+        "FoodId": 25,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 5,
+        "FoodId": 10,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 6,
+        "FoodId": 47,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+      {
+        "Id": 7,
+        "FoodId": 49,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 8,
+        "FoodId": 61,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 9,
+        "FoodId": 22,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 10,
+        "FoodId": 48,
+        "MealType": "Cena",
+        "Quantity": 1
+      },
+      {
+        "Id": 11,
+        "FoodId": 31,
+        "MealType": "Cena",
+        "Quantity": 1
+      }
+    ]
+  },
+  {
+    "Id": 9,
+    "Name": "Vegetariano - Ganar masa",
+    "Goal": "Ganar masa",
+    "DietType": "Vegetariano",
+    "Items": [
+      {
+        "Id": 1,
+        "FoodId": 14,
+        "MealType": "Desayuno",
+        "Quantity": 2
+      },
+      {
+        "Id": 2,
+        "FoodId": 26,
+        "MealType": "Desayuno",
+        "Quantity": 2
+      },
+      {
+        "Id": 3,
+        "FoodId": 33,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+      {
+        "Id": 4,
+        "FoodId": 39,
+        "MealType": "Desayuno",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 5,
+        "FoodId": 57,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+      {
+        "Id": 6,
+        "FoodId": 28,
+        "MealType": "Snack AM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 7,
+        "FoodId": 10,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 8,
+        "FoodId": 20,
+        "MealType": "Almuerzo",
+        "Quantity": 2
+      },
+      {
+        "Id": 9,
+        "FoodId": 25,
+        "MealType": "Almuerzo",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 10,
+        "FoodId": 61,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+      {
+        "Id": 11,
+        "FoodId": 40,
+        "MealType": "Snack PM",
+        "Quantity": 1
+      },
+
+      {
+        "Id": 12,
+        "FoodId": 22,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 13,
+        "FoodId": 12,
+        "MealType": "Cena",
+        "Quantity": 2
+      },
+      {
+        "Id": 14,
+        "FoodId": 31,
+        "MealType": "Cena",
+        "Quantity": 1
+      }
+    ]
+  }
+]

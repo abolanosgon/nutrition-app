@@ -11998,5 +11998,13 @@
     "RecordDate": "2026-03-31T15:00:00-06:00",
     "MealType": "Snack",
     "Quantity": 1.5
+  },
+  {
+    "Id": 1501,
+    "UserId": 1,
+    "FoodId": 22,
+    "RecordDate": "2026-04-04T22:09:03.6987474-06:00",
+    "MealType": "Lunch",
+    "Quantity": 1
   }
 ]
