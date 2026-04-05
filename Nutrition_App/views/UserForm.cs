@@ -248,5 +248,11 @@ namespace Nutrition_App.Views
             StatisticsForm statisticsForm = new StatisticsForm(loggedUser.Id);
             statisticsForm.ShowDialog();
         }
+
+        private void btnViewMenu_Click(object sender, EventArgs e)
+        {
+            MenuForm menuForm = new MenuForm(loggedUser);
+            menuForm.ShowDialog();
+        }
     }
 }
