@@ -149,7 +149,6 @@
             Controls.Add(label1);
             Name = "UserMealForm";
             Text = "Form1";
-            Load += UserMealForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMealRecords).EndInit();
             ResumeLayout(false);
             PerformLayout();

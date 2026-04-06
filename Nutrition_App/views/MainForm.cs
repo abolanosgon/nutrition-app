@@ -157,12 +157,14 @@ namespace Nutrition_App.Views
 
         private string GetSelectedGender()
         {
-            if (cmbGender.SelectedItem.ToString() == "Hombre")
+            string selected = cmbGender.SelectedItem?.ToString() ?? "";
+
+            if (selected == "Hombre")
             {
                 return "Male";
             }
 
-            if (cmbGender.SelectedItem.ToString() == "Mujer")
+            if (selected == "Mujer")
             {
                 return "Female";
             }
@@ -172,7 +174,7 @@ namespace Nutrition_App.Views
 
         private string GetSelectedGoal()
         {
-            string selectedGoal = cmbGoal.SelectedItem.ToString().Trim();
+            string selectedGoal = cmbGoal.SelectedItem?.ToString()?.Trim() ?? "";
 
             switch (selectedGoal)
             {
@@ -189,7 +191,7 @@ namespace Nutrition_App.Views
 
         private string GetSelectedActivityLevel()
         {
-            string selectedActivity = cmbActivityLevel.SelectedItem.ToString();
+            string selectedActivity = cmbActivityLevel.SelectedItem?.ToString() ?? "";
 
             switch (selectedActivity)
             {
@@ -208,7 +210,7 @@ namespace Nutrition_App.Views
 
         private string GetSelectedDietType()
         {
-            string selectedDiet = cmbDietType.SelectedItem.ToString();
+            string selectedDiet = cmbDietType.SelectedItem?.ToString() ?? "";
 
             switch (selectedDiet)
             {
@@ -248,76 +250,60 @@ namespace Nutrition_App.Views
         {
             foreach (DataGridViewRow row in dgvUsers.Rows)
             {
-                if (row.Cells["Gender"].Value != null)
+                string gender = row.Cells["Gender"].Value?.ToString() ?? "";
+                if (gender == "Male")
                 {
-                    string gender = row.Cells["Gender"].Value.ToString();
-
-                    if (gender == "Male")
-                    {
-                        row.Cells["Gender"].Value = "Hombre";
-                    }
-                    else if (gender == "Female")
-                    {
-                        row.Cells["Gender"].Value = "Mujer";
-                    }
+                    row.Cells["Gender"].Value = "Hombre";
+                }
+                else if (gender == "Female")
+                {
+                    row.Cells["Gender"].Value = "Mujer";
                 }
 
-                if (row.Cells["Goal"].Value != null)
+                string goal = row.Cells["Goal"].Value?.ToString() ?? "";
+                if (goal == "Maintain")
                 {
-                    string goal = row.Cells["Goal"].Value.ToString();
-
-                    if (goal == "Maintain")
-                    {
-                        row.Cells["Goal"].Value = "Mantener peso";
-                    }
-                    else if (goal == "LoseFat")
-                    {
-                        row.Cells["Goal"].Value = "Perder grasa";
-                    }
-                    else if (goal == "GainMuscle")
-                    {
-                        row.Cells["Goal"].Value = "Ganar masa muscular";
-                    }
+                    row.Cells["Goal"].Value = "Mantener peso";
+                }
+                else if (goal == "LoseFat")
+                {
+                    row.Cells["Goal"].Value = "Perder grasa";
+                }
+                else if (goal == "GainMuscle")
+                {
+                    row.Cells["Goal"].Value = "Ganar masa muscular";
                 }
 
-                if (row.Cells["ActivityLevel"].Value != null)
+                string activityLevel = row.Cells["ActivityLevel"].Value?.ToString() ?? "";
+                if (activityLevel == "Sedentary")
                 {
-                    string activityLevel = row.Cells["ActivityLevel"].Value.ToString();
-
-                    if (activityLevel == "Sedentary")
-                    {
-                        row.Cells["ActivityLevel"].Value = "Sedentario";
-                    }
-                    else if (activityLevel == "Light")
-                    {
-                        row.Cells["ActivityLevel"].Value = "Ligero";
-                    }
-                    else if (activityLevel == "Moderate")
-                    {
-                        row.Cells["ActivityLevel"].Value = "Moderado";
-                    }
-                    else if (activityLevel == "Active")
-                    {
-                        row.Cells["ActivityLevel"].Value = "Activo";
-                    }
+                    row.Cells["ActivityLevel"].Value = "Sedentario";
+                }
+                else if (activityLevel == "Light")
+                {
+                    row.Cells["ActivityLevel"].Value = "Ligero";
+                }
+                else if (activityLevel == "Moderate")
+                {
+                    row.Cells["ActivityLevel"].Value = "Moderado";
+                }
+                else if (activityLevel == "Active")
+                {
+                    row.Cells["ActivityLevel"].Value = "Activo";
                 }
 
-                if (row.Cells["DietType"].Value != null)
+                string dietType = row.Cells["DietType"].Value?.ToString() ?? "";
+                if (dietType == "Standard")
                 {
-                    string dietType = row.Cells["DietType"].Value.ToString();
-
-                    if (dietType == "Standard")
-                    {
-                        row.Cells["DietType"].Value = "Estándar";
-                    }
-                    else if (dietType == "Keto")
-                    {
-                        row.Cells["DietType"].Value = "Keto";
-                    }
-                    else if (dietType == "Vegetarian")
-                    {
-                        row.Cells["DietType"].Value = "Vegetariana";
-                    }
+                    row.Cells["DietType"].Value = "Estándar";
+                }
+                else if (dietType == "Keto")
+                {
+                    row.Cells["DietType"].Value = "Keto";
+                }
+                else if (dietType == "Vegetarian")
+                {
+                    row.Cells["DietType"].Value = "Vegetariana";
                 }
             }
         }
@@ -357,9 +343,7 @@ namespace Nutrition_App.Views
             {
                 var row = dgvUsers.Rows[e.RowIndex];
 
-                selectedUserId = Convert.ToInt32(row.Cells["Id"].Value);
-
-                string name = row.Cells["Name"].Value?.ToString();
+                string name = row.Cells["Name"].Value?.ToString() ?? "";
 
                 lblSelectedUser.Text = "Usuario seleccionado: " + name;
             }

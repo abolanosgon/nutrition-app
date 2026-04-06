@@ -6,7 +6,6 @@ using Nutrition_App.Services;
 
 namespace Nutrition_App.Controllers
 {
-    // Coordina la comunicación entre la vista y la lógica de registros de consumo
     public class MealRecordController
     {
         private readonly MealRecordService mealRecordService;
@@ -37,7 +36,7 @@ namespace Nutrition_App.Controllers
             mealRecordService.UpdateRecord(record);
         }
 
-        public MealRecord GetRecordById(int recordId)
+        public MealRecord? GetRecordById(int recordId)
         {
             List<MealRecord> records = mealRecordService.GetRecords();
             return records.FirstOrDefault(r => r.Id == recordId);

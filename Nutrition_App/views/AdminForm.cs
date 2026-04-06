@@ -2,14 +2,12 @@
 using System.Windows.Forms;
 using Nutrition_App.Controllers;
 using Nutrition_App.Models;
-using System;
-using System.Windows.Forms;
 
 namespace Nutrition_App.Views
 {
     public partial class AdminForm : Form
     {
-        private User loggedUser;
+        private User? loggedUser;
         private UserController userController = new UserController();
         private int selectedUserId = -1;
 
@@ -37,7 +35,12 @@ namespace Nutrition_App.Views
             if (e.RowIndex >= 0)
             {
                 var row = dgvUsers.Rows[e.RowIndex];
-                selectedUserId = Convert.ToInt32(row.Cells["Id"].Value);
+                object? idValue = row.Cells["Id"].Value;
+
+                if (idValue != null && int.TryParse(idValue.ToString(), out int id))
+                {
+                    selectedUserId = id;
+                }
             }
         }
 
@@ -78,7 +81,7 @@ namespace Nutrition_App.Views
                 return;
             }
 
-            User selectedUser = userController.GetUserById(selectedUserId);
+            User? selectedUser = userController.GetUserById(selectedUserId);
 
             if (selectedUser == null)
             {

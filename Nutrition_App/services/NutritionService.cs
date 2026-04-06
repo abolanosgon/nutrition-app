@@ -16,9 +16,9 @@ namespace Nutrition_App.Services
             double maintenanceCalories = CalculateMaintenanceCalories(user);
             double targetCalories = CalculateTargetCalories(maintenanceCalories, user.Goal);
 
-            double proteinGrams = 0;
-            double carbsGrams = 0;
-            double fatsGrams = 0;
+            double proteinGrams;
+            double carbsGrams;
+            double fatsGrams;
 
             CalculateMacros(
                 targetCalories,

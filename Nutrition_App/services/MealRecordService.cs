@@ -4,7 +4,6 @@ using Nutrition_App.Repositories;
 
 namespace Nutrition_App.Services
 {
-    // Maneja la lógica relacionada con los registros de consumo
     public class MealRecordService
     {
         private readonly IMealRecordRepository mealRecordRepository;

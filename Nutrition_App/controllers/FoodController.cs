@@ -6,7 +6,6 @@ using Nutrition_App.Services;
 
 namespace Nutrition_App.Controllers
 {
-    // Coordina la comunicación entre la vista y la lógica de alimentos
     public class FoodController
     {
         private readonly FoodService foodService;
@@ -37,7 +36,7 @@ namespace Nutrition_App.Controllers
             foodService.UpdateFood(food);
         }
 
-        public Food GetFoodById(int foodId)
+        public Food? GetFoodById(int foodId)
         {
             List<Food> foods = foodService.GetFoods();
             return foods.FirstOrDefault(f => f.Id == foodId);

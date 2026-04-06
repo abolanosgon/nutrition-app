@@ -16,64 +16,42 @@ namespace Nutrition_App.Controllers
             _foodRepository = new FoodJsonRepository();
         }
 
-        public NutritionStatsSummary GetSummary()
+        private StatisticsService BuildService()
         {
             var mealRecords = _mealRecordRepository.GetAll();
             var foods = _foodRepository.GetAll();
 
-            var statisticsService = new StatisticsService(mealRecords, foods);
+            return new StatisticsService(mealRecords, foods);
+        }
 
-            return statisticsService.GetSummary();
+        public NutritionStatsSummary GetSummary()
+        {
+            return BuildService().GetSummary();
         }
 
         public List<DailyCaloriesStat> GetDailyCaloriesStats()
         {
-            var mealRecords = _mealRecordRepository.GetAll();
-            var foods = _foodRepository.GetAll();
-
-            var statisticsService = new StatisticsService(mealRecords, foods);
-
-            return statisticsService.GetDailyCaloriesStats();
+            return BuildService().GetDailyCaloriesStats();
         }
 
         public List<TopFoodStat> GetTopFoods(int top = 5)
         {
-            var mealRecords = _mealRecordRepository.GetAll();
-            var foods = _foodRepository.GetAll();
-
-            var statisticsService = new StatisticsService(mealRecords, foods);
-
-            return statisticsService.GetTopFoods(top);
+            return BuildService().GetTopFoods(top);
         }
 
         public NutritionStatsSummary GetSummaryByUser(int userId)
         {
-            var mealRecords = _mealRecordRepository.GetAll();
-            var foods = _foodRepository.GetAll();
-
-            var statisticsService = new StatisticsService(mealRecords, foods);
-
-            return statisticsService.GetSummaryByUser(userId);
+            return BuildService().GetSummaryByUser(userId);
         }
 
         public List<DailyCaloriesStat> GetDailyCaloriesStatsByUser(int userId)
         {
-            var mealRecords = _mealRecordRepository.GetAll();
-            var foods = _foodRepository.GetAll();
-
-            var statisticsService = new StatisticsService(mealRecords, foods);
-
-            return statisticsService.GetDailyCaloriesStatsByUser(userId);
+            return BuildService().GetDailyCaloriesStatsByUser(userId);
         }
 
         public List<TopFoodStat> GetTopFoodsByUser(int userId, int top = 5)
         {
-            var mealRecords = _mealRecordRepository.GetAll();
-            var foods = _foodRepository.GetAll();
-
-            var statisticsService = new StatisticsService(mealRecords, foods);
-
-            return statisticsService.GetTopFoodsByUser(userId, top);
+            return BuildService().GetTopFoodsByUser(userId, top);
         }
     }
 }

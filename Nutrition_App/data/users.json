@@ -11,7 +11,7 @@
     "Goal": "Maintain",
     "ActivityLevel": "Moderate",
     "DietType": "Standard",
-    "Role": "User"
+    "Role": "Usuario"
   },
   {
     "Id": 2,
@@ -119,7 +119,7 @@
     "Age": 30,
     "Weight": 82,
     "Height": 178,
-    "Gender": "Male",
+    "Gender": "Female",
     "Goal": "GainMuscle",
     "ActivityLevel": "Active",
     "DietType": "Standard",
@@ -281,7 +281,7 @@
   },
   {
     "Id": 21,
-    "Name": "Miguel Salazar",
+    "Name": "Miguel Sa",
     "Username": "miguel21",
     "Password": "1234",
     "Age": 26,
@@ -342,9 +342,9 @@
     "Password": "1234",
     "Age": 38,
     "Weight": 92,
-    "Height": 185,
+    "Height": 183,
     "Gender": "Male",
-    "Goal": "Maintain",
+    "Goal": "LoseFat",
     "ActivityLevel": "Light",
     "DietType": "Standard",
     "Role": "Admin"

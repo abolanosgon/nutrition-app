@@ -7,7 +7,7 @@ namespace Nutrition_App.Views
 {
     public partial class EditFoodForm : Form
     {
-        private Food selectedFood;
+        private Food? selectedFood;
         private FoodController foodController = new FoodController();
 
         public EditFoodForm()
@@ -40,6 +40,12 @@ namespace Nutrition_App.Views
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
+            if (selectedFood == null)
+            {
+                MessageBox.Show("No se encontró el alimento.");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txtFoodName.Text) ||
                 string.IsNullOrWhiteSpace(txtCategory.Text) ||
                 string.IsNullOrWhiteSpace(txtPortionSize.Text))

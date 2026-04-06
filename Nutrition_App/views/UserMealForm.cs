@@ -8,7 +8,7 @@ namespace Nutrition_App.Views
 {
     public partial class UserMealForm : Form
     {
-        private User loggedUser;
+        private User? loggedUser;
         private FoodController foodController = new FoodController();
         private MealRecordController mealRecordController = new MealRecordController();
         private int selectedMealRecordId = -1;
@@ -119,7 +119,7 @@ namespace Nutrition_App.Views
 
             string mealType = "";
 
-            switch (cmbMealType.SelectedItem.ToString())
+            switch (cmbMealType.SelectedItem?.ToString() ?? "")
             {
                 case "Desayuno":
                     mealType = "Breakfast";
@@ -135,10 +135,22 @@ namespace Nutrition_App.Views
                     break;
             }
 
+            if (string.IsNullOrWhiteSpace(mealType))
+            {
+                MessageBox.Show("El tipo de comida seleccionado no es válido.");
+                return;
+            }
+
+            if (cmbFoods.SelectedValue == null || !int.TryParse(cmbFoods.SelectedValue.ToString(), out int foodId))
+            {
+                MessageBox.Show("No se pudo obtener el alimento seleccionado.");
+                return;
+            }
+
             MealRecord record = new MealRecord
             {
                 UserId = loggedUser.Id,
-                FoodId = Convert.ToInt32(cmbFoods.SelectedValue),
+                FoodId = foodId,
                 RecordDate = DateTime.Now,
                 MealType = mealType,
                 Quantity = quantity
@@ -155,21 +167,16 @@ namespace Nutrition_App.Views
             LoadMealRecords();
         }
 
-        private void UserMealForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void dgvMealRecords_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 var row = dgvMealRecords.Rows[e.RowIndex];
+                object? idValue = row.Cells["Id"].Value;
 
-                if (row.Cells["Id"].Value != null)
+                if (idValue != null && int.TryParse(idValue.ToString(), out int id))
                 {
-                    selectedMealRecordId = Convert.ToInt32(row.Cells["Id"].Value);
+                    selectedMealRecordId = id;
                 }
             }
         }
