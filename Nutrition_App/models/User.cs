@@ -1,19 +1,18 @@
 ﻿namespace Nutrition_App.Models
 {
-    // Representa al usuario que utiliza la aplicación
     public class User
     {
-        public int Id { get; set; }               // Identificador único interno
-        public string Name { get; set; }          // Nombre del usuario
-        public string Username { get; set; }      // Nombre de usuario para iniciar sesión
-        public string Password { get; set; }      // Contraseña del usuario
-        public int Age { get; set; }              // Edad
-        public double Weight { get; set; }        // Peso en kg
-        public double Height { get; set; }        // Altura en cm
-        public string Gender { get; set; }        // Género
-        public string Goal { get; set; }          // Objetivo nutricional
-        public string ActivityLevel { get; set; } // Nivel de actividad
-        public string DietType { get; set; }      // Tipo de dieta
-        public string Role { get; set; }          // Rol del usuario: Admin o User
+        public int Id { get; set; }
+        public string Name { get; set; } = "";
+        public string Username { get; set; } = "";
+        public string Password { get; set; } = "";
+        public int Age { get; set; }
+        public double Weight { get; set; }
+        public double Height { get; set; }
+        public string Gender { get; set; } = "";
+        public string Goal { get; set; } = "";
+        public string ActivityLevel { get; set; } = "";
+        public string DietType { get; set; } = "";
+        public string Role { get; set; } = "";
     }
 }

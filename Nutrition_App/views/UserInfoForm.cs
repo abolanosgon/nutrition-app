@@ -7,7 +7,7 @@ namespace Nutrition_App.Views
 {
     public partial class UserInfoForm : Form
     {
-        private User currentUser;
+        private User? currentUser;
         private NutritionService nutritionService;
 
         public UserInfoForm(User user)

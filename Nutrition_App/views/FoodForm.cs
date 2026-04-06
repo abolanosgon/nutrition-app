@@ -9,7 +9,7 @@ namespace Nutrition_App.Views
     {
         private FoodController foodController = new FoodController();
         private int selectedFoodId = -1;
-        private User loggedUser;
+        private User? loggedUser;
 
         public FoodForm(User user)
         {
@@ -91,7 +91,12 @@ namespace Nutrition_App.Views
             if (e.RowIndex >= 0)
             {
                 var row = dgvFoods.Rows[e.RowIndex];
-                selectedFoodId = Convert.ToInt32(row.Cells["Id"].Value);
+                object? idValue = row.Cells["Id"].Value;
+
+                if (idValue != null && int.TryParse(idValue.ToString(), out int id))
+                {
+                    selectedFoodId = id;
+                }
             }
         }
 
@@ -112,8 +117,7 @@ namespace Nutrition_App.Views
             if (result == DialogResult.Yes)
             {
                 foodController.DeleteFood(selectedFoodId);
-
-                LoadFoods(); // refresca el grid
+                LoadFoods();
                 selectedFoodId = -1;
 
                 MessageBox.Show("Alimento eliminado correctamente.");
@@ -140,7 +144,7 @@ namespace Nutrition_App.Views
                 return;
             }
 
-            Food selectedFood = foodController.GetFoodById(selectedFoodId);
+            Food? selectedFood = foodController.GetFoodById(selectedFoodId);
 
             if (selectedFood == null)
             {

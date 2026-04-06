@@ -15,9 +15,6 @@ namespace Nutrition_App.Services
             _foods = foods ?? new List<Food>();
         }
 
-        // =========================
-        // ESTADÍSTICAS GENERALES
-        // =========================
         public NutritionStatsSummary GetSummary()
         {
             int totalMealRecords = _mealRecords.Count;
@@ -120,6 +117,7 @@ namespace Nutrition_App.Services
                     };
                 })
                 .Where(stat => stat != null)
+                .Select(stat => stat!)
                 .OrderByDescending(stat => stat.TimesConsumed)
                 .Take(top)
                 .ToList();
@@ -127,9 +125,6 @@ namespace Nutrition_App.Services
             return topFoods;
         }
 
-        // =========================
-        // ESTADÍSTICAS POR USUARIO
-        // =========================
         public NutritionStatsSummary GetSummaryByUser(int userId)
         {
             var userRecords = _mealRecords
@@ -230,6 +225,7 @@ namespace Nutrition_App.Services
                     };
                 })
                 .Where(stat => stat != null)
+                .Select(stat => stat!)
                 .OrderByDescending(stat => stat.TimesConsumed)
                 .Take(top)
                 .ToList();

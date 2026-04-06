@@ -9,11 +9,15 @@ namespace Nutrition_App.Repositories
 {
     public class UserJsonRepository : IUserRepository
     {
-        private readonly string filePath = Path.Combine(
-            Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
-            "data",
-            "users.json"
-        );
+        private readonly string filePath;
+
+        public UserJsonRepository()
+        {
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string projectDir = Directory.GetParent(baseDir)?.Parent?.Parent?.Parent?.FullName ?? baseDir;
+
+            filePath = Path.Combine(projectDir, "data", "users.json");
+        }
 
         public void Add(User user)
         {
@@ -43,7 +47,7 @@ namespace Nutrition_App.Repositories
         {
             List<User> users = GetAll();
 
-            User userToRemove = users.FirstOrDefault(u => u.Id == userId);
+            User? userToRemove = users.FirstOrDefault(u => u.Id == userId);
 
             if (userToRemove != null)
             {
@@ -56,7 +60,7 @@ namespace Nutrition_App.Repositories
         {
             List<User> users = GetAll();
 
-            User existingUser = users.FirstOrDefault(u => u.Id == user.Id);
+            User? existingUser = users.FirstOrDefault(u => u.Id == user.Id);
 
             if (existingUser != null)
             {
@@ -78,7 +82,12 @@ namespace Nutrition_App.Repositories
 
         private void SaveAll(List<User> users)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath)!);
+            string? directory = Path.GetDirectoryName(filePath);
+
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
 
             string json = JsonSerializer.Serialize(users, new JsonSerializerOptions
             {
@@ -90,8 +99,12 @@ namespace Nutrition_App.Repositories
 
         private void EnsureFileExists()
         {
-            string directory = Path.GetDirectoryName(filePath)!;
-            Directory.CreateDirectory(directory);
+            string? directory = Path.GetDirectoryName(filePath);
+
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
 
             if (!File.Exists(filePath))
             {

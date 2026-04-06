@@ -9,14 +9,15 @@ namespace Nutrition_App.Repositories
 {
     public class MealRecordJsonRepository : IMealRecordRepository
     {
-        private readonly string filePath = Path.Combine(
-            Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
-            "data",
-            "mealRecords.json"
-        );
+        private readonly string filePath;
 
         public MealRecordJsonRepository()
         {
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string projectDir = Directory.GetParent(baseDir)?.Parent?.Parent?.Parent?.FullName ?? baseDir;
+
+            filePath = Path.Combine(projectDir, "data", "mealRecords.json");
+
             EnsureFileExists();
         }
 
@@ -48,7 +49,7 @@ namespace Nutrition_App.Repositories
         {
             List<MealRecord> records = GetAll();
 
-            MealRecord recordToRemove = records.FirstOrDefault(r => r.Id == recordId);
+            MealRecord? recordToRemove = records.FirstOrDefault(r => r.Id == recordId);
 
             if (recordToRemove != null)
             {
@@ -61,7 +62,7 @@ namespace Nutrition_App.Repositories
         {
             List<MealRecord> records = GetAll();
 
-            MealRecord existingRecord = records.FirstOrDefault(r => r.Id == record.Id);
+            MealRecord? existingRecord = records.FirstOrDefault(r => r.Id == record.Id);
 
             if (existingRecord != null)
             {
@@ -77,7 +78,12 @@ namespace Nutrition_App.Repositories
 
         private void SaveAll(List<MealRecord> records)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath)!);
+            string? directory = Path.GetDirectoryName(filePath);
+
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
 
             string json = JsonSerializer.Serialize(records, new JsonSerializerOptions
             {
@@ -89,8 +95,12 @@ namespace Nutrition_App.Repositories
 
         private void EnsureFileExists()
         {
-            string directory = Path.GetDirectoryName(filePath)!;
-            Directory.CreateDirectory(directory);
+            string? directory = Path.GetDirectoryName(filePath);
+
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
 
             if (!File.Exists(filePath))
             {

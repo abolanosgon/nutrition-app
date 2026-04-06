@@ -1,4 +1,7 @@
 ﻿using Nutrition_App.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 
 namespace Nutrition_App.Repositories
@@ -9,11 +12,10 @@ namespace Nutrition_App.Repositories
 
         public MenuJsonRepository()
         {
-            _filePath = Path.Combine(
-                Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
-                "data",
-                "menus.json"
-            );
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string projectDir = Directory.GetParent(baseDir)?.Parent?.Parent?.Parent?.FullName ?? baseDir;
+
+            _filePath = Path.Combine(projectDir, "data", "menus.json");
 
             EnsureMenuFileExists();
         }
@@ -34,8 +36,12 @@ namespace Nutrition_App.Repositories
 
         private void EnsureMenuFileExists()
         {
-            string directory = Path.GetDirectoryName(_filePath)!;
-            Directory.CreateDirectory(directory);
+            string? directory = Path.GetDirectoryName(_filePath);
+
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
 
             if (!File.Exists(_filePath))
             {

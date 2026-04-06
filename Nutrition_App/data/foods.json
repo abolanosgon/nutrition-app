@@ -2,7 +2,7 @@
   {
     "Id": 1,
     "Name": "Pechuga de pollo",
-    "Category": "Proteína",
+    "Category": "Prote\u00EDna",
     "Calories": 165,
     "Protein": 31,
     "Carbohydrates": 0,
@@ -12,7 +12,7 @@
   {
     "Id": 2,
     "Name": "Carne de res magra",
-    "Category": "Proteína",
+    "Category": "Prote\u00EDna",
     "Calories": 217,
     "Protein": 26,
     "Carbohydrates": 0,
@@ -21,8 +21,8 @@
   },
   {
     "Id": 3,
-    "Name": "Atún en agua",
-    "Category": "Proteína",
+    "Name": "At\u00FAn en agua",
+    "Category": "Prote\u00EDna",
     "Calories": 116,
     "Protein": 26,
     "Carbohydrates": 0,
@@ -31,8 +31,8 @@
   },
   {
     "Id": 4,
-    "Name": "Salmón",
-    "Category": "Proteína",
+    "Name": "Salm\u00F3n",
+    "Category": "Prote\u00EDna",
     "Calories": 208,
     "Protein": 20,
     "Carbohydrates": 0,
@@ -42,7 +42,7 @@
   {
     "Id": 5,
     "Name": "Tilapia",
-    "Category": "Proteína",
+    "Category": "Prote\u00EDna",
     "Calories": 129,
     "Protein": 26,
     "Carbohydrates": 0,
@@ -52,17 +52,17 @@
   {
     "Id": 6,
     "Name": "Huevos",
-    "Category": "Proteína",
+    "Category": "Prote\u00EDna",
     "Calories": 155,
     "Protein": 13,
-    "Carbohydrates": 1.1,
+    "Carbohydrates": 1.2,
     "Fat": 11,
     "PortionSize": "100 g"
   },
   {
     "Id": 7,
     "Name": "Claras de huevo",
-    "Category": "Proteína",
+    "Category": "Prote\u00EDna",
     "Calories": 52,
     "Protein": 11,
     "Carbohydrates": 0.7,
@@ -72,7 +72,7 @@
   {
     "Id": 8,
     "Name": "Pavo",
-    "Category": "Proteína",
+    "Category": "Prote\u00EDna",
     "Calories": 135,
     "Protein": 29,
     "Carbohydrates": 0,
@@ -82,7 +82,7 @@
   {
     "Id": 9,
     "Name": "Lomo de cerdo",
-    "Category": "Proteína",
+    "Category": "Prote\u00EDna",
     "Calories": 143,
     "Protein": 26,
     "Carbohydrates": 0,
@@ -92,14 +92,13 @@
   {
     "Id": 10,
     "Name": "Tofu",
-    "Category": "Proteína",
+    "Category": "Prote\u00EDna",
     "Calories": 76,
     "Protein": 8,
     "Carbohydrates": 1.9,
     "Fat": 4.8,
     "PortionSize": "100 g"
   },
-
   {
     "Id": 11,
     "Name": "Arroz blanco cocido",
@@ -182,7 +181,7 @@
   },
   {
     "Id": 19,
-    "Name": "Tortilla de maíz",
+    "Name": "Tortilla de ma\u00EDz",
     "Category": "Carbohidrato",
     "Calories": 218,
     "Protein": 5.7,
@@ -200,7 +199,6 @@
     "Fat": 1.9,
     "PortionSize": "100 g"
   },
-
   {
     "Id": 21,
     "Name": "Frijoles negros",
@@ -251,11 +249,10 @@
     "Fat": 5.2,
     "PortionSize": "100 g"
   },
-
   {
     "Id": 26,
     "Name": "Leche descremada",
-    "Category": "Lácteo",
+    "Category": "L\u00E1cteo",
     "Calories": 34,
     "Protein": 3.4,
     "Carbohydrates": 5,
@@ -265,7 +262,7 @@
   {
     "Id": 27,
     "Name": "Leche entera",
-    "Category": "Lácteo",
+    "Category": "L\u00E1cteo",
     "Calories": 61,
     "Protein": 3.2,
     "Carbohydrates": 4.8,
@@ -275,7 +272,7 @@
   {
     "Id": 28,
     "Name": "Yogur griego natural",
-    "Category": "Lácteo",
+    "Category": "L\u00E1cteo",
     "Calories": 59,
     "Protein": 10,
     "Carbohydrates": 3.6,
@@ -285,7 +282,7 @@
   {
     "Id": 29,
     "Name": "Queso cottage",
-    "Category": "Lácteo",
+    "Category": "L\u00E1cteo",
     "Calories": 98,
     "Protein": 11.1,
     "Carbohydrates": 3.4,
@@ -295,14 +292,13 @@
   {
     "Id": 30,
     "Name": "Queso mozzarella",
-    "Category": "Lácteo",
+    "Category": "L\u00E1cteo",
     "Calories": 280,
     "Protein": 28,
     "Carbohydrates": 3.1,
     "Fat": 17,
     "PortionSize": "100 g"
   },
-
   {
     "Id": 31,
     "Name": "Aguacate",
@@ -325,7 +321,7 @@
   },
   {
     "Id": 33,
-    "Name": "Mantequilla de maní",
+    "Name": "Mantequilla de man\u00ED",
     "Category": "Grasa saludable",
     "Calories": 588,
     "Protein": 25,
@@ -355,7 +351,7 @@
   },
   {
     "Id": 36,
-    "Name": "Semillas de chía",
+    "Name": "Semillas de ch\u00EDa",
     "Category": "Grasa saludable",
     "Calories": 486,
     "Protein": 16.5,
@@ -375,7 +371,7 @@
   },
   {
     "Id": 38,
-    "Name": "Marañón",
+    "Name": "Mara\u00F1\u00F3n",
     "Category": "Grasa saludable",
     "Calories": 553,
     "Protein": 18.2,
@@ -383,7 +379,6 @@
     "Fat": 43.8,
     "PortionSize": "100 g"
   },
-
   {
     "Id": 39,
     "Name": "Banano",
@@ -416,7 +411,7 @@
   },
   {
     "Id": 42,
-    "Name": "Piña",
+    "Name": "Pi\u00F1a",
     "Category": "Fruta",
     "Calories": 50,
     "Protein": 0.5,
@@ -436,7 +431,7 @@
   },
   {
     "Id": 44,
-    "Name": "Sandía",
+    "Name": "Sand\u00EDa",
     "Category": "Fruta",
     "Calories": 30,
     "Protein": 0.6,
@@ -464,10 +459,9 @@
     "Fat": 0.2,
     "PortionSize": "100 g"
   },
-
   {
     "Id": 47,
-    "Name": "Brócoli",
+    "Name": "Br\u00F3coli",
     "Category": "Vegetal",
     "Calories": 34,
     "Protein": 2.8,
@@ -555,7 +549,6 @@
     "Fat": 0.1,
     "PortionSize": "100 g"
   },
-
   {
     "Id": 56,
     "Name": "Galletas de arroz",
@@ -578,7 +571,7 @@
   },
   {
     "Id": 58,
-    "Name": "Barra de proteína",
+    "Name": "Barra de prote\u00EDna",
     "Category": "Snack",
     "Calories": 350,
     "Protein": 25,
@@ -606,10 +599,9 @@
     "Fat": 1.5,
     "PortionSize": "100 ml"
   },
-
   {
     "Id": 61,
-    "Name": "Batido de proteína",
+    "Name": "Batido de prote\u00EDna",
     "Category": "Suplemento",
     "Calories": 120,
     "Protein": 24,
@@ -619,7 +611,7 @@
   },
   {
     "Id": 62,
-    "Name": "Leche de almendra sin azúcar",
+    "Name": "Leche de almendra sin az\u00FAcar",
     "Category": "Bebida",
     "Calories": 17,
     "Protein": 0.6,
@@ -629,7 +621,7 @@
   },
   {
     "Id": 63,
-    "Name": "Café negro",
+    "Name": "Caf\u00E9 negro",
     "Category": "Bebida",
     "Calories": 2,
     "Protein": 0.1,
@@ -639,7 +631,7 @@
   },
   {
     "Id": 64,
-    "Name": "Té verde",
+    "Name": "T\u00E9 verde",
     "Category": "Bebida",
     "Calories": 1,
     "Protein": 0,
@@ -649,12 +641,12 @@
   },
   {
     "Id": 65,
-    "Name": "Jugo de naranja natural",
-    "Category": "Bebida",
-    "Calories": 45,
-    "Protein": 0.7,
-    "Carbohydrates": 10.4,
-    "Fat": 0.2,
-    "PortionSize": "100 ml"
+    "Name": "Jugo de naranja",
+    "Category": "bebida",
+    "Calories": 5,
+    "Protein": 0.5,
+    "Carbohydrates": 0.1,
+    "Fat": 0.4,
+    "PortionSize": "1"
   }
 ]

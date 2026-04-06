@@ -14,6 +14,9 @@ namespace Nutrition_App.Controllers
 
         public Menu? GetAssignedMenu(User user)
         {
+            if (user == null)
+                return null;
+
             return _menuService.GetMenuForUser(user);
         }
     }

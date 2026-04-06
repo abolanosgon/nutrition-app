@@ -4,7 +4,6 @@ using Nutrition_App.Repositories;
 
 namespace Nutrition_App.Services
 {
-    // Maneja la lógica relacionada con los alimentos
     public class FoodService
     {
         private readonly IFoodRepository foodRepository;

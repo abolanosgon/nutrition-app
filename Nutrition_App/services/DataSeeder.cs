@@ -12,22 +12,25 @@ namespace Nutrition_App.Services
     {
         private readonly FoodJsonRepository foodRepository;
 
-        private readonly string usersFilePath =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "users.json");
-
-        private readonly string mealRecordsFilePath =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "mealRecords.json");
+        private readonly string usersFilePath;
+        private readonly string mealRecordsFilePath;
 
         public DataSeeder()
         {
             foodRepository = new FoodJsonRepository();
+
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string projectDir = Directory.GetParent(baseDir)?.Parent?.Parent?.FullName ?? baseDir;
+
+            usersFilePath = Path.Combine(projectDir, "data", "users.json");
+            mealRecordsFilePath = Path.Combine(projectDir, "data", "mealRecords.json");
         }
 
         public void SeedAllData()
         {
             List<Food> foods = foodRepository.GetAll();
 
-            if (foods == null || foods.Count == 0)
+            if (foods.Count == 0)
             {
                 throw new Exception("No hay alimentos en foods.json. No se pueden generar registros.");
             }
@@ -65,9 +68,9 @@ namespace Nutrition_App.Services
 
         private void EnsureDirectoryExists(string filePath)
         {
-            string directory = Path.GetDirectoryName(filePath);
+            string? directory = Path.GetDirectoryName(filePath);
 
-            if (!Directory.Exists(directory))
+            if (!string.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }

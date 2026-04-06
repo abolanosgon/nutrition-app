@@ -6,7 +6,6 @@ using Nutrition_App.Services;
 
 namespace Nutrition_App.Controllers
 {
-    // Coordina la comunicación entre la vista y la lógica de usuarios
     public class UserController
     {
         private readonly UserService userService;
@@ -37,7 +36,7 @@ namespace Nutrition_App.Controllers
             userService.UpdateUser(user);
         }
 
-        public User AuthenticateUser(string username, string password)
+        public User? AuthenticateUser(string username, string password)
         {
             List<User> users = userService.GetUsers();
             return users.FirstOrDefault(u => u.Username == username && u.Password == password);
@@ -48,7 +47,7 @@ namespace Nutrition_App.Controllers
             userService.EnsureAdminUser();
         }
 
-        public User GetUserById(int userId)
+        public User? GetUserById(int userId)
         {
             List<User> users = userService.GetUsers();
             return users.FirstOrDefault(u => u.Id == userId);

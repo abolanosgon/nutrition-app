@@ -15,7 +15,6 @@
 
         private void InitializeComponent()
         {
-            lbl = new Label();
             lblWelcomeUser = new Label();
             btnEditProfile = new Button();
             btnDeleteAccount = new Button();
@@ -28,19 +27,10 @@
             ((System.ComponentModel.ISupportInitialize)dgvUserData).BeginInit();
             SuspendLayout();
             // 
-            // lbl
-            // 
-            lbl.AutoSize = true;
-            lbl.Location = new Point(190, 149);
-            lbl.Name = "lbl";
-            lbl.Size = new Size(66, 15);
-            lbl.TabIndex = 0;
-            lbl.Text = "Bienvenido";
-            // 
             // lblWelcomeUser
             // 
             lblWelcomeUser.AutoSize = true;
-            lblWelcomeUser.Location = new Point(312, 149);
+            lblWelcomeUser.Location = new Point(219, 150);
             lblWelcomeUser.Name = "lblWelcomeUser";
             lblWelcomeUser.Size = new Size(38, 15);
             lblWelcomeUser.TabIndex = 1;
@@ -138,7 +128,6 @@
             Controls.Add(btnDeleteAccount);
             Controls.Add(btnEditProfile);
             Controls.Add(lblWelcomeUser);
-            Controls.Add(lbl);
             Name = "UserForm";
             Text = "UserForm";
             Load += UserForm_Load;
@@ -146,7 +135,6 @@
             ResumeLayout(false);
             PerformLayout();
         }
-        private Label lbl;
         private Label lblWelcomeUser;
         private Button btnEditProfile;
         private Button btnDeleteAccount;

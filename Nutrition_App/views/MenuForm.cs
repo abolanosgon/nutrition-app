@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using Nutrition_App.Controllers;
 using Nutrition_App.Models;
 using Nutrition_App.Repositories;
@@ -37,6 +30,10 @@ namespace Nutrition_App.Views
             if (menu == null)
             {
                 MessageBox.Show("No se encontró un menú asignado para este usuario.");
+                lblMenuName.Text = "Sin menú asignado";
+                lblGoal.Text = "Objetivo: ---";
+                lblDietType.Text = "Tipo de dieta: ---";
+                dgvMenu.DataSource = null;
                 return;
             }
 
@@ -62,9 +59,8 @@ namespace Nutrition_App.Views
                 };
             }).ToList();
 
+            dgvMenu.DataSource = null;
             dgvMenu.DataSource = menuDetails;
         }
-
- 
     }
 }
