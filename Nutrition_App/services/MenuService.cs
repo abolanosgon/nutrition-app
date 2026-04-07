@@ -49,6 +49,7 @@ namespace Nutrition_App.Services
                 case "gainmuscle":
                 case "gain muscle":
                 case "ganar masa":
+                case "ganar masa muscular":
                 case "ganarmasa":
                 case "ganar peso":
                 case "aumentar peso":

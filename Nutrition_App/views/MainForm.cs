@@ -179,11 +179,11 @@ namespace Nutrition_App.Views
             switch (selectedGoal)
             {
                 case "Mantener peso":
-                    return "Maintain";
+                    return "maintain";
                 case "Perder grasa":
-                    return "LoseFat";
+                    return "losefat";
                 case "Ganar masa muscular":
-                    return "GainMuscle";
+                    return "gainmuscle";
                 default:
                     return "";
             }
@@ -215,11 +215,11 @@ namespace Nutrition_App.Views
             switch (selectedDiet)
             {
                 case "Estándar":
-                    return "Standard";
+                    return "standard";
                 case "Keto":
-                    return "Keto";
+                    return "keto";
                 case "Vegetariana":
-                    return "Vegetarian";
+                    return "vegetarian";
                 default:
                     return "";
             }
@@ -261,15 +261,15 @@ namespace Nutrition_App.Views
                 }
 
                 string goal = row.Cells["Goal"].Value?.ToString() ?? "";
-                if (goal == "Maintain")
+                if (goal == "maintain")
                 {
                     row.Cells["Goal"].Value = "Mantener peso";
                 }
-                else if (goal == "LoseFat")
+                else if (goal == "losefat")
                 {
                     row.Cells["Goal"].Value = "Perder grasa";
                 }
-                else if (goal == "GainMuscle")
+                else if (goal == "gainmuscle")
                 {
                     row.Cells["Goal"].Value = "Ganar masa muscular";
                 }
@@ -293,15 +293,15 @@ namespace Nutrition_App.Views
                 }
 
                 string dietType = row.Cells["DietType"].Value?.ToString() ?? "";
-                if (dietType == "Standard")
+                if (dietType == "standard")
                 {
                     row.Cells["DietType"].Value = "Estándar";
                 }
-                else if (dietType == "Keto")
+                else if (dietType == "keto")
                 {
                     row.Cells["DietType"].Value = "Keto";
                 }
-                else if (dietType == "Vegetarian")
+                else if (dietType == "vegetarian")
                 {
                     row.Cells["DietType"].Value = "Vegetariana";
                 }
@@ -342,16 +342,9 @@ namespace Nutrition_App.Views
             if (e.RowIndex >= 0)
             {
                 var row = dgvUsers.Rows[e.RowIndex];
-
                 string name = row.Cells["Name"].Value?.ToString() ?? "";
-
                 lblSelectedUser.Text = "Usuario seleccionado: " + name;
             }
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -387,35 +380,6 @@ namespace Nutrition_App.Views
                 UserForm userForm = new UserForm(authenticatedUser);
                 userForm.Show();
                 this.Hide();
-            }
-        }
-
-        private void btnSeedData_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                "Esto reemplazará los usuarios y registros de comida actuales. ¿Desea continuar?",
-                "Confirmar carga de datos",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (result != DialogResult.Yes)
-            {
-                return;
-            }
-
-            try
-            {
-                DataSeeder seeder = new DataSeeder();
-                seeder.SeedAllData();
-
-                LoadUsers();
-
-                MessageBox.Show("Datos base cargados correctamente.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error al cargar los datos: " + ex.Message);
             }
         }
     }
