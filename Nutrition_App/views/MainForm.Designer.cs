@@ -111,7 +111,6 @@
             label3.Size = new Size(32, 15);
             label3.TabIndex = 5;
             label3.Text = "Peso";
-            label3.Click += label3_Click;
             // 
             // txtWeight
             // 
