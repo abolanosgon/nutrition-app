@@ -3,10 +3,14 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Services
 {
+    // Servicio encargado de calcular la información nutricional del usuario.
+    // Calcula IMC, calorías de mantenimiento, calorías objetivo y macronutrientes.
     public class NutritionService
     {
+        // Calcula toda la información nutricional a partir de los datos del usuario
         public NutritionInfo CalculateNutritionInfo(User user)
         {
+            // Valida que el usuario exista
             if (user == null)
             {
                 throw new ArgumentNullException(nameof(user));
@@ -20,6 +24,7 @@ namespace Nutrition_App.Services
             double carbsGrams;
             double fatsGrams;
 
+            // Calcula la distribución de macronutrientes según calorías objetivo y tipo de dieta
             CalculateMacros(
                 targetCalories,
                 user.DietType,
@@ -28,6 +33,7 @@ namespace Nutrition_App.Services
                 out fatsGrams
             );
 
+            // Devuelve el resultado redondeado
             return new NutritionInfo
             {
                 BMI = Math.Round(bmi, 2),
@@ -39,16 +45,19 @@ namespace Nutrition_App.Services
             };
         }
 
+        // Calcula el índice de masa corporal
         private double CalculateBMI(double weight, double heightInCm)
         {
             double heightInMeters = heightInCm / 100.0;
             return weight / (heightInMeters * heightInMeters);
         }
 
+        // Calcula las calorías de mantenimiento usando metabolismo basal y nivel de actividad
         private double CalculateMaintenanceCalories(User user)
         {
             double bmr;
 
+            // Fórmula distinta según género
             if (user.Gender == "Male")
             {
                 bmr = 10 * user.Weight + 6.25 * user.Height - 5 * user.Age + 5;
@@ -63,6 +72,7 @@ namespace Nutrition_App.Services
             return bmr * activityMultiplier;
         }
 
+        // Devuelve el multiplicador correspondiente al nivel de actividad
         private double GetActivityMultiplier(string activityLevel)
         {
             switch (activityLevel)
@@ -80,6 +90,7 @@ namespace Nutrition_App.Services
             }
         }
 
+        // Calcula las calorías objetivo según el objetivo del usuario
         private double CalculateTargetCalories(double maintenanceCalories, string goal)
         {
             switch (goal)
@@ -94,6 +105,7 @@ namespace Nutrition_App.Services
             }
         }
 
+        // Calcula gramos de proteína, carbohidratos y grasas según dieta y calorías objetivo
         private void CalculateMacros(
             double targetCalories,
             string dietType,
@@ -105,6 +117,7 @@ namespace Nutrition_App.Services
             double carbsPercentage;
             double fatsPercentage;
 
+            // Distribución de macronutrientes según el tipo de dieta
             switch (dietType)
             {
                 case "Keto":
@@ -127,6 +140,7 @@ namespace Nutrition_App.Services
                     break;
             }
 
+            // Conversión de calorías a gramos
             proteinGrams = (targetCalories * proteinPercentage) / 4;
             carbsGrams = (targetCalories * carbsPercentage) / 4;
             fatsGrams = (targetCalories * fatsPercentage) / 9;

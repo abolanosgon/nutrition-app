@@ -7,8 +7,11 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Repositories
 {
+    // Repositorio encargado de gestionar el almacenamiento de alimentos en un archivo JSON.
+    // Implementa operaciones CRUD básicas sobre foods.json.
     public class FoodJsonRepository : IFoodRepository
     {
+        // Ruta del archivo JSON donde se guardan los alimentos
         private readonly string filePath;
 
         public FoodJsonRepository()
@@ -18,19 +21,23 @@ namespace Nutrition_App.Repositories
 
             filePath = Path.Combine(projectDir, "data", "foods.json");
 
+            // Asegura que el archivo exista antes de usarlo
             EnsureFoodFileExists();
         }
 
+        // Agrega un nuevo alimento al archivo
         public void Add(Food food)
         {
             List<Food> foods = GetAll();
 
+            // Asigna Id consecutivo
             food.Id = foods.Count == 0 ? 1 : foods.Max(f => f.Id) + 1;
             foods.Add(food);
 
             SaveAll(foods);
         }
 
+        // Obtiene todos los alimentos almacenados
         public List<Food> GetAll()
         {
             EnsureFoodFileExists();
@@ -45,6 +52,7 @@ namespace Nutrition_App.Repositories
             return JsonSerializer.Deserialize<List<Food>>(json) ?? new List<Food>();
         }
 
+        // Elimina un alimento según su Id
         public void Delete(int foodId)
         {
             List<Food> foods = GetAll();
@@ -58,6 +66,7 @@ namespace Nutrition_App.Repositories
             }
         }
 
+        // Actualiza un alimento existente según su Id
         public void Update(Food food)
         {
             List<Food> foods = GetAll();
@@ -78,6 +87,7 @@ namespace Nutrition_App.Repositories
             }
         }
 
+        // Guarda toda la lista de alimentos en el archivo JSON
         private void SaveAll(List<Food> foods)
         {
             string? directory = Path.GetDirectoryName(filePath);
@@ -95,6 +105,8 @@ namespace Nutrition_App.Repositories
             File.WriteAllText(filePath, json);
         }
 
+        // Verifica que el archivo foods.json exista
+        // Si no existe, lo crea con una lista vacía
         private void EnsureFoodFileExists()
         {
             string? directory = Path.GetDirectoryName(filePath);

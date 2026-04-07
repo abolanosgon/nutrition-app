@@ -8,10 +8,14 @@ using System.Text.Json;
 
 namespace Nutrition_App.Services
 {
+    // Servicio encargado de generar datos base para la aplicación.
+    // Crea usuarios predefinidos y registros de comidas simulados.
     public class DataSeeder
     {
+        // Repositorio de alimentos usado para obtener los alimentos existentes
         private readonly FoodJsonRepository foodRepository;
 
+        // Rutas de archivos donde se guardarán usuarios y registros de comida
         private readonly string usersFilePath;
         private readonly string mealRecordsFilePath;
 
@@ -26,10 +30,12 @@ namespace Nutrition_App.Services
             mealRecordsFilePath = Path.Combine(projectDir, "data", "mealRecords.json");
         }
 
+        // Genera y guarda todos los datos base del sistema
         public void SeedAllData()
         {
             List<Food> foods = foodRepository.GetAll();
 
+            // Valida que existan alimentos antes de generar registros
             if (foods.Count == 0)
             {
                 throw new Exception("No hay alimentos en foods.json. No se pueden generar registros.");
@@ -42,6 +48,7 @@ namespace Nutrition_App.Services
             SaveMealRecords(mealRecords);
         }
 
+        // Guarda la lista de usuarios en el archivo users.json
         private void SaveUsers(List<User> users)
         {
             EnsureDirectoryExists(usersFilePath);
@@ -54,6 +61,7 @@ namespace Nutrition_App.Services
             File.WriteAllText(usersFilePath, json);
         }
 
+        // Guarda la lista de registros de comidas en mealRecords.json
         private void SaveMealRecords(List<MealRecord> mealRecords)
         {
             EnsureDirectoryExists(mealRecordsFilePath);
@@ -66,6 +74,7 @@ namespace Nutrition_App.Services
             File.WriteAllText(mealRecordsFilePath, json);
         }
 
+        // Asegura que exista el directorio del archivo antes de guardar
         private void EnsureDirectoryExists(string filePath)
         {
             string? directory = Path.GetDirectoryName(filePath);
@@ -76,6 +85,7 @@ namespace Nutrition_App.Services
             }
         }
 
+        // Genera una lista fija de usuarios base para pruebas
         private List<User> GenerateUsers()
         {
             return new List<User>
@@ -108,14 +118,17 @@ namespace Nutrition_App.Services
             };
         }
 
+        // Genera registros de comida simulados para cada usuario durante 15 días
         private List<MealRecord> GenerateMealRecords(List<User> users, List<Food> foods)
         {
             List<MealRecord> mealRecords = new List<MealRecord>();
             Random random = new Random();
             int recordId = 1;
 
+            // Fecha inicial: 14 días antes del día actual
             DateTime startDate = DateTime.Today.AddDays(-14);
 
+            // Tipos de comida usados para generar registros
             List<string> mealTypes = new List<string>
             {
                 "Breakfast",
@@ -152,6 +165,7 @@ namespace Nutrition_App.Services
             return mealRecords;
         }
 
+        // Selecciona un alimento aleatorio según el tipo de comida
         private Food SelectFoodByMealType(List<Food> foods, string mealType, Random random)
         {
             List<Food> filteredFoods;
@@ -192,6 +206,7 @@ namespace Nutrition_App.Services
                     break;
             }
 
+            // Si no encuentra alimentos filtrados, usa toda la lista
             if (filteredFoods.Count == 0)
             {
                 filteredFoods = foods;
@@ -201,6 +216,7 @@ namespace Nutrition_App.Services
             return filteredFoods[randomIndex];
         }
 
+        // Asigna una hora aproximada al registro según el tipo de comida
         private DateTime GetDateWithMealHour(DateTime date, string mealType)
         {
             switch (mealType)
@@ -218,6 +234,7 @@ namespace Nutrition_App.Services
             }
         }
 
+        // Devuelve una cantidad aleatoria dentro de un conjunto predefinido
         private double GetRandomQuantity(Random random)
         {
             double[] quantities = { 0.5, 1.0, 1.5, 2.0 };

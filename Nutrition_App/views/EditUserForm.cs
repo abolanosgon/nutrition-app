@@ -5,16 +5,23 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Views
 {
+    // Formulario para editar la información de un usuario existente.
+    // Permite modificar datos personales y preferencias (objetivo, dieta, etc.).
     public partial class EditUserForm : Form
     {
+        // Usuario seleccionado que se va a editar
         private User? selectedUser;
+
+        // Controlador para manejar operaciones de usuarios
         private UserController userController = new UserController();
 
+        // Constructor por defecto
         public EditUserForm()
         {
             InitializeComponent();
         }
 
+        // Constructor que recibe el usuario a editar
         public EditUserForm(User user)
         {
             InitializeComponent();
@@ -22,6 +29,7 @@ namespace Nutrition_App.Views
             LoadUserData();
         }
 
+        // Carga los datos del usuario en los campos del formulario
         private void LoadUserData()
         {
             if (selectedUser == null)
@@ -34,12 +42,14 @@ namespace Nutrition_App.Views
             txtWeight.Text = selectedUser.Weight.ToString();
             txtHeight.Text = selectedUser.Height.ToString();
 
+            // Traduce valores internos (inglés) a valores visibles (español)
             cmbGender.SelectedItem = TranslateGenderToSpanish(selectedUser.Gender);
             cmbGoal.SelectedItem = TranslateGoalToSpanish(selectedUser.Goal);
             cmbActivityLevel.SelectedItem = TranslateActivityLevelToSpanish(selectedUser.ActivityLevel);
             cmbDietType.SelectedItem = TranslateDietTypeToSpanish(selectedUser.DietType);
         }
 
+        // Traduce género a español para mostrar en UI
         private string TranslateGenderToSpanish(string gender)
         {
             switch (gender?.Trim().ToLower())
@@ -57,6 +67,7 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Traduce objetivo a español para mostrar en UI
         private string TranslateGoalToSpanish(string goal)
         {
             switch (goal?.Trim().ToLower())
@@ -86,6 +97,7 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Traduce nivel de actividad a español
         private string TranslateActivityLevelToSpanish(string activityLevel)
         {
             switch (activityLevel?.Trim().ToLower())
@@ -111,6 +123,7 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Traduce tipo de dieta a español
         private string TranslateDietTypeToSpanish(string dietType)
         {
             switch (dietType?.Trim().ToLower())
@@ -134,14 +147,17 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Evento del botón para guardar cambios del usuario
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
+            // Validación: usuario debe existir
             if (selectedUser == null)
             {
                 MessageBox.Show("No se encontró el usuario.");
                 return;
             }
 
+            // Validación de campos básicos
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
                 MessageBox.Show("Debe ingresar un nombre.");
@@ -166,6 +182,7 @@ namespace Nutrition_App.Views
                 return;
             }
 
+            // Validación de combos
             if (cmbGender.SelectedItem == null || cmbGoal.SelectedItem == null ||
                 cmbActivityLevel.SelectedItem == null || cmbDietType.SelectedItem == null)
             {
@@ -173,10 +190,13 @@ namespace Nutrition_App.Views
                 return;
             }
 
+            // Asignación de valores actualizados
             selectedUser.Name = txtName.Text;
             selectedUser.Age = age;
             selectedUser.Weight = weight;
             selectedUser.Height = height;
+
+            // Conversión de UI (español) a valores internos (inglés)
             selectedUser.Gender = cmbGender.SelectedItem?.ToString() == "Hombre" ? "Male" : "Female";
 
             switch (cmbGoal.SelectedItem?.ToString() ?? "")
@@ -221,12 +241,14 @@ namespace Nutrition_App.Views
                     break;
             }
 
+            // Actualiza el usuario en el repositorio
             userController.UpdateUser(selectedUser);
 
             MessageBox.Show("Usuario actualizado correctamente.");
             this.Close();
         }
 
+        // Evento de carga del formulario (no utilizado actualmente)
         private void EditUserForm_Load(object sender, EventArgs e)
         {
 

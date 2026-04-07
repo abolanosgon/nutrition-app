@@ -6,18 +6,27 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Views
 {
+    // Formulario para registrar y visualizar las comidas del usuario.
+    // Permite agregar registros de alimentos consumidos y eliminarlos.
     public partial class UserMealForm : Form
     {
+        // Usuario logueado
         private User? loggedUser;
+
+        // Controladores para alimentos y registros de comidas
         private FoodController foodController = new FoodController();
         private MealRecordController mealRecordController = new MealRecordController();
+
+        // Id del registro seleccionado en la tabla
         private int selectedMealRecordId = -1;
 
+        // Constructor por defecto
         public UserMealForm()
         {
             InitializeComponent();
         }
 
+        // Constructor con usuario logueado
         public UserMealForm(User user)
         {
             InitializeComponent();
@@ -26,6 +35,7 @@ namespace Nutrition_App.Views
             LoadMealRecords();
         }
 
+        // Carga los alimentos en el ComboBox
         private void LoadFoods()
         {
             cmbFoods.DataSource = null;
@@ -35,6 +45,7 @@ namespace Nutrition_App.Views
             cmbFoods.SelectedIndex = -1;
         }
 
+        // Carga los registros de comida del usuario en el DataGridView
         private void LoadMealRecords()
         {
             if (loggedUser == null)
@@ -43,6 +54,8 @@ namespace Nutrition_App.Views
             }
 
             var allRecords = mealRecordController.GetRecords();
+
+            // Filtra solo los registros del usuario logueado
             var userRecords = allRecords
                 .Where(r => r.UserId == loggedUser.Id)
                 .Select(r => new
@@ -58,6 +71,7 @@ namespace Nutrition_App.Views
             dgvMealRecords.DataSource = null;
             dgvMealRecords.DataSource = userRecords;
 
+            // Configuración de encabezados
             if (dgvMealRecords.Columns["Id"] != null)
                 dgvMealRecords.Columns["Id"].HeaderText = "ID";
 
@@ -74,6 +88,7 @@ namespace Nutrition_App.Views
                 dgvMealRecords.Columns["Quantity"].HeaderText = "Cantidad";
         }
 
+        // Traduce tipo de comida a español para mostrar en la UI
         private string TranslateMealType(string mealType)
         {
             switch (mealType)
@@ -91,8 +106,10 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Botón para registrar una nueva comida
         private void btnRegisterMeal_Click(object sender, EventArgs e)
         {
+            // Validaciones básicas
             if (loggedUser == null)
             {
                 MessageBox.Show("No se encontró el usuario.");
@@ -117,6 +134,7 @@ namespace Nutrition_App.Views
                 return;
             }
 
+            // Conversión del tipo de comida de UI a formato interno
             string mealType = "";
 
             switch (cmbMealType.SelectedItem?.ToString() ?? "")
@@ -141,12 +159,14 @@ namespace Nutrition_App.Views
                 return;
             }
 
+            // Obtiene el Id del alimento seleccionado
             if (cmbFoods.SelectedValue == null || !int.TryParse(cmbFoods.SelectedValue.ToString(), out int foodId))
             {
                 MessageBox.Show("No se pudo obtener el alimento seleccionado.");
                 return;
             }
 
+            // Crea el registro de comida
             MealRecord record = new MealRecord
             {
                 UserId = loggedUser.Id,
@@ -156,17 +176,21 @@ namespace Nutrition_App.Views
                 Quantity = quantity
             };
 
+            // Guarda el registro
             mealRecordController.RegisterRecord(record);
 
             MessageBox.Show("Comida registrada correctamente.");
 
+            // Limpia los campos
             cmbFoods.SelectedIndex = -1;
             cmbMealType.SelectedIndex = -1;
             txtQuantity.Clear();
 
+            // Recarga la tabla
             LoadMealRecords();
         }
 
+        // Evento al seleccionar un registro en la tabla
         private void dgvMealRecords_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -181,6 +205,7 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Botón para eliminar un registro de comida
         private void btnDeleteMealRecord_Click(object sender, EventArgs e)
         {
             if (selectedMealRecordId == -1)

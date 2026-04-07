@@ -5,15 +5,21 @@ using Nutrition_App.Repositories;
 
 namespace Nutrition_App.Services
 {
+    // Servicio encargado de la lógica básica de usuarios.
+    // Actúa como intermediario entre el controlador y el repositorio.
     public class UserService
     {
+        // Repositorio utilizado para acceder a los datos de usuarios
         private readonly IUserRepository userRepository;
 
+        // Constructor que recibe la implementación del repositorio
         public UserService(IUserRepository userRepository)
         {
             this.userRepository = userRepository;
         }
 
+        // Agrega un nuevo usuario
+        // Antes de guardar, asigna un Id consecutivo
         public void AddUser(User user)
         {
             List<User> users = userRepository.GetAll();
@@ -23,21 +29,26 @@ namespace Nutrition_App.Services
             userRepository.Add(user);
         }
 
+        // Obtiene la lista completa de usuarios
         public List<User> GetUsers()
         {
             return userRepository.GetAll();
         }
 
+        // Elimina un usuario según su Id
         public void DeleteUser(int userId)
         {
             userRepository.Delete(userId);
         }
 
+        // Actualiza la información de un usuario existente
         public void UpdateUser(User user)
         {
             userRepository.Update(user);
         }
 
+        // Verifica si existe al menos un usuario administrador
+        // Si no existe, crea uno por defecto
         public void EnsureAdminUser()
         {
             List<User> users = userRepository.GetAll();

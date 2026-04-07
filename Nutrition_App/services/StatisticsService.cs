@@ -4,21 +4,29 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Services
 {
+    // Servicio encargado de calcular estadísticas nutricionales.
+    // Procesa registros de comidas y alimentos para generar métricas agregadas.
     public class StatisticsService
     {
+        // Lista de registros de comidas
         private readonly List<MealRecord> _mealRecords;
+
+        // Lista de alimentos disponibles
         private readonly List<Food> _foods;
 
+        // Constructor que recibe los datos necesarios para calcular estadísticas
         public StatisticsService(List<MealRecord> mealRecords, List<Food> foods)
         {
             _mealRecords = mealRecords ?? new List<MealRecord>();
             _foods = foods ?? new List<Food>();
         }
 
+        // Obtiene un resumen general de estadísticas
         public NutritionStatsSummary GetSummary()
         {
             int totalMealRecords = _mealRecords.Count;
 
+            // Cantidad de usuarios únicos con registros
             int totalUsersWithRecords = _mealRecords
                 .Select(m => m.UserId)
                 .Distinct()
@@ -29,6 +37,7 @@ namespace Nutrition_App.Services
             double totalCarbs = 0;
             double totalFat = 0;
 
+            // Recorre todos los registros para acumular valores nutricionales
             foreach (var record in _mealRecords)
             {
                 var food = _foods.FirstOrDefault(f => f.Id == record.FoodId);
@@ -42,6 +51,7 @@ namespace Nutrition_App.Services
                 totalFat += food.Fat * record.Quantity;
             }
 
+            // Promedios
             double averageCaloriesPerRecord = totalMealRecords > 0
                 ? totalCalories / totalMealRecords
                 : 0;
@@ -63,6 +73,7 @@ namespace Nutrition_App.Services
             };
         }
 
+        // Obtiene estadísticas diarias de calorías
         public List<DailyCaloriesStat> GetDailyCaloriesStats()
         {
             var dailyStats = _mealRecords
@@ -94,6 +105,7 @@ namespace Nutrition_App.Services
             return dailyStats;
         }
 
+        // Obtiene los alimentos más consumidos (top N)
         public List<TopFoodStat> GetTopFoods(int top = 5)
         {
             var topFoods = _mealRecords
@@ -125,6 +137,7 @@ namespace Nutrition_App.Services
             return topFoods;
         }
 
+        // Obtiene resumen filtrado por usuario
         public NutritionStatsSummary GetSummaryByUser(int userId)
         {
             var userRecords = _mealRecords
@@ -169,6 +182,7 @@ namespace Nutrition_App.Services
             };
         }
 
+        // Obtiene estadísticas diarias filtradas por usuario
         public List<DailyCaloriesStat> GetDailyCaloriesStatsByUser(int userId)
         {
             var dailyStats = _mealRecords
@@ -201,6 +215,7 @@ namespace Nutrition_App.Services
             return dailyStats;
         }
 
+        // Obtiene top alimentos consumidos por un usuario
         public List<TopFoodStat> GetTopFoodsByUser(int userId, int top = 5)
         {
             var topFoods = _mealRecords

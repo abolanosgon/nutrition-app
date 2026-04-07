@@ -5,16 +5,23 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Views
 {
+    // Formulario para editar un alimento existente.
+    // Permite modificar sus datos nutricionales y guardarlos.
     public partial class EditFoodForm : Form
     {
+        // Alimento seleccionado que se va a editar
         private Food? selectedFood;
+
+        // Controlador para manejar operaciones de alimentos
         private FoodController foodController = new FoodController();
 
+        // Constructor por defecto
         public EditFoodForm()
         {
             InitializeComponent();
         }
 
+        // Constructor que recibe el alimento a editar
         public EditFoodForm(Food food)
         {
             InitializeComponent();
@@ -22,6 +29,7 @@ namespace Nutrition_App.Views
             LoadFoodData();
         }
 
+        // Carga los datos del alimento en los campos del formulario
         private void LoadFoodData()
         {
             if (selectedFood == null)
@@ -38,14 +46,17 @@ namespace Nutrition_App.Views
             txtPortionSize.Text = selectedFood.PortionSize;
         }
 
+        // Evento del botón para guardar los cambios realizados
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
+            // Validación: debe existir un alimento seleccionado
             if (selectedFood == null)
             {
                 MessageBox.Show("No se encontró el alimento.");
                 return;
             }
 
+            // Validación de campos obligatorios
             if (string.IsNullOrWhiteSpace(txtFoodName.Text) ||
                 string.IsNullOrWhiteSpace(txtCategory.Text) ||
                 string.IsNullOrWhiteSpace(txtPortionSize.Text))
@@ -54,6 +65,7 @@ namespace Nutrition_App.Views
                 return;
             }
 
+            // Validación de valores numéricos
             if (!double.TryParse(txtCalories.Text, out double calories) || calories < 0)
             {
                 MessageBox.Show("Debe ingresar calorías válidas.");
@@ -78,6 +90,7 @@ namespace Nutrition_App.Views
                 return;
             }
 
+            // Asignación de los nuevos valores al objeto
             selectedFood.Name = txtFoodName.Text;
             selectedFood.Category = txtCategory.Text;
             selectedFood.Calories = calories;
@@ -86,9 +99,12 @@ namespace Nutrition_App.Views
             selectedFood.Fat = fat;
             selectedFood.PortionSize = txtPortionSize.Text;
 
+            // Llamada al controlador para actualizar el alimento en el repositorio
             foodController.UpdateFood(selectedFood);
 
             MessageBox.Show("Alimento actualizado correctamente.");
+
+            // Cierra el formulario después de guardar
             this.Close();
         }
     }
