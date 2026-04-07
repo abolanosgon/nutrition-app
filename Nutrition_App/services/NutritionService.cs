@@ -46,14 +46,14 @@ namespace Nutrition_App.Services
         }
 
         // Calcula el índice de masa corporal
-        private double CalculateBMI(double weight, double heightInCm)
+        private static double CalculateBMI(double weight, double heightInCm)
         {
             double heightInMeters = heightInCm / 100.0;
             return weight / (heightInMeters * heightInMeters);
         }
 
         // Calcula las calorías de mantenimiento usando metabolismo basal y nivel de actividad
-        private double CalculateMaintenanceCalories(User user)
+        private static double CalculateMaintenanceCalories(User user)
         {
             double bmr;
 
@@ -73,7 +73,7 @@ namespace Nutrition_App.Services
         }
 
         // Devuelve el multiplicador correspondiente al nivel de actividad
-        private double GetActivityMultiplier(string activityLevel)
+        private static double GetActivityMultiplier(string activityLevel)
         {
             switch (activityLevel)
             {
@@ -91,7 +91,7 @@ namespace Nutrition_App.Services
         }
 
         // Calcula las calorías objetivo según el objetivo del usuario
-        private double CalculateTargetCalories(double maintenanceCalories, string goal)
+        private static double CalculateTargetCalories(double maintenanceCalories, string goal)
         {
             switch (goal)
             {
@@ -106,7 +106,7 @@ namespace Nutrition_App.Services
         }
 
         // Calcula gramos de proteína, carbohidratos y grasas según dieta y calorías objetivo
-        private void CalculateMacros(
+        private static void CalculateMacros(
             double targetCalories,
             string dietType,
             out double proteinGrams,
@@ -132,7 +132,6 @@ namespace Nutrition_App.Services
                     fatsPercentage = 0.25;
                     break;
 
-                case "Standard":
                 default:
                     proteinPercentage = 0.30;
                     carbsPercentage = 0.40;

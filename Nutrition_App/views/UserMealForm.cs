@@ -89,7 +89,7 @@ namespace Nutrition_App.Views
         }
 
         // Traduce tipo de comida a español para mostrar en la UI
-        private string TranslateMealType(string mealType)
+        private static string TranslateMealType(string mealType)
         {
             switch (mealType)
             {
