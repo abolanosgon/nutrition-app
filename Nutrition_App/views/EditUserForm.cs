@@ -50,7 +50,7 @@ namespace Nutrition_App.Views
         }
 
         // Traduce género a español para mostrar en UI
-        private string TranslateGenderToSpanish(string gender)
+        private static string TranslateGenderToSpanish(string gender)
         {
             switch (gender?.Trim().ToLower())
             {
@@ -68,7 +68,7 @@ namespace Nutrition_App.Views
         }
 
         // Traduce objetivo a español para mostrar en UI
-        private string TranslateGoalToSpanish(string goal)
+        private static string TranslateGoalToSpanish(string goal)
         {
             switch (goal?.Trim().ToLower())
             {
@@ -98,7 +98,7 @@ namespace Nutrition_App.Views
         }
 
         // Traduce nivel de actividad a español
-        private string TranslateActivityLevelToSpanish(string activityLevel)
+        private static string TranslateActivityLevelToSpanish(string activityLevel)
         {
             switch (activityLevel?.Trim().ToLower())
             {
@@ -124,7 +124,7 @@ namespace Nutrition_App.Views
         }
 
         // Traduce tipo de dieta a español
-        private string TranslateDietTypeToSpanish(string dietType)
+        private static string TranslateDietTypeToSpanish(string dietType)
         {
             switch (dietType?.Trim().ToLower())
             {
@@ -249,9 +249,9 @@ namespace Nutrition_App.Views
         }
 
         // Evento de carga del formulario (no utilizado actualmente)
-        private void EditUserForm_Load(object sender, EventArgs e)
+        private static void EditUserForm_Load(object sender, EventArgs e)
         {
-
+            // n/a
         }
     }
 }

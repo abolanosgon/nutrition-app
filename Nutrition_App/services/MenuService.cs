@@ -32,7 +32,7 @@ namespace Nutrition_App.Services
         }
 
         // Normaliza el objetivo del usuario (inglés/español, variaciones)
-        private string NormalizeGoal(string goal)
+        private static string NormalizeGoal(string goal)
         {
             string value = NormalizeText(goal);
 
@@ -70,7 +70,7 @@ namespace Nutrition_App.Services
         }
 
         // Normaliza el tipo de dieta del usuario
-        private string NormalizeDietType(string dietType)
+        private static string NormalizeDietType(string dietType)
         {
             string value = NormalizeText(dietType);
 
@@ -96,7 +96,7 @@ namespace Nutrition_App.Services
         }
 
         // Limpia texto: elimina espacios, convierte a minúsculas y quita tildes
-        private string NormalizeText(string text)
+        private static string NormalizeText(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return string.Empty;

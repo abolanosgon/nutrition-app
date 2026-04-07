@@ -13,9 +13,6 @@ namespace Nutrition_App.Views
         // Controlador para manejar operaciones de usuarios
         private UserController userController = new UserController();
 
-        // Id del usuario seleccionado en el DataGridView (no se usa directamente para acciones críticas aquí)
-        private int selectedUserId = -1;
-
         public MainForm()
         {
             InitializeComponent();
@@ -106,7 +103,6 @@ namespace Nutrition_App.Views
         }
 
         // Valida los inputs del formulario
-        // Devuelve true si todo es válido, false en caso contrario
         private bool ValidateInputs(out int age, out double weight, out double height)
         {
             age = 0;
@@ -170,91 +166,64 @@ namespace Nutrition_App.Views
             return true;
         }
 
-        // Obtiene el género seleccionado y lo convierte a formato interno
         private string GetSelectedGender()
         {
             string selected = cmbGender.SelectedItem?.ToString() ?? "";
 
-            if (selected == "Hombre")
-            {
-                return "Male";
-            }
-
-            if (selected == "Mujer")
-            {
-                return "Female";
-            }
+            if (selected == "Hombre") return "Male";
+            if (selected == "Mujer") return "Female";
 
             return "";
         }
 
-        // Obtiene el objetivo seleccionado y lo normaliza a formato interno
         private string GetSelectedGoal()
         {
             string selectedGoal = cmbGoal.SelectedItem?.ToString()?.Trim() ?? "";
 
             switch (selectedGoal)
             {
-                case "Mantener peso":
-                    return "maintain";
-                case "Perder grasa":
-                    return "losefat";
-                case "Ganar masa muscular":
-                    return "gainmuscle";
-                default:
-                    return "";
+                case "Mantener peso": return "maintain";
+                case "Perder grasa": return "losefat";
+                case "Ganar masa muscular": return "gainmuscle";
+                default: return "";
             }
         }
 
-        // Obtiene el nivel de actividad seleccionado
         private string GetSelectedActivityLevel()
         {
             string selectedActivity = cmbActivityLevel.SelectedItem?.ToString() ?? "";
 
             switch (selectedActivity)
             {
-                case "Sedentario":
-                    return "Sedentary";
-                case "Ligero":
-                    return "Light";
-                case "Moderado":
-                    return "Moderate";
-                case "Activo":
-                    return "Active";
-                default:
-                    return "";
+                case "Sedentario": return "Sedentary";
+                case "Ligero": return "Light";
+                case "Moderado": return "Moderate";
+                case "Activo": return "Active";
+                default: return "";
             }
         }
 
-        // Obtiene el tipo de dieta seleccionado
         private string GetSelectedDietType()
         {
             string selectedDiet = cmbDietType.SelectedItem?.ToString() ?? "";
 
             switch (selectedDiet)
             {
-                case "Estándar":
-                    return "standard";
-                case "Keto":
-                    return "keto";
-                case "Vegetariana":
-                    return "vegetarian";
-                default:
-                    return "";
+                case "Estándar": return "standard";
+                case "Keto": return "keto";
+                case "Vegetariana": return "vegetarian";
+                default: return "";
             }
         }
 
-        // Carga todos los usuarios en el DataGridView
         private void LoadUsers()
         {
             dgvUsers.DataSource = null;
             dgvUsers.DataSource = userController.GetUsers();
 
-            // Oculta columnas sensibles
             dgvUsers.Columns["Id"].Visible = false;
             dgvUsers.Columns["Password"].Visible = false;
 
-            // Traducción de encabezados
             dgvUsers.Columns["Name"].HeaderText = "Nombre";
             dgvUsers.Columns["Username"].HeaderText = "Usuario";
             dgvUsers.Columns["Age"].HeaderText = "Edad";
@@ -268,7 +237,6 @@ namespace Nutrition_App.Views
             TranslateUserGrid();
         }
 
-        // Traduce valores internos a valores visibles en español
         private void TranslateUserGrid()
         {
             foreach (DataGridViewRow row in dgvUsers.Rows)
@@ -295,14 +263,12 @@ namespace Nutrition_App.Views
             }
         }
 
-        // Genera un username automático basado en nombre + edad
-        private string GenerateUsername(string name, int age)
+        private static string GenerateUsername(string name, int age)
         {
             string username = name.Trim().Replace(" ", "").ToLower();
             return username + age;
         }
 
-        // Muestra vista previa del username generado
         private void UpdateUsernamePreview()
         {
             if (!string.IsNullOrWhiteSpace(txtName.Text) && int.TryParse(txtAge.Text, out int age))
@@ -316,7 +282,6 @@ namespace Nutrition_App.Views
             }
         }
 
-        // Eventos para actualizar preview en tiempo real
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             UpdateUsernamePreview();
@@ -327,7 +292,6 @@ namespace Nutrition_App.Views
             UpdateUsernamePreview();
         }
 
-        // Evento al seleccionar usuario en la tabla
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -338,7 +302,6 @@ namespace Nutrition_App.Views
             }
         }
 
-        // Maneja el login del sistema
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtLoginUsername.Text))
@@ -361,7 +324,6 @@ namespace Nutrition_App.Views
                 return;
             }
 
-            // Redirección según rol
             if (authenticatedUser.Role == "Admin")
             {
                 AdminForm adminForm = new AdminForm(authenticatedUser);

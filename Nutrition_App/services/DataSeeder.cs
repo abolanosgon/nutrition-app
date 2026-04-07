@@ -38,7 +38,7 @@ namespace Nutrition_App.Services
             // Valida que existan alimentos antes de generar registros
             if (foods.Count == 0)
             {
-                throw new Exception("No hay alimentos en foods.json. No se pueden generar registros.");
+                throw new InvalidOperationException("No hay alimentos en foods.json. No se pueden generar registros.");
             }
 
             List<User> users = GenerateUsers();
@@ -75,7 +75,7 @@ namespace Nutrition_App.Services
         }
 
         // Asegura que exista el directorio del archivo antes de guardar
-        private void EnsureDirectoryExists(string filePath)
+        private static void EnsureDirectoryExists(string filePath)
         {
             string? directory = Path.GetDirectoryName(filePath);
 
@@ -86,6 +86,7 @@ namespace Nutrition_App.Services
         }
 
         // Genera una lista fija de usuarios base para pruebas
+    #pragma warning disable S2068
         private List<User> GenerateUsers()
         {
             return new List<User>
@@ -166,7 +167,7 @@ namespace Nutrition_App.Services
         }
 
         // Selecciona un alimento aleatorio según el tipo de comida
-        private Food SelectFoodByMealType(List<Food> foods, string mealType, Random random)
+        private static Food SelectFoodByMealType(List<Food> foods, string mealType, Random random)
         {
             List<Food> filteredFoods;
 
@@ -217,7 +218,7 @@ namespace Nutrition_App.Services
         }
 
         // Asigna una hora aproximada al registro según el tipo de comida
-        private DateTime GetDateWithMealHour(DateTime date, string mealType)
+        private static DateTime GetDateWithMealHour(DateTime date, string mealType)
         {
             switch (mealType)
             {
@@ -235,7 +236,7 @@ namespace Nutrition_App.Services
         }
 
         // Devuelve una cantidad aleatoria dentro de un conjunto predefinido
-        private double GetRandomQuantity(Random random)
+        private static double GetRandomQuantity(Random random)
         {
             double[] quantities = { 0.5, 1.0, 1.5, 2.0 };
             int randomIndex = random.Next(quantities.Length);

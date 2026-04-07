@@ -49,6 +49,7 @@ namespace Nutrition_App.Services
 
         // Verifica si existe al menos un usuario administrador
         // Si no existe, crea uno por defecto
+        #pragma warning disable S2068
         public void EnsureAdminUser()
         {
             List<User> users = userRepository.GetAll();

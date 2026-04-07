@@ -60,7 +60,7 @@ namespace Nutrition_App.Views
         }
 
         // Traduce el objetivo del usuario a español
-        private string TranslateGoal(string goal)
+        private static string TranslateGoal(string goal)
         {
             switch (goal)
             {
@@ -76,7 +76,7 @@ namespace Nutrition_App.Views
         }
 
         // Traduce el tipo de dieta a español
-        private string TranslateDietType(string dietType)
+        private static string TranslateDietType(string dietType)
         {
             switch (dietType)
             {
@@ -92,7 +92,7 @@ namespace Nutrition_App.Views
         }
 
         // Traduce el nivel de actividad a español
-        private string TranslateActivityLevel(string activityLevel)
+        private static string TranslateActivityLevel(string activityLevel)
         {
             switch (activityLevel)
             {

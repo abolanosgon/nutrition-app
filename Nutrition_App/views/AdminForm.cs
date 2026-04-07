@@ -154,7 +154,7 @@ namespace Nutrition_App.Views
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-
+            //N/A
         }
 
         private void button1_Click(object sender, EventArgs e)

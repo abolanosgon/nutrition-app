@@ -15,14 +15,12 @@ namespace Nutrition_App.Views
         // Id del alimento seleccionado en el DataGridView
         private int selectedFoodId = -1;
 
-        // Usuario logueado (no se usa directamente aquí, pero se mantiene por contexto)
-        private User? loggedUser;
+        
 
         // Constructor que recibe el usuario logueado
         public FoodForm(User user)
         {
             InitializeComponent();
-            loggedUser = user;
             LoadFoods();
         }
 
