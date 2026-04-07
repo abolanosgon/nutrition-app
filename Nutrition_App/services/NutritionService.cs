@@ -3,8 +3,17 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Services
 {
+    /// <summary>
+    /// Servicio encargado de calcular información nutricional basada en los datos del usuario.
+    /// Incluye cálculos de IMC, calorías de mantenimiento, calorías objetivo y macronutrientes.
+    /// </summary>
     public class NutritionService
     {
+        /// <summary>
+        /// Calcula toda la información nutricional del usuario.
+        /// </summary>
+        /// <param name="user">Usuario del cual se calcularán los valores nutricionales.</param>
+        /// <returns>Objeto con los valores calculados.</returns>
         public NutritionInfo CalculateNutritionInfo(User user)
         {
             if (user == null)
@@ -16,9 +25,9 @@ namespace Nutrition_App.Services
             double maintenanceCalories = CalculateMaintenanceCalories(user);
             double targetCalories = CalculateTargetCalories(maintenanceCalories, user.Goal);
 
-            double proteinGrams = 0;
-            double carbsGrams = 0;
-            double fatsGrams = 0;
+            double proteinGrams;
+            double carbsGrams;
+            double fatsGrams;
 
             CalculateMacros(
                 targetCalories,
@@ -39,13 +48,24 @@ namespace Nutrition_App.Services
             };
         }
 
-        private double CalculateBMI(double weight, double heightInCm)
+        /// <summary>
+        /// Calcula el Índice de Masa Corporal (IMC).
+        /// </summary>
+        /// <param name="weight">Peso en kilogramos.</param>
+        /// <param name="heightInCm">Altura en centímetros.</param>
+        /// <returns>Valor del IMC.</returns>
+        private static double CalculateBMI(double weight, double heightInCm)
         {
             double heightInMeters = heightInCm / 100.0;
             return weight / (heightInMeters * heightInMeters);
         }
 
-        private double CalculateMaintenanceCalories(User user)
+        /// <summary>
+        /// Calcula las calorías de mantenimiento del usuario usando la fórmula de Harris-Benedict modificada.
+        /// </summary>
+        /// <param name="user">Usuario con los datos necesarios para el cálculo.</param>
+        /// <returns>Calorías de mantenimiento estimadas.</returns>
+        private static double CalculateMaintenanceCalories(User user)
         {
             double bmr;
 
@@ -63,7 +83,12 @@ namespace Nutrition_App.Services
             return bmr * activityMultiplier;
         }
 
-        private double GetActivityMultiplier(string activityLevel)
+        /// <summary>
+        /// Obtiene el multiplicador de actividad según el nivel de actividad del usuario.
+        /// </summary>
+        /// <param name="activityLevel">Nivel de actividad del usuario.</param>
+        /// <returns>Factor multiplicador de actividad.</returns>
+        private static double GetActivityMultiplier(string activityLevel)
         {
             switch (activityLevel)
             {
@@ -80,7 +105,13 @@ namespace Nutrition_App.Services
             }
         }
 
-        private double CalculateTargetCalories(double maintenanceCalories, string goal)
+        /// <summary>
+        /// Calcula las calorías objetivo según el objetivo del usuario.
+        /// </summary>
+        /// <param name="maintenanceCalories">Calorías de mantenimiento.</param>
+        /// <param name="goal">Objetivo del usuario.</param>
+        /// <returns>Calorías objetivo ajustadas.</returns>
+        private static double CalculateTargetCalories(double maintenanceCalories, string goal)
         {
             switch (goal)
             {
@@ -94,7 +125,16 @@ namespace Nutrition_App.Services
             }
         }
 
-        private void CalculateMacros(
+        /// <summary>
+        /// Calcula la distribución de macronutrientes (proteínas, carbohidratos y grasas)
+        /// según el tipo de dieta del usuario.
+        /// </summary>
+        /// <param name="targetCalories">Calorías objetivo.</param>
+        /// <param name="dietType">Tipo de dieta.</param>
+        /// <param name="proteinGrams">Salida de gramos de proteína.</param>
+        /// <param name="carbsGrams">Salida de gramos de carbohidratos.</param>
+        /// <param name="fatsGrams">Salida de gramos de grasa.</param>
+        private static void CalculateMacros(
             double targetCalories,
             string dietType,
             out double proteinGrams,
@@ -119,7 +159,6 @@ namespace Nutrition_App.Services
                     fatsPercentage = 0.25;
                     break;
 
-                case "Standard":
                 default:
                     proteinPercentage = 0.30;
                     carbsPercentage = 0.40;

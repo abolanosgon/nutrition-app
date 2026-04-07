@@ -85,6 +85,7 @@ namespace Nutrition_App.Views
             Controls.Add(lblMenuName);
             Name = "MenuForm";
             Text = "Form1";
+            Load += MenuForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMenu).EndInit();
             ResumeLayout(false);
             PerformLayout();

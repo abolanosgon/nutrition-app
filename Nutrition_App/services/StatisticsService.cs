@@ -4,20 +4,31 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Services
 {
+    /// <summary>
+    /// Servicio encargado de calcular estadísticas nutricionales generales
+    /// y por usuario a partir de los registros de comidas y alimentos disponibles.
+    /// </summary>
     public class StatisticsService
     {
         private readonly List<MealRecord> _mealRecords;
         private readonly List<Food> _foods;
 
+        /// <summary>
+        /// Inicializa una nueva instancia del servicio de estadísticas.
+        /// </summary>
+        /// <param name="mealRecords">Lista de registros de comidas a analizar.</param>
+        /// <param name="foods">Lista de alimentos utilizados para calcular valores nutricionales.</param>
         public StatisticsService(List<MealRecord> mealRecords, List<Food> foods)
         {
             _mealRecords = mealRecords ?? new List<MealRecord>();
             _foods = foods ?? new List<Food>();
         }
 
-        // =========================
-        // ESTADÍSTICAS GENERALES
-        // =========================
+        /// <summary>
+        /// Obtiene un resumen general de estadísticas nutricionales
+        /// basado en todos los registros de comidas disponibles.
+        /// </summary>
+        /// <returns>Resumen nutricional global del sistema.</returns>
         public NutritionStatsSummary GetSummary()
         {
             int totalMealRecords = _mealRecords.Count;
@@ -66,6 +77,11 @@ namespace Nutrition_App.Services
             };
         }
 
+        /// <summary>
+        /// Obtiene estadísticas diarias de calorías consumidas
+        /// agrupadas por fecha para todos los registros.
+        /// </summary>
+        /// <returns>Lista de estadísticas diarias de calorías.</returns>
         public List<DailyCaloriesStat> GetDailyCaloriesStats()
         {
             var dailyStats = _mealRecords
@@ -97,6 +113,11 @@ namespace Nutrition_App.Services
             return dailyStats;
         }
 
+        /// <summary>
+        /// Obtiene los alimentos más consumidos considerando todos los registros del sistema.
+        /// </summary>
+        /// <param name="top">Cantidad máxima de alimentos a devolver.</param>
+        /// <returns>Lista de alimentos más consumidos.</returns>
         public List<TopFoodStat> GetTopFoods(int top = 5)
         {
             var topFoods = _mealRecords
@@ -120,6 +141,7 @@ namespace Nutrition_App.Services
                     };
                 })
                 .Where(stat => stat != null)
+                .Select(stat => stat!)
                 .OrderByDescending(stat => stat.TimesConsumed)
                 .Take(top)
                 .ToList();
@@ -127,9 +149,12 @@ namespace Nutrition_App.Services
             return topFoods;
         }
 
-        // =========================
-        // ESTADÍSTICAS POR USUARIO
-        // =========================
+        /// <summary>
+        /// Obtiene un resumen de estadísticas nutricionales
+        /// para un usuario específico.
+        /// </summary>
+        /// <param name="userId">Identificador del usuario.</param>
+        /// <returns>Resumen nutricional del usuario indicado.</returns>
         public NutritionStatsSummary GetSummaryByUser(int userId)
         {
             var userRecords = _mealRecords
@@ -174,6 +199,12 @@ namespace Nutrition_App.Services
             };
         }
 
+        /// <summary>
+        /// Obtiene estadísticas diarias de calorías consumidas
+        /// para un usuario específico.
+        /// </summary>
+        /// <param name="userId">Identificador del usuario.</param>
+        /// <returns>Lista de estadísticas diarias del usuario.</returns>
         public List<DailyCaloriesStat> GetDailyCaloriesStatsByUser(int userId)
         {
             var dailyStats = _mealRecords
@@ -206,6 +237,12 @@ namespace Nutrition_App.Services
             return dailyStats;
         }
 
+        /// <summary>
+        /// Obtiene los alimentos más consumidos por un usuario específico.
+        /// </summary>
+        /// <param name="userId">Identificador del usuario.</param>
+        /// <param name="top">Cantidad máxima de alimentos a devolver.</param>
+        /// <returns>Lista de alimentos más consumidos por el usuario.</returns>
         public List<TopFoodStat> GetTopFoodsByUser(int userId, int top = 5)
         {
             var topFoods = _mealRecords
@@ -230,6 +267,7 @@ namespace Nutrition_App.Services
                     };
                 })
                 .Where(stat => stat != null)
+                .Select(stat => stat!)
                 .OrderByDescending(stat => stat.TimesConsumed)
                 .Take(top)
                 .ToList();

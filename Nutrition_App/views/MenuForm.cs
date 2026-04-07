@@ -1,25 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using Nutrition_App.Controllers;
 using Nutrition_App.Models;
 using Nutrition_App.Repositories;
 
 namespace Nutrition_App.Views
 {
+    /// <summary>
+    /// Formulario encargado de mostrar el menú asignado al usuario autenticado.
+    /// Recupera el menú correspondiente según el objetivo y tipo de dieta del usuario,
+    /// y presenta el detalle de alimentos con sus valores nutricionales calculados.
+    /// </summary>
     public partial class MenuForm : Form
     {
         private readonly User _loggedUser;
         private readonly MenuController _menuController;
         private readonly FoodJsonRepository _foodRepository;
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de menú para el usuario indicado.
+        /// </summary>
+        /// <param name="loggedUser">Usuario autenticado al que se le mostrará el menú asignado.</param>
         public MenuForm(User loggedUser)
         {
             InitializeComponent();
@@ -30,6 +32,10 @@ namespace Nutrition_App.Views
             LoadAssignedMenu();
         }
 
+        /// <summary>
+        /// Carga el menú asignado al usuario y construye el detalle visual
+        /// con los alimentos y sus valores nutricionales.
+        /// </summary>
         private void LoadAssignedMenu()
         {
             var menu = _menuController.GetAssignedMenu(_loggedUser);
@@ -37,6 +43,10 @@ namespace Nutrition_App.Views
             if (menu == null)
             {
                 MessageBox.Show("No se encontró un menú asignado para este usuario.");
+                lblMenuName.Text = "Sin menú asignado";
+                lblGoal.Text = "Objetivo: ---";
+                lblDietType.Text = "Tipo de dieta: ---";
+                dgvMenu.DataSource = null;
                 return;
             }
 
@@ -62,9 +72,16 @@ namespace Nutrition_App.Views
                 };
             }).ToList();
 
+            dgvMenu.DataSource = null;
             dgvMenu.DataSource = menuDetails;
         }
 
- 
+        /// <summary>
+        /// Evento reservado para futuras inicializaciones del formulario.
+        /// </summary>
+        private void MenuForm_Load(object sender, EventArgs e)
+        {
+            // n/a
+        }
     }
 }

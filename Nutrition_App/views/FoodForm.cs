@@ -5,19 +5,29 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Views
 {
+    /// <summary>
+    /// Formulario para la gestión de alimentos del sistema.
+    /// Permite visualizar la lista de alimentos, registrar nuevos alimentos,
+    /// editar alimentos existentes y eliminar registros seleccionados.
+    /// </summary>
     public partial class FoodForm : Form
     {
         private FoodController foodController = new FoodController();
         private int selectedFoodId = -1;
-        private User loggedUser;
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de alimentos.
+        /// </summary>
+        /// <param name="user">Usuario que accede al módulo de alimentos.</param>
         public FoodForm(User user)
         {
             InitializeComponent();
-            loggedUser = user;
             LoadFoods();
         }
 
+        /// <summary>
+        /// Carga la lista de alimentos en la grilla y ajusta los encabezados visibles.
+        /// </summary>
         private void LoadFoods()
         {
             dgvFoods.DataSource = null;
@@ -33,6 +43,9 @@ namespace Nutrition_App.Views
             dgvFoods.Columns["PortionSize"].HeaderText = "Porción";
         }
 
+        /// <summary>
+        /// Valida la información ingresada y registra un nuevo alimento en el sistema.
+        /// </summary>
         private void btnAddFood_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtFoodName.Text) ||
@@ -86,15 +99,26 @@ namespace Nutrition_App.Views
             LoadFoods();
         }
 
+        /// <summary>
+        /// Captura el identificador del alimento seleccionado en la grilla.
+        /// </summary>
         private void dgvFoods_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 var row = dgvFoods.Rows[e.RowIndex];
-                selectedFoodId = Convert.ToInt32(row.Cells["Id"].Value);
+                object? idValue = row.Cells["Id"].Value;
+
+                if (idValue != null && int.TryParse(idValue.ToString(), out int id))
+                {
+                    selectedFoodId = id;
+                }
             }
         }
 
+        /// <summary>
+        /// Elimina el alimento seleccionado previa confirmación del usuario.
+        /// </summary>
         private void btnDeleteFood_Click(object sender, EventArgs e)
         {
             if (selectedFoodId == -1)
@@ -112,14 +136,16 @@ namespace Nutrition_App.Views
             if (result == DialogResult.Yes)
             {
                 foodController.DeleteFood(selectedFoodId);
-
-                LoadFoods(); // refresca el grid
+                LoadFoods();
                 selectedFoodId = -1;
 
                 MessageBox.Show("Alimento eliminado correctamente.");
             }
         }
 
+        /// <summary>
+        /// Limpia los controles del formulario de alimentos y devuelve el foco al campo de nombre.
+        /// </summary>
         private void ClearFoodForm()
         {
             txtFoodName.Clear();
@@ -132,6 +158,9 @@ namespace Nutrition_App.Views
             txtFoodName.Focus();
         }
 
+        /// <summary>
+        /// Abre el formulario de edición para el alimento seleccionado y recarga la lista al finalizar.
+        /// </summary>
         private void btnEditFood_Click(object sender, EventArgs e)
         {
             if (selectedFoodId == -1)
@@ -140,7 +169,7 @@ namespace Nutrition_App.Views
                 return;
             }
 
-            Food selectedFood = foodController.GetFoodById(selectedFoodId);
+            Food? selectedFood = foodController.GetFoodById(selectedFoodId);
 
             if (selectedFood == null)
             {
@@ -152,6 +181,14 @@ namespace Nutrition_App.Views
             editFoodForm.ShowDialog();
 
             LoadFoods();
+        }
+
+        /// <summary>
+        /// Evento reservado para futuras inicializaciones del formulario.
+        /// </summary>
+        private void FoodForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

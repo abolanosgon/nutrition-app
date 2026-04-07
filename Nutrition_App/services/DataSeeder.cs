@@ -8,28 +8,43 @@ using System.Text.Json;
 
 namespace Nutrition_App.Services
 {
+    /// <summary>
+    /// Servicio encargado de generar datos base para la aplicación.
+    /// Crea usuarios y registros de comidas de forma automática y los guarda en archivos JSON.
+    /// </summary>
     public class DataSeeder
     {
         private readonly FoodJsonRepository foodRepository;
 
-        private readonly string usersFilePath =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "users.json");
+        private readonly string usersFilePath;
+        private readonly string mealRecordsFilePath;
 
-        private readonly string mealRecordsFilePath =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "mealRecords.json");
-
+        /// <summary>
+        /// Inicializa una nueva instancia del generador de datos base,
+        /// configurando las rutas de almacenamiento de archivos JSON.
+        /// </summary>
         public DataSeeder()
         {
             foodRepository = new FoodJsonRepository();
+
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string projectDir = Directory.GetParent(baseDir)?.Parent?.Parent?.FullName ?? baseDir;
+
+            usersFilePath = Path.Combine(projectDir, "data", "users.json");
+            mealRecordsFilePath = Path.Combine(projectDir, "data", "mealRecords.json");
         }
 
+        /// <summary>
+        /// Genera todos los datos base necesarios (usuarios y registros de comidas)
+        /// y los guarda en sus respectivos archivos JSON.
+        /// </summary>
         public void SeedAllData()
         {
             List<Food> foods = foodRepository.GetAll();
 
-            if (foods == null || foods.Count == 0)
+            if (foods.Count == 0)
             {
-                throw new Exception("No hay alimentos en foods.json. No se pueden generar registros.");
+                throw new InvalidOperationException("No hay alimentos en foods.json. No se pueden generar registros.");
             }
 
             List<User> users = GenerateUsers();
@@ -39,6 +54,9 @@ namespace Nutrition_App.Services
             SaveMealRecords(mealRecords);
         }
 
+        /// <summary>
+        /// Guarda la lista de usuarios en el archivo JSON correspondiente.
+        /// </summary>
         private void SaveUsers(List<User> users)
         {
             EnsureDirectoryExists(usersFilePath);
@@ -51,6 +69,9 @@ namespace Nutrition_App.Services
             File.WriteAllText(usersFilePath, json);
         }
 
+        /// <summary>
+        /// Guarda la lista de registros de comidas en el archivo JSON correspondiente.
+        /// </summary>
         private void SaveMealRecords(List<MealRecord> mealRecords)
         {
             EnsureDirectoryExists(mealRecordsFilePath);
@@ -63,16 +84,25 @@ namespace Nutrition_App.Services
             File.WriteAllText(mealRecordsFilePath, json);
         }
 
-        private void EnsureDirectoryExists(string filePath)
+        /// <summary>
+        /// Verifica que el directorio exista antes de guardar un archivo.
+        /// Si no existe, lo crea automáticamente.
+        /// </summary>
+        private static void EnsureDirectoryExists(string filePath)
         {
-            string directory = Path.GetDirectoryName(filePath);
+            string? directory = Path.GetDirectoryName(filePath);
 
-            if (!Directory.Exists(directory))
+            if (!string.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
         }
 
+#pragma warning disable S2068
+        /// <summary>
+        /// Genera una lista de usuarios predefinidos para pruebas del sistema.
+        /// Incluye diferentes combinaciones de objetivos, dietas y niveles de actividad.
+        /// </summary>
         private List<User> GenerateUsers()
         {
             return new List<User>
@@ -105,6 +135,10 @@ namespace Nutrition_App.Services
             };
         }
 
+        /// <summary>
+        /// Genera registros de comidas simulados para cada usuario,
+        /// distribuidos en varios días y tipos de comida.
+        /// </summary>
         private List<MealRecord> GenerateMealRecords(List<User> users, List<Food> foods)
         {
             List<MealRecord> mealRecords = new List<MealRecord>();
@@ -149,7 +183,10 @@ namespace Nutrition_App.Services
             return mealRecords;
         }
 
-        private Food SelectFoodByMealType(List<Food> foods, string mealType, Random random)
+        /// <summary>
+        /// Selecciona un alimento aleatorio filtrado según el tipo de comida.
+        /// </summary>
+        private static Food SelectFoodByMealType(List<Food> foods, string mealType, Random random)
         {
             List<Food> filteredFoods;
 
@@ -198,7 +235,10 @@ namespace Nutrition_App.Services
             return filteredFoods[randomIndex];
         }
 
-        private DateTime GetDateWithMealHour(DateTime date, string mealType)
+        /// <summary>
+        /// Asigna una hora específica al registro dependiendo del tipo de comida.
+        /// </summary>
+        private static DateTime GetDateWithMealHour(DateTime date, string mealType)
         {
             switch (mealType)
             {
@@ -215,7 +255,10 @@ namespace Nutrition_App.Services
             }
         }
 
-        private double GetRandomQuantity(Random random)
+        /// <summary>
+        /// Genera una cantidad aleatoria para el consumo de alimentos.
+        /// </summary>
+        private static double GetRandomQuantity(Random random)
         {
             double[] quantities = { 0.5, 1.0, 1.5, 2.0 };
             int randomIndex = random.Next(quantities.Length);

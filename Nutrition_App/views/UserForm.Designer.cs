@@ -15,7 +15,6 @@
 
         private void InitializeComponent()
         {
-            lbl = new Label();
             lblWelcomeUser = new Label();
             btnEditProfile = new Button();
             btnDeleteAccount = new Button();
@@ -28,19 +27,10 @@
             ((System.ComponentModel.ISupportInitialize)dgvUserData).BeginInit();
             SuspendLayout();
             // 
-            // lbl
-            // 
-            lbl.AutoSize = true;
-            lbl.Location = new Point(190, 149);
-            lbl.Name = "lbl";
-            lbl.Size = new Size(66, 15);
-            lbl.TabIndex = 0;
-            lbl.Text = "Bienvenido";
-            // 
             // lblWelcomeUser
             // 
             lblWelcomeUser.AutoSize = true;
-            lblWelcomeUser.Location = new Point(312, 149);
+            lblWelcomeUser.Location = new Point(219, 150);
             lblWelcomeUser.Name = "lblWelcomeUser";
             lblWelcomeUser.Size = new Size(38, 15);
             lblWelcomeUser.TabIndex = 1;
@@ -48,9 +38,9 @@
             // 
             // btnEditProfile
             // 
-            btnEditProfile.Location = new Point(209, 185);
+            btnEditProfile.Location = new Point(312, 243);
             btnEditProfile.Name = "btnEditProfile";
-            btnEditProfile.Size = new Size(117, 23);
+            btnEditProfile.Size = new Size(147, 32);
             btnEditProfile.TabIndex = 2;
             btnEditProfile.Text = "Editar mi perfil";
             btnEditProfile.UseVisualStyleBackColor = true;
@@ -58,9 +48,9 @@
             // 
             // btnDeleteAccount
             // 
-            btnDeleteAccount.Location = new Point(70, 353);
+            btnDeleteAccount.Location = new Point(70, 319);
             btnDeleteAccount.Name = "btnDeleteAccount";
-            btnDeleteAccount.Size = new Size(137, 23);
+            btnDeleteAccount.Size = new Size(147, 30);
             btnDeleteAccount.TabIndex = 3;
             btnDeleteAccount.Text = "Eliminar mi cuenta";
             btnDeleteAccount.UseVisualStyleBackColor = true;
@@ -76,9 +66,9 @@
             // 
             // btnlogout
             // 
-            btnlogout.Location = new Point(312, 353);
+            btnlogout.Location = new Point(312, 317);
             btnlogout.Name = "btnlogout";
-            btnlogout.Size = new Size(137, 23);
+            btnlogout.Size = new Size(147, 30);
             btnlogout.TabIndex = 5;
             btnlogout.Text = "Cerrar Sesion";
             btnlogout.UseVisualStyleBackColor = true;
@@ -86,9 +76,9 @@
             // 
             // btnOpenFoods
             // 
-            btnOpenFoods.Location = new Point(312, 279);
+            btnOpenFoods.Location = new Point(191, 188);
             btnOpenFoods.Name = "btnOpenFoods";
-            btnOpenFoods.Size = new Size(135, 27);
+            btnOpenFoods.Size = new Size(147, 32);
             btnOpenFoods.TabIndex = 6;
             btnOpenFoods.Text = "Ingresar Alimentos";
             btnOpenFoods.UseVisualStyleBackColor = true;
@@ -96,7 +86,7 @@
             // 
             // btnViewNutritionInfo
             // 
-            btnViewNutritionInfo.Location = new Point(70, 274);
+            btnViewNutritionInfo.Location = new Point(70, 281);
             btnViewNutritionInfo.Name = "btnViewNutritionInfo";
             btnViewNutritionInfo.Size = new Size(147, 32);
             btnViewNutritionInfo.TabIndex = 7;
@@ -106,9 +96,9 @@
             // 
             // btnViewMyStats
             // 
-            btnViewMyStats.Location = new Point(200, 235);
+            btnViewMyStats.Location = new Point(70, 243);
             btnViewMyStats.Name = "btnViewMyStats";
-            btnViewMyStats.Size = new Size(141, 23);
+            btnViewMyStats.Size = new Size(147, 32);
             btnViewMyStats.TabIndex = 8;
             btnViewMyStats.Text = "Ver mis estadísticas";
             btnViewMyStats.UseVisualStyleBackColor = true;
@@ -116,9 +106,9 @@
             // 
             // btnViewMenu
             // 
-            btnViewMenu.Location = new Point(374, 219);
+            btnViewMenu.Location = new Point(312, 281);
             btnViewMenu.Name = "btnViewMenu";
-            btnViewMenu.Size = new Size(120, 23);
+            btnViewMenu.Size = new Size(147, 32);
             btnViewMenu.TabIndex = 9;
             btnViewMenu.Text = "Menu Asignado";
             btnViewMenu.UseVisualStyleBackColor = true;
@@ -138,7 +128,6 @@
             Controls.Add(btnDeleteAccount);
             Controls.Add(btnEditProfile);
             Controls.Add(lblWelcomeUser);
-            Controls.Add(lbl);
             Name = "UserForm";
             Text = "UserForm";
             Load += UserForm_Load;
@@ -146,7 +135,6 @@
             ResumeLayout(false);
             PerformLayout();
         }
-        private Label lbl;
         private Label lblWelcomeUser;
         private Button btnEditProfile;
         private Button btnDeleteAccount;

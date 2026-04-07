@@ -1,33 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Nutrition_App.Controllers;
 using Nutrition_App.Models;
 
 namespace Nutrition_App.Views
 {
+    /// <summary>
+    /// Formulario encargado de mostrar estadísticas nutricionales.
+    /// Puede funcionar en modo general o en modo individual según el usuario recibido.
+    /// </summary>
     public partial class StatisticsForm : Form
     {
         private readonly int? _userId;
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de estadísticas
+        /// en modo general para mostrar información consolidada del sistema.
+        /// </summary>
         public StatisticsForm()
         {
             InitializeComponent();
             _userId = null;
         }
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de estadísticas
+        /// para mostrar únicamente la información del usuario indicado.
+        /// </summary>
+        /// <param name="userId">Identificador del usuario cuyas estadísticas se desean visualizar.</param>
         public StatisticsForm(int userId)
         {
             InitializeComponent();
             _userId = userId;
         }
 
+        /// <summary>
+        /// Carga y presenta las estadísticas nutricionales al iniciar el formulario,
+        /// ya sea de forma general o filtradas por usuario.
+        /// </summary>
         private void StatisticsForm_Load(object sender, EventArgs e)
         {
             StatisticsController controller = new StatisticsController();
 
             NutritionStatsSummary summary;
-            var dailyStats = new System.Collections.Generic.List<DailyCaloriesStat>();
-            var topFoods = new System.Collections.Generic.List<TopFoodStat>();
+            List<DailyCaloriesStat> dailyStats;
+            List<TopFoodStat> topFoods;
 
             if (_userId.HasValue)
             {
@@ -53,24 +71,44 @@ namespace Nutrition_App.Views
             lblTotalCarbs.Text = summary.TotalCarbs.ToString("F2");
             lblTotalFat.Text = summary.TotalFat.ToString("F2");
 
+            dgvDailyStats.DataSource = null;
             dgvDailyStats.DataSource = dailyStats;
 
-            dgvDailyStats.Columns["Date"].HeaderText = "Fecha";
-            dgvDailyStats.Columns["TotalCalories"].HeaderText = "Calorías Totales";
-            dgvDailyStats.Columns["TotalMeals"].HeaderText = "Total de Comidas";
+            if (dgvDailyStats.Columns["Date"] != null)
+                dgvDailyStats.Columns["Date"].HeaderText = "Fecha";
 
-            dgvDailyStats.Columns["Date"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dgvDailyStats.Columns["TotalCalories"].DefaultCellStyle.Format = "F2";
+            if (dgvDailyStats.Columns["TotalCalories"] != null)
+                dgvDailyStats.Columns["TotalCalories"].HeaderText = "Calorías Totales";
 
+            if (dgvDailyStats.Columns["TotalMeals"] != null)
+                dgvDailyStats.Columns["TotalMeals"].HeaderText = "Total de Comidas";
+
+            if (dgvDailyStats.Columns["Date"] != null)
+                dgvDailyStats.Columns["Date"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+            if (dgvDailyStats.Columns["TotalCalories"] != null)
+                dgvDailyStats.Columns["TotalCalories"].DefaultCellStyle.Format = "F2";
+
+            dgvTopFoods.DataSource = null;
             dgvTopFoods.DataSource = topFoods;
 
-            dgvTopFoods.Columns["FoodName"].HeaderText = "Alimento";
-            dgvTopFoods.Columns["TimesConsumed"].HeaderText = "Veces Consumido";
-            dgvTopFoods.Columns["TotalQuantity"].HeaderText = "Cantidad Total";
-            dgvTopFoods.Columns["TotalCalories"].HeaderText = "Calorías Totales";
+            if (dgvTopFoods.Columns["FoodName"] != null)
+                dgvTopFoods.Columns["FoodName"].HeaderText = "Alimento";
 
-            dgvTopFoods.Columns["TotalQuantity"].DefaultCellStyle.Format = "F2";
-            dgvTopFoods.Columns["TotalCalories"].DefaultCellStyle.Format = "F2";
+            if (dgvTopFoods.Columns["TimesConsumed"] != null)
+                dgvTopFoods.Columns["TimesConsumed"].HeaderText = "Veces Consumido";
+
+            if (dgvTopFoods.Columns["TotalQuantity"] != null)
+                dgvTopFoods.Columns["TotalQuantity"].HeaderText = "Cantidad Total";
+
+            if (dgvTopFoods.Columns["TotalCalories"] != null)
+                dgvTopFoods.Columns["TotalCalories"].HeaderText = "Calorías Totales";
+
+            if (dgvTopFoods.Columns["TotalQuantity"] != null)
+                dgvTopFoods.Columns["TotalQuantity"].DefaultCellStyle.Format = "F2";
+
+            if (dgvTopFoods.Columns["TotalCalories"] != null)
+                dgvTopFoods.Columns["TotalCalories"].DefaultCellStyle.Format = "F2";
         }
     }
 }

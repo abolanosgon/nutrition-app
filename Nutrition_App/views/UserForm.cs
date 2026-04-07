@@ -7,15 +7,29 @@ using System.Windows.Forms;
 
 namespace Nutrition_App.Views
 {
+    /// <summary>
+    /// Formulario principal para usuarios estándar.
+    /// Permite visualizar la información personal del usuario autenticado,
+    /// editar su perfil, eliminar su cuenta, registrar comidas, consultar
+    /// información nutricional, ver estadísticas personales y consultar su menú asignado.
+    /// </summary>
     public partial class UserForm : Form
     {
-        private User loggedUser;
+        private User? loggedUser;
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de usuario.
+        /// </summary>
         public UserForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de usuario
+        /// con la información del usuario autenticado.
+        /// </summary>
+        /// <param name="user">Usuario que ha iniciado sesión.</param>
         public UserForm(User user)
         {
             InitializeComponent();
@@ -24,6 +38,9 @@ namespace Nutrition_App.Views
             LoadUserGrid();
         }
 
+        /// <summary>
+        /// Carga en la interfaz la información básica del usuario autenticado.
+        /// </summary>
         private void LoadLoggedUserData()
         {
             if (loggedUser == null)
@@ -34,6 +51,10 @@ namespace Nutrition_App.Views
             lblWelcomeUser.Text = "Bienvenido, " + loggedUser.Name;
         }
 
+        /// <summary>
+        /// Carga los datos del usuario autenticado en la grilla y ajusta
+        /// los encabezados visibles para presentación.
+        /// </summary>
         private void LoadUserGrid()
         {
             if (loggedUser == null)
@@ -61,98 +82,85 @@ namespace Nutrition_App.Views
             TranslateUserGrid();
         }
 
+        /// <summary>
+        /// Traduce en la grilla los valores internos del sistema a etiquetas legibles en español.
+        /// </summary>
         private void TranslateUserGrid()
         {
             foreach (DataGridViewRow row in dgvUserData.Rows)
             {
-                if (row.Cells["Gender"].Value != null)
+                string gender = row.Cells["Gender"].Value?.ToString() ?? "";
+                if (gender == "Male")
                 {
-                    string gender = row.Cells["Gender"].Value.ToString();
-
-                    if (gender == "Male")
-                    {
-                        row.Cells["Gender"].Value = "Hombre";
-                    }
-                    else if (gender == "Female")
-                    {
-                        row.Cells["Gender"].Value = "Mujer";
-                    }
+                    row.Cells["Gender"].Value = "Hombre";
+                }
+                else if (gender == "Female")
+                {
+                    row.Cells["Gender"].Value = "Mujer";
                 }
 
-                if (row.Cells["Goal"].Value != null)
+                string goal = row.Cells["Goal"].Value?.ToString() ?? "";
+                if (goal == "Maintain")
                 {
-                    string goal = row.Cells["Goal"].Value.ToString();
-
-                    if (goal == "Maintain")
-                    {
-                        row.Cells["Goal"].Value = "Mantener peso";
-                    }
-                    else if (goal == "LoseFat")
-                    {
-                        row.Cells["Goal"].Value = "Perder grasa";
-                    }
-                    else if (goal == "GainMuscle")
-                    {
-                        row.Cells["Goal"].Value = "Ganar masa muscular";
-                    }
+                    row.Cells["Goal"].Value = "Mantener peso";
+                }
+                else if (goal == "LoseFat")
+                {
+                    row.Cells["Goal"].Value = "Perder grasa";
+                }
+                else if (goal == "GainMuscle")
+                {
+                    row.Cells["Goal"].Value = "Ganar masa muscular";
                 }
 
-                if (row.Cells["ActivityLevel"].Value != null)
+                string activityLevel = row.Cells["ActivityLevel"].Value?.ToString() ?? "";
+                if (activityLevel == "Sedentary")
                 {
-                    string activityLevel = row.Cells["ActivityLevel"].Value.ToString();
-
-                    if (activityLevel == "Sedentary")
-                    {
-                        row.Cells["ActivityLevel"].Value = "Sedentario";
-                    }
-                    else if (activityLevel == "Light")
-                    {
-                        row.Cells["ActivityLevel"].Value = "Ligero";
-                    }
-                    else if (activityLevel == "Moderate")
-                    {
-                        row.Cells["ActivityLevel"].Value = "Moderado";
-                    }
-                    else if (activityLevel == "Active")
-                    {
-                        row.Cells["ActivityLevel"].Value = "Activo";
-                    }
+                    row.Cells["ActivityLevel"].Value = "Sedentario";
+                }
+                else if (activityLevel == "Light")
+                {
+                    row.Cells["ActivityLevel"].Value = "Ligero";
+                }
+                else if (activityLevel == "Moderate")
+                {
+                    row.Cells["ActivityLevel"].Value = "Moderado";
+                }
+                else if (activityLevel == "Active")
+                {
+                    row.Cells["ActivityLevel"].Value = "Activo";
                 }
 
-                if (row.Cells["DietType"].Value != null)
+                string dietType = row.Cells["DietType"].Value?.ToString() ?? "";
+                if (dietType == "Standard")
                 {
-                    string dietType = row.Cells["DietType"].Value.ToString();
-
-                    if (dietType == "Standard")
-                    {
-                        row.Cells["DietType"].Value = "Estándar";
-                    }
-                    else if (dietType == "Keto")
-                    {
-                        row.Cells["DietType"].Value = "Keto";
-                    }
-                    else if (dietType == "Vegetarian")
-                    {
-                        row.Cells["DietType"].Value = "Vegetariana";
-                    }
+                    row.Cells["DietType"].Value = "Estándar";
+                }
+                else if (dietType == "Keto")
+                {
+                    row.Cells["DietType"].Value = "Keto";
+                }
+                else if (dietType == "Vegetarian")
+                {
+                    row.Cells["DietType"].Value = "Vegetariana";
                 }
 
-                if (row.Cells["Role"].Value != null)
+                string role = row.Cells["Role"].Value?.ToString() ?? "";
+                if (role == "Admin")
                 {
-                    string role = row.Cells["Role"].Value.ToString();
-
-                    if (role == "Admin")
-                    {
-                        row.Cells["Role"].Value = "Administrador";
-                    }
-                    else if (role == "User")
-                    {
-                        row.Cells["Role"].Value = "Usuario";
-                    }
+                    row.Cells["Role"].Value = "Administrador";
+                }
+                else if (role == "User")
+                {
+                    row.Cells["Role"].Value = "Usuario";
                 }
             }
         }
 
+        /// <summary>
+        /// Abre el formulario de edición del perfil del usuario autenticado
+        /// y actualiza la información mostrada al cerrarlo.
+        /// </summary>
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
             if (loggedUser == null)
@@ -168,6 +176,10 @@ namespace Nutrition_App.Views
             LoadUserGrid();
         }
 
+        /// <summary>
+        /// Elimina la cuenta del usuario autenticado previa confirmación
+        /// y redirige al formulario principal.
+        /// </summary>
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
             if (loggedUser == null)
@@ -197,6 +209,9 @@ namespace Nutrition_App.Views
             }
         }
 
+        /// <summary>
+        /// Cierra la sesión actual y regresa al formulario principal.
+        /// </summary>
         private void btnLogout_Click(object sender, EventArgs e)
         {
             MainForm mainForm = new MainForm();
@@ -205,6 +220,9 @@ namespace Nutrition_App.Views
             this.Close();
         }
 
+        /// <summary>
+        /// Abre el formulario de registro y consulta de comidas del usuario autenticado.
+        /// </summary>
         private void btnOpenFoods_Click(object sender, EventArgs e)
         {
             if (loggedUser == null)
@@ -219,12 +237,17 @@ namespace Nutrition_App.Views
             LoadUserGrid();
         }
 
+        /// <summary>
+        /// Evento reservado para futuras inicializaciones del formulario de usuario.
+        /// </summary>
         private void UserForm_Load(object sender, EventArgs e)
         {
-
+            // Evento reservado para futuras inicializaciones del formulario.
         }
 
-
+        /// <summary>
+        /// Abre la ventana con la información nutricional calculada para el usuario autenticado.
+        /// </summary>
         private void btnViewNutritionInfo_Click(object sender, EventArgs e)
         {
             if (loggedUser == null)
@@ -237,6 +260,9 @@ namespace Nutrition_App.Views
             form.ShowDialog();
         }
 
+        /// <summary>
+        /// Abre la ventana de estadísticas personales del usuario autenticado.
+        /// </summary>
         private void btnViewMyStats_Click(object sender, EventArgs e)
         {
             if (loggedUser == null)
@@ -249,8 +275,17 @@ namespace Nutrition_App.Views
             statisticsForm.ShowDialog();
         }
 
+        /// <summary>
+        /// Abre la ventana del menú asignado al usuario autenticado.
+        /// </summary>
         private void btnViewMenu_Click(object sender, EventArgs e)
         {
+            if (loggedUser == null)
+            {
+                MessageBox.Show("No se encontró el usuario.");
+                return;
+            }
+
             MenuForm menuForm = new MenuForm(loggedUser);
             menuForm.ShowDialog();
         }

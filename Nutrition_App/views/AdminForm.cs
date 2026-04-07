@@ -2,23 +2,34 @@
 using System.Windows.Forms;
 using Nutrition_App.Controllers;
 using Nutrition_App.Models;
-using System;
-using System.Windows.Forms;
 
 namespace Nutrition_App.Views
 {
+    /// <summary>
+    /// Formulario de administración del sistema.
+    /// Permite visualizar usuarios registrados, editar cuentas, eliminar usuarios,
+    /// acceder al módulo de alimentos, consultar estadísticas generales y volver al formulario principal.
+    /// </summary>
     public partial class AdminForm : Form
     {
-        private User loggedUser;
+        private User? loggedUser;
         private UserController userController = new UserController();
         private int selectedUserId = -1;
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de administración.
+        /// </summary>
         public AdminForm()
         {
             InitializeComponent();
             LoadUsers();
         }
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de administración
+        /// con el usuario autenticado actualmente.
+        /// </summary>
+        /// <param name="user">Usuario administrador que inició sesión.</param>
         public AdminForm(User user)
         {
             InitializeComponent();
@@ -26,21 +37,36 @@ namespace Nutrition_App.Views
             LoadUsers();
         }
 
+        /// <summary>
+        /// Carga la lista de usuarios registrados en la grilla del formulario.
+        /// </summary>
         private void LoadUsers()
         {
             dgvUsers.DataSource = null;
             dgvUsers.DataSource = userController.GetUsers();
         }
 
+        /// <summary>
+        /// Captura el identificador del usuario seleccionado en la grilla.
+        /// </summary>
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 var row = dgvUsers.Rows[e.RowIndex];
-                selectedUserId = Convert.ToInt32(row.Cells["Id"].Value);
+                object? idValue = row.Cells["Id"].Value;
+
+                if (idValue != null && int.TryParse(idValue.ToString(), out int id))
+                {
+                    selectedUserId = id;
+                }
             }
         }
 
+        /// <summary>
+        /// Elimina el usuario seleccionado de la lista, evitando que el administrador
+        /// elimine su propia cuenta.
+        /// </summary>
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
             if (selectedUserId == -1)
@@ -70,6 +96,10 @@ namespace Nutrition_App.Views
             }
         }
 
+        /// <summary>
+        /// Abre el formulario de edición para el usuario seleccionado y recarga la lista
+        /// una vez cerrada la ventana de edición.
+        /// </summary>
         private void btnEditUser_Click(object sender, EventArgs e)
         {
             if (selectedUserId == -1)
@@ -78,7 +108,7 @@ namespace Nutrition_App.Views
                 return;
             }
 
-            User selectedUser = userController.GetUserById(selectedUserId);
+            User? selectedUser = userController.GetUserById(selectedUserId);
 
             if (selectedUser == null)
             {
@@ -92,6 +122,9 @@ namespace Nutrition_App.Views
             LoadUsers();
         }
 
+        /// <summary>
+        /// Abre el módulo de gestión de alimentos utilizando el usuario autenticado.
+        /// </summary>
         private void btnOpenFoods_Click(object sender, EventArgs e)
         {
             if (loggedUser == null)
@@ -104,6 +137,10 @@ namespace Nutrition_App.Views
             foodForm.ShowDialog();
         }
 
+        /// <summary>
+        /// Muestra un resumen general de estadísticas nutricionales calculadas a partir
+        /// de los registros de comida existentes en el sistema.
+        /// </summary>
         private void btnTestStats_Click(object sender, EventArgs e)
         {
             StatisticsController controller = new StatisticsController();
@@ -120,6 +157,16 @@ namespace Nutrition_App.Views
                 "\nGrasa total: " + summary.TotalFat,
                 "Resumen de estadísticas"
             );
+        }
+
+        /// <summary>
+        /// Cierra el formulario de administración y regresa al formulario principal.
+        /// </summary>
+        private void btnVolverMain_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            mainForm.Show();
+            this.Close();
         }
     }
 }

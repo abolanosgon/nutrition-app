@@ -178,6 +178,7 @@
             Controls.Add(label1);
             Name = "EditFoodForm";
             Text = "Editar alimento";
+            Load += EditFoodForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -6,18 +6,31 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Views
 {
+    /// <summary>
+    /// Formulario para registrar y consultar los alimentos consumidos por el usuario autenticado.
+    /// Permite agregar nuevos registros de comida, visualizar el historial personal
+    /// y eliminar registros existentes.
+    /// </summary>
     public partial class UserMealForm : Form
     {
-        private User loggedUser;
+        private User? loggedUser;
         private FoodController foodController = new FoodController();
         private MealRecordController mealRecordController = new MealRecordController();
         private int selectedMealRecordId = -1;
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de registro de comidas.
+        /// </summary>
         public UserMealForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de registro de comidas
+        /// con el usuario autenticado.
+        /// </summary>
+        /// <param name="user">Usuario que registrará y consultará sus comidas.</param>
         public UserMealForm(User user)
         {
             InitializeComponent();
@@ -26,6 +39,9 @@ namespace Nutrition_App.Views
             LoadMealRecords();
         }
 
+        /// <summary>
+        /// Carga la lista de alimentos disponibles en el ComboBox de selección.
+        /// </summary>
         private void LoadFoods()
         {
             cmbFoods.DataSource = null;
@@ -35,6 +51,9 @@ namespace Nutrition_App.Views
             cmbFoods.SelectedIndex = -1;
         }
 
+        /// <summary>
+        /// Carga en la grilla los registros de comida correspondientes al usuario autenticado.
+        /// </summary>
         private void LoadMealRecords()
         {
             if (loggedUser == null)
@@ -74,7 +93,11 @@ namespace Nutrition_App.Views
                 dgvMealRecords.Columns["Quantity"].HeaderText = "Cantidad";
         }
 
-        private string TranslateMealType(string mealType)
+        /// <summary>
+        /// Traduce el tipo de comida desde el valor interno del sistema
+        /// a su representación visible en español.
+        /// </summary>
+        private static string TranslateMealType(string mealType)
         {
             switch (mealType)
             {
@@ -91,6 +114,10 @@ namespace Nutrition_App.Views
             }
         }
 
+        /// <summary>
+        /// Valida la información ingresada y registra una nueva comida
+        /// para el usuario autenticado.
+        /// </summary>
         private void btnRegisterMeal_Click(object sender, EventArgs e)
         {
             if (loggedUser == null)
@@ -119,7 +146,7 @@ namespace Nutrition_App.Views
 
             string mealType = "";
 
-            switch (cmbMealType.SelectedItem.ToString())
+            switch (cmbMealType.SelectedItem?.ToString() ?? "")
             {
                 case "Desayuno":
                     mealType = "Breakfast";
@@ -135,10 +162,22 @@ namespace Nutrition_App.Views
                     break;
             }
 
+            if (string.IsNullOrWhiteSpace(mealType))
+            {
+                MessageBox.Show("El tipo de comida seleccionado no es válido.");
+                return;
+            }
+
+            if (cmbFoods.SelectedValue == null || !int.TryParse(cmbFoods.SelectedValue.ToString(), out int foodId))
+            {
+                MessageBox.Show("No se pudo obtener el alimento seleccionado.");
+                return;
+            }
+
             MealRecord record = new MealRecord
             {
                 UserId = loggedUser.Id,
-                FoodId = Convert.ToInt32(cmbFoods.SelectedValue),
+                FoodId = foodId,
                 RecordDate = DateTime.Now,
                 MealType = mealType,
                 Quantity = quantity
@@ -155,25 +194,26 @@ namespace Nutrition_App.Views
             LoadMealRecords();
         }
 
-        private void UserMealForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
+        /// <summary>
+        /// Captura el identificador del registro de comida seleccionado en la grilla.
+        /// </summary>
         private void dgvMealRecords_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 var row = dgvMealRecords.Rows[e.RowIndex];
+                object? idValue = row.Cells["Id"].Value;
 
-                if (row.Cells["Id"].Value != null)
+                if (idValue != null && int.TryParse(idValue.ToString(), out int id))
                 {
-                    selectedMealRecordId = Convert.ToInt32(row.Cells["Id"].Value);
+                    selectedMealRecordId = id;
                 }
             }
         }
 
+        /// <summary>
+        /// Elimina el registro de comida seleccionado previa confirmación del usuario.
+        /// </summary>
         private void btnDeleteMealRecord_Click(object sender, EventArgs e)
         {
             if (selectedMealRecordId == -1)
@@ -199,6 +239,14 @@ namespace Nutrition_App.Views
 
                 LoadMealRecords();
             }
+        }
+
+        /// <summary>
+        /// Evento reservado para futuras inicializaciones del formulario.
+        /// </summary>
+        private void UserMealForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -5,43 +5,68 @@ using Nutrition_App.Repositories;
 
 namespace Nutrition_App.Services
 {
-    // Maneja la lógica relacionada con los usuarios
+    /// <summary>
+    /// Servicio encargado de gestionar las operaciones relacionadas con los usuarios.
+    /// Actúa como intermediario entre los controladores y el repositorio de usuarios.
+    /// </summary>
     public class UserService
     {
         private readonly IUserRepository userRepository;
 
+        /// <summary>
+        /// Inicializa una nueva instancia del servicio de usuarios.
+        /// </summary>
+        /// <param name="userRepository">Repositorio utilizado para acceder a los datos de usuarios.</param>
         public UserService(IUserRepository userRepository)
         {
             this.userRepository = userRepository;
         }
 
-        // Agrega un nuevo usuario al sistema
+        /// <summary>
+        /// Agrega un nuevo usuario al sistema asignándole un identificador único.
+        /// </summary>
+        /// <param name="user">Usuario que se desea registrar.</param>
         public void AddUser(User user)
         {
             List<User> users = userRepository.GetAll();
 
-            // Asigna un ID consecutivo automáticamente
             user.Id = users.Count == 0 ? 1 : users.Max(u => u.Id) + 1;
 
             userRepository.Add(user);
         }
 
-        // Retorna todos los usuarios registrados
+        /// <summary>
+        /// Obtiene la lista completa de usuarios registrados.
+        /// </summary>
+        /// <returns>Lista de usuarios disponibles en el sistema.</returns>
         public List<User> GetUsers()
         {
             return userRepository.GetAll();
         }
 
+        /// <summary>
+        /// Elimina un usuario del sistema según su identificador.
+        /// </summary>
+        /// <param name="userId">Identificador del usuario a eliminar.</param>
         public void DeleteUser(int userId)
         {
             userRepository.Delete(userId);
         }
 
+        /// <summary>
+        /// Actualiza la información de un usuario existente.
+        /// </summary>
+        /// <param name="user">Usuario con los datos actualizados.</param>
         public void UpdateUser(User user)
         {
             userRepository.Update(user);
         }
 
+#pragma warning disable S2068
+        /// <summary>
+        /// Verifica si existe al menos un usuario administrador en el sistema.
+        /// Si no existe, crea automáticamente uno con valores predeterminados.
+        /// </summary>
         public void EnsureAdminUser()
         {
             List<User> users = userRepository.GetAll();

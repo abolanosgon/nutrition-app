@@ -5,16 +5,29 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Views
 {
+    /// <summary>
+    /// Formulario para editar la información de un usuario existente.
+    /// Permite cargar los datos actuales del usuario, traducir valores internos
+    /// para mostrarlos en la interfaz y guardar los cambios realizados.
+    /// </summary>
     public partial class EditUserForm : Form
     {
-        private User selectedUser;
+        private User? selectedUser;
         private UserController userController = new UserController();
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de edición de usuarios.
+        /// </summary>
         public EditUserForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de edición de usuarios
+        /// con el usuario seleccionado.
+        /// </summary>
+        /// <param name="user">Usuario que se desea editar.</param>
         public EditUserForm(User user)
         {
             InitializeComponent();
@@ -22,6 +35,9 @@ namespace Nutrition_App.Views
             LoadUserData();
         }
 
+        /// <summary>
+        /// Carga en los controles del formulario los datos actuales del usuario seleccionado.
+        /// </summary>
         private void LoadUserData()
         {
             if (selectedUser == null)
@@ -34,53 +50,130 @@ namespace Nutrition_App.Views
             txtWeight.Text = selectedUser.Weight.ToString();
             txtHeight.Text = selectedUser.Height.ToString();
 
-            cmbGender.SelectedItem = selectedUser.Gender == "Male" ? "Hombre" : "Mujer";
+            cmbGender.SelectedItem = TranslateGenderToSpanish(selectedUser.Gender);
+            cmbGoal.SelectedItem = TranslateGoalToSpanish(selectedUser.Goal);
+            cmbActivityLevel.SelectedItem = TranslateActivityLevelToSpanish(selectedUser.ActivityLevel);
+            cmbDietType.SelectedItem = TranslateDietTypeToSpanish(selectedUser.DietType);
+        }
 
-            switch (selectedUser.Goal)
+        /// <summary>
+        /// Traduce el valor interno del género a su representación en español para la interfaz.
+        /// </summary>
+        private static string TranslateGenderToSpanish(string gender)
+        {
+            switch (gender?.Trim().ToLower())
             {
-                case "Maintain":
-                    cmbGoal.SelectedItem = "Mantener peso";
-                    break;
-                case "LoseFat":
-                    cmbGoal.SelectedItem = "Perder grasa";
-                    break;
-                case "GainMuscle":
-                    cmbGoal.SelectedItem = "Ganar masa muscular";
-                    break;
-            }
+                case "male":
+                case "hombre":
+                    return "Hombre";
 
-            switch (selectedUser.ActivityLevel)
-            {
-                case "Sedentary":
-                    cmbActivityLevel.SelectedItem = "Sedentario";
-                    break;
-                case "Light":
-                    cmbActivityLevel.SelectedItem = "Ligero";
-                    break;
-                case "Moderate":
-                    cmbActivityLevel.SelectedItem = "Moderado";
-                    break;
-                case "Active":
-                    cmbActivityLevel.SelectedItem = "Activo";
-                    break;
-            }
+                case "female":
+                case "mujer":
+                    return "Mujer";
 
-            switch (selectedUser.DietType)
-            {
-                case "Standard":
-                    cmbDietType.SelectedItem = "Estándar";
-                    break;
-                case "Keto":
-                    cmbDietType.SelectedItem = "Keto";
-                    break;
-                case "Vegetarian":
-                    cmbDietType.SelectedItem = "Vegetariana";
-                    break;
+                default:
+                    return "";
             }
         }
 
+        /// <summary>
+        /// Traduce el valor interno del objetivo a su representación en español para la interfaz.
+        /// </summary>
+        private static string TranslateGoalToSpanish(string goal)
+        {
+            switch (goal?.Trim().ToLower())
+            {
+                case "maintain":
+                case "mantener":
+                case "mantener peso":
+                    return "Mantener peso";
+
+                case "losefat":
+                case "lose fat":
+                case "perder grasa":
+                case "perder peso":
+                case "bajar grasa":
+                    return "Perder grasa";
+
+                case "gainmuscle":
+                case "gain muscle":
+                case "ganar masa":
+                case "ganar masa muscular":
+                case "ganar peso":
+                case "aumentar peso":
+                    return "Ganar masa muscular";
+
+                default:
+                    return "";
+            }
+        }
+
+        /// <summary>
+        /// Traduce el valor interno del nivel de actividad a su representación en español para la interfaz.
+        /// </summary>
+        private static string TranslateActivityLevelToSpanish(string activityLevel)
+        {
+            switch (activityLevel?.Trim().ToLower())
+            {
+                case "sedentary":
+                case "sedentario":
+                    return "Sedentario";
+
+                case "light":
+                case "ligero":
+                    return "Ligero";
+
+                case "moderate":
+                case "moderado":
+                    return "Moderado";
+
+                case "active":
+                case "activo":
+                    return "Activo";
+
+                default:
+                    return "";
+            }
+        }
+
+        /// <summary>
+        /// Traduce el valor interno del tipo de dieta a su representación en español para la interfaz.
+        /// </summary>
+        private static string TranslateDietTypeToSpanish(string dietType)
+        {
+            switch (dietType?.Trim().ToLower())
+            {
+                case "standard":
+                case "estandar":
+                case "estándar":
+                case "estadanr":
+                    return "Estándar";
+
+                case "keto":
+                    return "Keto";
+
+                case "vegetarian":
+                case "vegetariano":
+                case "vegetariana":
+                    return "Vegetariana";
+
+                default:
+                    return "";
+            }
+        }
+
+        /// <summary>
+        /// Valida los datos ingresados, actualiza la información del usuario seleccionado
+        /// y guarda los cambios en el sistema.
+        /// </summary>
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
+            if (selectedUser == null)
+            {
+                MessageBox.Show("No se encontró el usuario.");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
                 MessageBox.Show("Debe ingresar un nombre.");
@@ -116,9 +209,9 @@ namespace Nutrition_App.Views
             selectedUser.Age = age;
             selectedUser.Weight = weight;
             selectedUser.Height = height;
-            selectedUser.Gender = cmbGender.SelectedItem.ToString() == "Hombre" ? "Male" : "Female";
+            selectedUser.Gender = cmbGender.SelectedItem?.ToString() == "Hombre" ? "Male" : "Female";
 
-            switch (cmbGoal.SelectedItem.ToString())
+            switch (cmbGoal.SelectedItem?.ToString() ?? "")
             {
                 case "Mantener peso":
                     selectedUser.Goal = "Maintain";
@@ -131,7 +224,7 @@ namespace Nutrition_App.Views
                     break;
             }
 
-            switch (cmbActivityLevel.SelectedItem.ToString())
+            switch (cmbActivityLevel.SelectedItem?.ToString() ?? "")
             {
                 case "Sedentario":
                     selectedUser.ActivityLevel = "Sedentary";
@@ -147,7 +240,7 @@ namespace Nutrition_App.Views
                     break;
             }
 
-            switch (cmbDietType.SelectedItem.ToString())
+            switch (cmbDietType.SelectedItem?.ToString() ?? "")
             {
                 case "Estándar":
                     selectedUser.DietType = "Standard";
@@ -166,9 +259,12 @@ namespace Nutrition_App.Views
             this.Close();
         }
 
+        /// <summary>
+        /// Evento reservado para futuras inicializaciones del formulario.
+        /// </summary>
         private void EditUserForm_Load(object sender, EventArgs e)
         {
-
+            // Evento reservado para futuras inicializaciones del formulario.
         }
     }
 }

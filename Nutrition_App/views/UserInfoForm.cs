@@ -5,11 +5,20 @@ using Nutrition_App.Services;
 
 namespace Nutrition_App.Views
 {
+    /// <summary>
+    /// Formulario encargado de mostrar la información nutricional calculada
+    /// para el usuario autenticado.
+    /// </summary>
     public partial class UserInfoForm : Form
     {
-        private User currentUser;
+        private User? currentUser;
         private NutritionService nutritionService;
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de información nutricional
+        /// para el usuario indicado.
+        /// </summary>
+        /// <param name="user">Usuario del que se desea mostrar la información nutricional.</param>
         public UserInfoForm(User user)
         {
             InitializeComponent();
@@ -17,11 +26,18 @@ namespace Nutrition_App.Views
             nutritionService = new NutritionService();
         }
 
+        /// <summary>
+        /// Ejecuta la carga de información nutricional al iniciar el formulario.
+        /// </summary>
         private void UserInfoForm_Load(object sender, EventArgs e)
         {
             LoadNutritionInfo();
         }
 
+        /// <summary>
+        /// Calcula y muestra la información nutricional del usuario actual,
+        /// incluyendo calorías, macronutrientes y datos traducidos para la interfaz.
+        /// </summary>
         private void LoadNutritionInfo()
         {
             if (currentUser == null)
@@ -45,7 +61,11 @@ namespace Nutrition_App.Views
             lblActivityLevel.Text = "Nivel de actividad: " + TranslateActivityLevel(currentUser.ActivityLevel);
         }
 
-        private string TranslateGoal(string goal)
+        /// <summary>
+        /// Traduce el objetivo nutricional desde el valor interno del sistema
+        /// a su representación visible en español.
+        /// </summary>
+        private static string TranslateGoal(string goal)
         {
             switch (goal)
             {
@@ -60,7 +80,11 @@ namespace Nutrition_App.Views
             }
         }
 
-        private string TranslateDietType(string dietType)
+        /// <summary>
+        /// Traduce el tipo de dieta desde el valor interno del sistema
+        /// a su representación visible en español.
+        /// </summary>
+        private static string TranslateDietType(string dietType)
         {
             switch (dietType)
             {
@@ -75,7 +99,11 @@ namespace Nutrition_App.Views
             }
         }
 
-        private string TranslateActivityLevel(string activityLevel)
+        /// <summary>
+        /// Traduce el nivel de actividad desde el valor interno del sistema
+        /// a su representación visible en español.
+        /// </summary>
+        private static string TranslateActivityLevel(string activityLevel)
         {
             switch (activityLevel)
             {

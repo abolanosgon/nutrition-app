@@ -5,16 +5,28 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Views
 {
+    /// <summary>
+    /// Formulario para editar la información de un alimento existente.
+    /// Permite cargar los datos actuales del alimento, modificarlos y guardar los cambios.
+    /// </summary>
     public partial class EditFoodForm : Form
     {
-        private Food selectedFood;
+        private Food? selectedFood;
         private FoodController foodController = new FoodController();
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de edición de alimentos.
+        /// </summary>
         public EditFoodForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Inicializa una nueva instancia del formulario de edición de alimentos
+        /// con el alimento seleccionado.
+        /// </summary>
+        /// <param name="food">Alimento que se desea editar.</param>
         public EditFoodForm(Food food)
         {
             InitializeComponent();
@@ -22,6 +34,9 @@ namespace Nutrition_App.Views
             LoadFoodData();
         }
 
+        /// <summary>
+        /// Carga en los controles del formulario la información del alimento seleccionado.
+        /// </summary>
         private void LoadFoodData()
         {
             if (selectedFood == null)
@@ -38,8 +53,18 @@ namespace Nutrition_App.Views
             txtPortionSize.Text = selectedFood.PortionSize;
         }
 
+        /// <summary>
+        /// Valida la información ingresada, actualiza el alimento seleccionado
+        /// y guarda los cambios en el repositorio.
+        /// </summary>
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
+            if (selectedFood == null)
+            {
+                MessageBox.Show("No se encontró el alimento.");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txtFoodName.Text) ||
                 string.IsNullOrWhiteSpace(txtCategory.Text) ||
                 string.IsNullOrWhiteSpace(txtPortionSize.Text))
@@ -84,6 +109,14 @@ namespace Nutrition_App.Views
 
             MessageBox.Show("Alimento actualizado correctamente.");
             this.Close();
+        }
+
+        /// <summary>
+        /// Evento reservado para futuras inicializaciones del formulario.
+        /// </summary>
+        private void EditFoodForm_Load(object sender, EventArgs e)
+        {
+            /// N/A
         }
     }
 }

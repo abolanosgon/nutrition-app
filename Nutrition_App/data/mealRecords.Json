@@ -12006,5 +12006,21 @@
     "RecordDate": "2026-04-04T22:09:03.6987474-06:00",
     "MealType": "Lunch",
     "Quantity": 1
+  },
+  {
+    "Id": 1502,
+    "UserId": 28,
+    "FoodId": 5,
+    "RecordDate": "2026-04-06T19:55:31.7997613-06:00",
+    "MealType": "Lunch",
+    "Quantity": 2
+  },
+  {
+    "Id": 1503,
+    "UserId": 27,
+    "FoodId": 6,
+    "RecordDate": "2026-04-06T21:44:56.2437372-06:00",
+    "MealType": "Breakfast",
+    "Quantity": 2
   }
 ]

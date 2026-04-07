@@ -225,6 +225,7 @@
             Controls.Add(dgvFoods);
             Name = "FoodForm";
             Text = "Form1";
+            Load += FoodForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvFoods).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -2,8 +2,8 @@
   {
     "Id": 1,
     "Name": "Estandar - Mantener",
-    "Goal": "Mantener",
-    "DietType": "Estandar",
+    "Goal": "Maintain",
+    "DietType": "Standard",
     "Items": [
       {
         "Id": 1,
@@ -23,7 +23,6 @@
         "MealType": "Desayuno",
         "Quantity": 1
       },
-
       {
         "Id": 4,
         "FoodId": 28,
@@ -36,7 +35,6 @@
         "MealType": "Snack AM",
         "Quantity": 1
       },
-
       {
         "Id": 6,
         "FoodId": 1,
@@ -55,7 +53,6 @@
         "MealType": "Almuerzo",
         "Quantity": 1
       },
-
       {
         "Id": 9,
         "FoodId": 40,
@@ -68,7 +65,6 @@
         "MealType": "Snack PM",
         "Quantity": 1
       },
-
       {
         "Id": 11,
         "FoodId": 5,
@@ -92,8 +88,8 @@
   {
     "Id": 2,
     "Name": "Estandar - Perder grasa",
-    "Goal": "Perder grasa",
-    "DietType": "Estandar",
+    "Goal": "LoseFat",
+    "DietType": "Standard",
     "Items": [
       {
         "Id": 1,
@@ -113,14 +109,12 @@
         "MealType": "Desayuno",
         "Quantity": 1
       },
-
       {
         "Id": 4,
         "FoodId": 28,
         "MealType": "Snack AM",
         "Quantity": 1
       },
-
       {
         "Id": 5,
         "FoodId": 1,
@@ -145,14 +139,12 @@
         "MealType": "Almuerzo",
         "Quantity": 1
       },
-
       {
         "Id": 9,
         "FoodId": 61,
         "MealType": "Snack PM",
         "Quantity": 1
       },
-
       {
         "Id": 10,
         "FoodId": 3,
@@ -182,8 +174,8 @@
   {
     "Id": 3,
     "Name": "Estandar - Ganar masa",
-    "Goal": "Ganar masa",
-    "DietType": "Estandar",
+    "Goal": "GainMuscle",
+    "DietType": "Standard",
     "Items": [
       {
         "Id": 1,
@@ -209,7 +201,6 @@
         "MealType": "Desayuno",
         "Quantity": 1
       },
-
       {
         "Id": 5,
         "FoodId": 57,
@@ -222,7 +213,6 @@
         "MealType": "Snack AM",
         "Quantity": 1
       },
-
       {
         "Id": 7,
         "FoodId": 2,
@@ -241,7 +231,6 @@
         "MealType": "Almuerzo",
         "Quantity": 1
       },
-
       {
         "Id": 10,
         "FoodId": 61,
@@ -254,7 +243,6 @@
         "MealType": "Snack PM",
         "Quantity": 1
       },
-
       {
         "Id": 12,
         "FoodId": 1,
@@ -278,7 +266,7 @@
   {
     "Id": 4,
     "Name": "Keto - Mantener",
-    "Goal": "Mantener",
+    "Goal": "Maintain",
     "DietType": "Keto",
     "Items": [
       {
@@ -299,14 +287,12 @@
         "MealType": "Desayuno",
         "Quantity": 1
       },
-
       {
         "Id": 4,
         "FoodId": 34,
         "MealType": "Snack AM",
         "Quantity": 1
       },
-
       {
         "Id": 5,
         "FoodId": 4,
@@ -325,14 +311,12 @@
         "MealType": "Almuerzo",
         "Quantity": 1
       },
-
       {
         "Id": 8,
         "FoodId": 35,
         "MealType": "Snack PM",
         "Quantity": 1
       },
-
       {
         "Id": 9,
         "FoodId": 5,
@@ -356,7 +340,7 @@
   {
     "Id": 5,
     "Name": "Keto - Perder grasa",
-    "Goal": "Perder grasa",
+    "Goal": "LoseFat",
     "DietType": "Keto",
     "Items": [
       {
@@ -371,14 +355,12 @@
         "MealType": "Desayuno",
         "Quantity": 1
       },
-
       {
         "Id": 3,
         "FoodId": 28,
         "MealType": "Snack AM",
         "Quantity": 1
       },
-
       {
         "Id": 4,
         "FoodId": 1,
@@ -397,14 +379,12 @@
         "MealType": "Almuerzo",
         "Quantity": 1
       },
-
       {
         "Id": 7,
         "FoodId": 61,
         "MealType": "Snack PM",
         "Quantity": 1
       },
-
       {
         "Id": 8,
         "FoodId": 3,
@@ -428,7 +408,7 @@
   {
     "Id": 6,
     "Name": "Keto - Ganar masa",
-    "Goal": "Ganar masa",
+    "Goal": "GainMuscle",
     "DietType": "Keto",
     "Items": [
       {
@@ -449,7 +429,6 @@
         "MealType": "Desayuno",
         "Quantity": 1
       },
-
       {
         "Id": 4,
         "FoodId": 33,
@@ -462,7 +441,6 @@
         "MealType": "Snack AM",
         "Quantity": 1
       },
-
       {
         "Id": 6,
         "FoodId": 2,
@@ -481,14 +459,12 @@
         "MealType": "Almuerzo",
         "Quantity": 1
       },
-
       {
         "Id": 9,
         "FoodId": 34,
         "MealType": "Snack PM",
         "Quantity": 1
       },
-
       {
         "Id": 10,
         "FoodId": 4,
@@ -512,8 +488,8 @@
   {
     "Id": 7,
     "Name": "Vegetariano - Mantener",
-    "Goal": "Mantener",
-    "DietType": "Vegetariano",
+    "Goal": "Maintain",
+    "DietType": "Vegetarian",
     "Items": [
       {
         "Id": 1,
@@ -533,7 +509,6 @@
         "MealType": "Desayuno",
         "Quantity": 1
       },
-
       {
         "Id": 4,
         "FoodId": 28,
@@ -546,7 +521,6 @@
         "MealType": "Snack AM",
         "Quantity": 1
       },
-
       {
         "Id": 6,
         "FoodId": 10,
@@ -565,14 +539,12 @@
         "MealType": "Almuerzo",
         "Quantity": 1
       },
-
       {
         "Id": 9,
         "FoodId": 25,
         "MealType": "Snack PM",
         "Quantity": 1
       },
-
       {
         "Id": 10,
         "FoodId": 22,
@@ -596,8 +568,8 @@
   {
     "Id": 8,
     "Name": "Vegetariano - Perder grasa",
-    "Goal": "Perder grasa",
-    "DietType": "Vegetariano",
+    "Goal": "LoseFat",
+    "DietType": "Vegetarian",
     "Items": [
       {
         "Id": 1,
@@ -617,14 +589,12 @@
         "MealType": "Desayuno",
         "Quantity": 1
       },
-
       {
         "Id": 4,
         "FoodId": 25,
         "MealType": "Snack AM",
         "Quantity": 1
       },
-
       {
         "Id": 5,
         "FoodId": 10,
@@ -643,14 +613,12 @@
         "MealType": "Almuerzo",
         "Quantity": 1
       },
-
       {
         "Id": 8,
         "FoodId": 61,
         "MealType": "Snack PM",
         "Quantity": 1
       },
-
       {
         "Id": 9,
         "FoodId": 22,
@@ -674,8 +642,8 @@
   {
     "Id": 9,
     "Name": "Vegetariano - Ganar masa",
-    "Goal": "Ganar masa",
-    "DietType": "Vegetariano",
+    "Goal": "GainMuscle",
+    "DietType": "Vegetarian",
     "Items": [
       {
         "Id": 1,
@@ -701,7 +669,6 @@
         "MealType": "Desayuno",
         "Quantity": 1
       },
-
       {
         "Id": 5,
         "FoodId": 57,
@@ -714,7 +681,6 @@
         "MealType": "Snack AM",
         "Quantity": 1
       },
-
       {
         "Id": 7,
         "FoodId": 10,
@@ -733,7 +699,6 @@
         "MealType": "Almuerzo",
         "Quantity": 1
       },
-
       {
         "Id": 10,
         "FoodId": 61,
@@ -746,7 +711,6 @@
         "MealType": "Snack PM",
         "Quantity": 1
       },
-
       {
         "Id": 12,
         "FoodId": 22,

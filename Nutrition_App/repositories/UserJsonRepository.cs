@@ -7,14 +7,21 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Repositories
 {
+    // Repository que gestiona la persistencia de usuarios en un archivo JSON
     public class UserJsonRepository : IUserRepository
     {
-        private readonly string filePath = Path.Combine(
-            Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
-            "data",
-            "users.json"
-        );
+        private readonly string filePath;
 
+        public UserJsonRepository()
+        {
+            // Construye la ruta hacia /data/users.json desde el directorio del ejecutable
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string projectDir = Directory.GetParent(baseDir)?.Parent?.Parent?.Parent?.FullName ?? baseDir;
+
+            filePath = Path.Combine(projectDir, "data", "users.json");
+        }
+
+        // Agrega un nuevo usuario con Id incremental
         public void Add(User user)
         {
             List<User> users = GetAll();
@@ -25,12 +32,14 @@ namespace Nutrition_App.Repositories
             SaveAll(users);
         }
 
+        // Obtiene todos los usuarios desde el archivo JSON
         public List<User> GetAll()
         {
             EnsureFileExists();
 
             string json = File.ReadAllText(filePath);
 
+            // Si el archivo está vacío, retorna lista vacía
             if (string.IsNullOrWhiteSpace(json))
             {
                 return new List<User>();
@@ -39,11 +48,12 @@ namespace Nutrition_App.Repositories
             return JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
         }
 
+        // Elimina un usuario por su Id
         public void Delete(int userId)
         {
             List<User> users = GetAll();
 
-            User userToRemove = users.FirstOrDefault(u => u.Id == userId);
+            User? userToRemove = users.FirstOrDefault(u => u.Id == userId);
 
             if (userToRemove != null)
             {
@@ -52,14 +62,16 @@ namespace Nutrition_App.Repositories
             }
         }
 
+        // Actualiza los datos de un usuario existente
         public void Update(User user)
         {
             List<User> users = GetAll();
 
-            User existingUser = users.FirstOrDefault(u => u.Id == user.Id);
+            User? existingUser = users.FirstOrDefault(u => u.Id == user.Id);
 
             if (existingUser != null)
             {
+                // Se actualizan las propiedades del usuario encontrado
                 existingUser.Name = user.Name;
                 existingUser.Username = user.Username;
                 existingUser.Password = user.Password;
@@ -76,9 +88,15 @@ namespace Nutrition_App.Repositories
             }
         }
 
+        // Guarda todos los usuarios sobrescribiendo el archivo JSON
         private void SaveAll(List<User> users)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath)!);
+            string? directory = Path.GetDirectoryName(filePath);
+
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
 
             string json = JsonSerializer.Serialize(users, new JsonSerializerOptions
             {
@@ -88,10 +106,15 @@ namespace Nutrition_App.Repositories
             File.WriteAllText(filePath, json);
         }
 
+        // Crea el archivo si no existe, inicializándolo como lista vacía
         private void EnsureFileExists()
         {
-            string directory = Path.GetDirectoryName(filePath)!;
-            Directory.CreateDirectory(directory);
+            string? directory = Path.GetDirectoryName(filePath);
+
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
 
             if (!File.Exists(filePath))
             {
