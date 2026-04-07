@@ -29,6 +29,7 @@
             btnDeleteUser = new Button();
             btnEditUser = new Button();
             btnOpenFoods = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
             // 
@@ -71,11 +72,22 @@
             btnOpenFoods.UseVisualStyleBackColor = true;
             btnOpenFoods.Click += btnOpenFoods_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(536, 498);
+            button1.Name = "button1";
+            button1.Size = new Size(163, 33);
+            button1.TabIndex = 4;
+            button1.Text = "Cerrar Sesion";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // AdminForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(750, 607);
+            Controls.Add(button1);
             Controls.Add(btnOpenFoods);
             Controls.Add(btnEditUser);
             Controls.Add(btnDeleteUser);
@@ -93,5 +105,6 @@
         private Button btnDeleteUser;
         private Button btnEditUser;
         private Button btnOpenFoods;
+        private Button button1;
     }
 }

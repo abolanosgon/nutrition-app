@@ -353,11 +353,11 @@ namespace Nutrition_App.Views
                 return;
             }
 
-            User authenticatedUser = userController.AuthenticateUser(txtLoginUsername.Text, txtLoginPassword.Text);
+            User? authenticatedUser = userController.AuthenticateUser(txtLoginUsername.Text, txtLoginPassword.Text);
 
             if (authenticatedUser == null)
             {
-                MessageBox.Show("Usuario o contraseña incorrectos.");
+                MessageBox.Show("Usuario o contraseña incorrectos");
                 return;
             }
 
