@@ -6,10 +6,14 @@ using Nutrition_App.Services;
 
 namespace Nutrition_App.Views
 {
+    // Formulario principal del sistema.
+    // Permite registrar usuarios, visualizar la lista y realizar login.
     public partial class MainForm : Form
     {
+        // Controlador para manejar operaciones de usuarios
         private UserController userController = new UserController();
 
+        // Id del usuario seleccionado en el DataGridView (no se usa directamente para acciones críticas aquí)
         private int selectedUserId = -1;
 
         public MainForm()
@@ -17,21 +21,24 @@ namespace Nutrition_App.Views
             InitializeComponent();
         }
 
+        // Evento al cargar el formulario
+        // Asegura que exista un admin y carga los usuarios
         private void MainForm_Load(object sender, EventArgs e)
         {
             userController.EnsureAdminUser();
             LoadUsers();
         }
 
+        // Botón para registrar un nuevo usuario
         private void btnSaveUser_Click(object sender, EventArgs e)
         {
+            // Validación de inputs
             if (!ValidateInputs(out int age, out double weight, out double height))
             {
                 return;
             }
 
             string gender = GetSelectedGender();
-
             string goal = GetSelectedGoal();
 
             if (string.IsNullOrEmpty(goal))
@@ -41,7 +48,6 @@ namespace Nutrition_App.Views
             }
 
             string activityLevel = GetSelectedActivityLevel();
-
             string dietType = GetSelectedDietType();
 
             if (string.IsNullOrEmpty(dietType))
@@ -50,16 +56,22 @@ namespace Nutrition_App.Views
                 return;
             }
 
+            // Construcción del objeto usuario
             User user = BuildUser(age, weight, height, gender, goal, activityLevel, dietType);
 
+            // Registro en el sistema
             userController.RegisterUser(user);
+
+            // Refresca lista
             LoadUsers();
 
             MessageBox.Show("Usuario registrado correctamente.");
 
+            // Limpia formulario
             ClearForm();
         }
 
+        // Construye un objeto User con los datos del formulario
         private User BuildUser(int age, double weight, double height, string gender, string goal, string activityLevel, string dietType)
         {
             return new User
@@ -78,6 +90,7 @@ namespace Nutrition_App.Views
             };
         }
 
+        // Limpia todos los campos del formulario
         private void ClearForm()
         {
             txtName.Clear();
@@ -92,6 +105,8 @@ namespace Nutrition_App.Views
             txtName.Focus();
         }
 
+        // Valida los inputs del formulario
+        // Devuelve true si todo es válido, false en caso contrario
         private bool ValidateInputs(out int age, out double weight, out double height)
         {
             age = 0;
@@ -155,6 +170,7 @@ namespace Nutrition_App.Views
             return true;
         }
 
+        // Obtiene el género seleccionado y lo convierte a formato interno
         private string GetSelectedGender()
         {
             string selected = cmbGender.SelectedItem?.ToString() ?? "";
@@ -172,6 +188,7 @@ namespace Nutrition_App.Views
             return "";
         }
 
+        // Obtiene el objetivo seleccionado y lo normaliza a formato interno
         private string GetSelectedGoal()
         {
             string selectedGoal = cmbGoal.SelectedItem?.ToString()?.Trim() ?? "";
@@ -189,6 +206,7 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Obtiene el nivel de actividad seleccionado
         private string GetSelectedActivityLevel()
         {
             string selectedActivity = cmbActivityLevel.SelectedItem?.ToString() ?? "";
@@ -208,6 +226,7 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Obtiene el tipo de dieta seleccionado
         private string GetSelectedDietType()
         {
             string selectedDiet = cmbDietType.SelectedItem?.ToString() ?? "";
@@ -225,14 +244,17 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Carga todos los usuarios en el DataGridView
         private void LoadUsers()
         {
             dgvUsers.DataSource = null;
             dgvUsers.DataSource = userController.GetUsers();
 
+            // Oculta columnas sensibles
             dgvUsers.Columns["Id"].Visible = false;
             dgvUsers.Columns["Password"].Visible = false;
 
+            // Traducción de encabezados
             dgvUsers.Columns["Name"].HeaderText = "Nombre";
             dgvUsers.Columns["Username"].HeaderText = "Usuario";
             dgvUsers.Columns["Age"].HeaderText = "Edad";
@@ -246,74 +268,41 @@ namespace Nutrition_App.Views
             TranslateUserGrid();
         }
 
+        // Traduce valores internos a valores visibles en español
         private void TranslateUserGrid()
         {
             foreach (DataGridViewRow row in dgvUsers.Rows)
             {
                 string gender = row.Cells["Gender"].Value?.ToString() ?? "";
-                if (gender == "Male")
-                {
-                    row.Cells["Gender"].Value = "Hombre";
-                }
-                else if (gender == "Female")
-                {
-                    row.Cells["Gender"].Value = "Mujer";
-                }
+                if (gender == "Male") row.Cells["Gender"].Value = "Hombre";
+                else if (gender == "Female") row.Cells["Gender"].Value = "Mujer";
 
                 string goal = row.Cells["Goal"].Value?.ToString() ?? "";
-                if (goal == "maintain")
-                {
-                    row.Cells["Goal"].Value = "Mantener peso";
-                }
-                else if (goal == "losefat")
-                {
-                    row.Cells["Goal"].Value = "Perder grasa";
-                }
-                else if (goal == "gainmuscle")
-                {
-                    row.Cells["Goal"].Value = "Ganar masa muscular";
-                }
+                if (goal == "maintain") row.Cells["Goal"].Value = "Mantener peso";
+                else if (goal == "losefat") row.Cells["Goal"].Value = "Perder grasa";
+                else if (goal == "gainmuscle") row.Cells["Goal"].Value = "Ganar masa muscular";
 
                 string activityLevel = row.Cells["ActivityLevel"].Value?.ToString() ?? "";
-                if (activityLevel == "Sedentary")
-                {
-                    row.Cells["ActivityLevel"].Value = "Sedentario";
-                }
-                else if (activityLevel == "Light")
-                {
-                    row.Cells["ActivityLevel"].Value = "Ligero";
-                }
-                else if (activityLevel == "Moderate")
-                {
-                    row.Cells["ActivityLevel"].Value = "Moderado";
-                }
-                else if (activityLevel == "Active")
-                {
-                    row.Cells["ActivityLevel"].Value = "Activo";
-                }
+                if (activityLevel == "Sedentary") row.Cells["ActivityLevel"].Value = "Sedentario";
+                else if (activityLevel == "Light") row.Cells["ActivityLevel"].Value = "Ligero";
+                else if (activityLevel == "Moderate") row.Cells["ActivityLevel"].Value = "Moderado";
+                else if (activityLevel == "Active") row.Cells["ActivityLevel"].Value = "Activo";
 
                 string dietType = row.Cells["DietType"].Value?.ToString() ?? "";
-                if (dietType == "standard")
-                {
-                    row.Cells["DietType"].Value = "Estándar";
-                }
-                else if (dietType == "keto")
-                {
-                    row.Cells["DietType"].Value = "Keto";
-                }
-                else if (dietType == "vegetarian")
-                {
-                    row.Cells["DietType"].Value = "Vegetariana";
-                }
+                if (dietType == "standard") row.Cells["DietType"].Value = "Estándar";
+                else if (dietType == "keto") row.Cells["DietType"].Value = "Keto";
+                else if (dietType == "vegetarian") row.Cells["DietType"].Value = "Vegetariana";
             }
         }
 
+        // Genera un username automático basado en nombre + edad
         private string GenerateUsername(string name, int age)
         {
             string username = name.Trim().Replace(" ", "").ToLower();
             return username + age;
         }
 
+        // Muestra vista previa del username generado
         private void UpdateUsernamePreview()
         {
             if (!string.IsNullOrWhiteSpace(txtName.Text) && int.TryParse(txtAge.Text, out int age))
@@ -327,6 +316,7 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Eventos para actualizar preview en tiempo real
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             UpdateUsernamePreview();
@@ -337,6 +327,7 @@ namespace Nutrition_App.Views
             UpdateUsernamePreview();
         }
 
+        // Evento al seleccionar usuario en la tabla
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -347,6 +338,7 @@ namespace Nutrition_App.Views
             }
         }
 
+        // Maneja el login del sistema
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtLoginUsername.Text))
@@ -369,6 +361,7 @@ namespace Nutrition_App.Views
                 return;
             }
 
+            // Redirección según rol
             if (authenticatedUser.Role == "Admin")
             {
                 AdminForm adminForm = new AdminForm(authenticatedUser);

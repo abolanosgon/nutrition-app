@@ -6,22 +6,30 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Views
 {
+    // Formulario para mostrar estadísticas nutricionales.
+    // Puede mostrar estadísticas globales o estadísticas específicas de un usuario.
     public partial class StatisticsForm : Form
     {
+        // Id del usuario para filtrar estadísticas.
+        // Si es null, se muestran estadísticas generales.
         private readonly int? _userId;
 
+        // Constructor para estadísticas generales
         public StatisticsForm()
         {
             InitializeComponent();
             _userId = null;
         }
 
+        // Constructor para estadísticas de un usuario específico
         public StatisticsForm(int userId)
         {
             InitializeComponent();
             _userId = userId;
         }
 
+        // Evento de carga del formulario
+        // Obtiene y muestra el resumen general, estadísticas diarias y alimentos más consumidos
         private void StatisticsForm_Load(object sender, EventArgs e)
         {
             StatisticsController controller = new StatisticsController();
@@ -30,6 +38,7 @@ namespace Nutrition_App.Views
             List<DailyCaloriesStat> dailyStats;
             List<TopFoodStat> topFoods;
 
+            // Si existe userId, se cargan estadísticas filtradas por usuario
             if (_userId.HasValue)
             {
                 summary = controller.GetSummaryByUser(_userId.Value);
@@ -39,12 +48,14 @@ namespace Nutrition_App.Views
             }
             else
             {
+                // Si no, se cargan estadísticas generales del sistema
                 summary = controller.GetSummary();
                 dailyStats = controller.GetDailyCaloriesStats();
                 topFoods = controller.GetTopFoods();
                 lblTitle.Text = "Resumen de estadísticas";
             }
 
+            // Carga resumen numérico en labels
             lblTotalMealRecords.Text = summary.TotalMealRecords.ToString();
             lblTotalUsersWithRecords.Text = summary.TotalUsersWithRecords.ToString();
             lblTotalCalories.Text = summary.TotalCalories.ToString("F2");
@@ -54,9 +65,11 @@ namespace Nutrition_App.Views
             lblTotalCarbs.Text = summary.TotalCarbs.ToString("F2");
             lblTotalFat.Text = summary.TotalFat.ToString("F2");
 
+            // Carga estadísticas diarias en el DataGridView
             dgvDailyStats.DataSource = null;
             dgvDailyStats.DataSource = dailyStats;
 
+            // Configuración de encabezados y formato para estadísticas diarias
             if (dgvDailyStats.Columns["Date"] != null)
                 dgvDailyStats.Columns["Date"].HeaderText = "Fecha";
 
@@ -72,9 +85,11 @@ namespace Nutrition_App.Views
             if (dgvDailyStats.Columns["TotalCalories"] != null)
                 dgvDailyStats.Columns["TotalCalories"].DefaultCellStyle.Format = "F2";
 
+            // Carga alimentos más consumidos en el DataGridView
             dgvTopFoods.DataSource = null;
             dgvTopFoods.DataSource = topFoods;
 
+            // Configuración de encabezados y formato para top alimentos
             if (dgvTopFoods.Columns["FoodName"] != null)
                 dgvTopFoods.Columns["FoodName"].HeaderText = "Alimento";
 

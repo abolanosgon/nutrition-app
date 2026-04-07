@@ -82,6 +82,7 @@
             Controls.Add(dgvUsers);
             Name = "AdminForm";
             Text = "Form1";
+            Load += AdminForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
             ResumeLayout(false);
         }

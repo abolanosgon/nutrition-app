@@ -7,8 +7,11 @@ using Nutrition_App.Models;
 
 namespace Nutrition_App.Repositories
 {
+    // Repositorio encargado de gestionar los usuarios en un archivo JSON.
+    // Implementa operaciones CRUD sobre users.json.
     public class UserJsonRepository : IUserRepository
     {
+        // Ruta del archivo donde se almacenan los usuarios
         private readonly string filePath;
 
         public UserJsonRepository()
@@ -19,16 +22,19 @@ namespace Nutrition_App.Repositories
             filePath = Path.Combine(projectDir, "data", "users.json");
         }
 
+        // Agrega un nuevo usuario
         public void Add(User user)
         {
             List<User> users = GetAll();
 
+            // Asigna Id consecutivo
             user.Id = users.Count == 0 ? 1 : users.Max(u => u.Id) + 1;
             users.Add(user);
 
             SaveAll(users);
         }
 
+        // Obtiene todos los usuarios almacenados
         public List<User> GetAll()
         {
             EnsureFileExists();
@@ -43,6 +49,7 @@ namespace Nutrition_App.Repositories
             return JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
         }
 
+        // Elimina un usuario según su Id
         public void Delete(int userId)
         {
             List<User> users = GetAll();
@@ -56,6 +63,7 @@ namespace Nutrition_App.Repositories
             }
         }
 
+        // Actualiza un usuario existente
         public void Update(User user)
         {
             List<User> users = GetAll();
@@ -80,6 +88,7 @@ namespace Nutrition_App.Repositories
             }
         }
 
+        // Guarda toda la lista de usuarios en el archivo JSON
         private void SaveAll(List<User> users)
         {
             string? directory = Path.GetDirectoryName(filePath);
@@ -97,6 +106,8 @@ namespace Nutrition_App.Repositories
             File.WriteAllText(filePath, json);
         }
 
+        // Verifica que el archivo users.json exista
+        // Si no existe, lo crea con una lista vacía
         private void EnsureFileExists()
         {
             string? directory = Path.GetDirectoryName(filePath);

@@ -4,8 +4,11 @@ using Nutrition_App.Repositories;
 
 namespace Nutrition_App.Services
 {
+    // Servicio encargado de asignar un menú a un usuario.
+    // Compara el objetivo y tipo de dieta del usuario con los menús disponibles.
     public class MenuService
     {
+        // Repositorio que contiene los menús almacenados en JSON
         private readonly MenuJsonRepository _menuRepository;
 
         public MenuService()
@@ -13,18 +16,22 @@ namespace Nutrition_App.Services
             _menuRepository = new MenuJsonRepository();
         }
 
+        // Obtiene el menú correspondiente a un usuario según su objetivo y tipo de dieta
         public Menu? GetMenuForUser(User user)
         {
             var menus = _menuRepository.GetAllMenus();
 
+            // Normaliza valores del usuario para evitar problemas de comparación
             string userGoal = NormalizeGoal(user.Goal);
             string userDietType = NormalizeDietType(user.DietType);
 
+            // Busca el primer menú que coincida con ambas condiciones
             return menus.FirstOrDefault(m =>
                 NormalizeGoal(m.Goal) == userGoal &&
                 NormalizeDietType(m.DietType) == userDietType);
         }
 
+        // Normaliza el objetivo del usuario (inglés/español, variaciones)
         private string NormalizeGoal(string goal)
         {
             string value = NormalizeText(goal);
@@ -62,6 +69,7 @@ namespace Nutrition_App.Services
             }
         }
 
+        // Normaliza el tipo de dieta del usuario
         private string NormalizeDietType(string dietType)
         {
             string value = NormalizeText(dietType);
@@ -87,6 +95,7 @@ namespace Nutrition_App.Services
             }
         }
 
+        // Limpia texto: elimina espacios, convierte a minúsculas y quita tildes
         private string NormalizeText(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
